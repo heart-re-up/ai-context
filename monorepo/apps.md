@@ -38,7 +38,9 @@ apps/
 
 ## 애플리케이션별 package.json 설정
 
-### 웹 애플리케이션 (React + Vite)
+> ⚠️ **React 19 주의사항**: JSX 타입은 `React.JSX.Element` 사용, Tailwind CSS는 3.x 버전 권장
+
+### 웹 애플리케이션 (React 19 + Vite)
 
 ```json
 {
@@ -70,9 +72,15 @@ apps/
     "react-router": "^7.6.2"
   },
   "devDependencies": {
+    "@project/eslint-config": "workspace:*",
+    "@project/typescript-config": "workspace:*",
+    "@project/prettier-config": "workspace:*",
     "@types/react": "^19.1.6",
     "@types/react-dom": "^19.1.5",
     "@vitejs/plugin-react": "^4.5.1",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.5.1",
+    "tailwindcss": "^3.4.16",
     "typescript": "~5.8.3",
     "vite": "^6.3.5"
   }
@@ -233,6 +241,104 @@ export const getUsers = (): Promise<User[]> => {
 export const createUser = (data: CreateUserRequest): Promise<User> => {
   return apiClient.post("/users", data);
 };
+```
+
+## NestJS 백엔드 애플리케이션
+
+### package.json 설정
+
+```json
+{
+  "name": "@project/backend",
+  "version": "0.0.1",
+  "description": "NestJS Backend Server",
+  "private": true,
+  "scripts": {
+    "build": "nest build",
+    "dev": "nest start --watch",
+    "start": "nest start",
+    "start:prod": "node dist/main",
+    "lint": "eslint \"{src,apps,libs,test}/**/*.ts\"",
+    "lint:fix": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
+    "typecheck": "tsc --noEmit",
+    "clean": "rimraf .turbo dist node_modules"
+  },
+  "dependencies": {
+    "@nestjs/common": "^10.0.0",
+    "@nestjs/core": "^10.0.0",
+    "@nestjs/platform-express": "^10.0.0",
+    "@nestjs/config": "^3.0.0",
+    "@nestjs/swagger": "^7.0.0",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.14.0",
+    "reflect-metadata": "^0.1.13",
+    "rxjs": "^7.8.1"
+  },
+  "devDependencies": {
+    "@project/eslint-config": "workspace:*",
+    "@project/typescript-config": "workspace:*",
+    "@project/prettier-config": "workspace:*",
+    "@nestjs/cli": "^10.0.0",
+    "@types/express": "^4.17.17",
+    "@types/node": "^20.3.1"
+  }
+}
+```
+
+### TypeScript 설정
+
+```json
+// apps/backend/tsconfig.json
+{
+  "extends": "@project/typescript-config/node",
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "@/*": ["src/*"]
+    }
+  },
+  "include": ["src/**/*.ts"],
+  "exclude": ["node_modules", "dist", "**/*.test.ts", "**/*.spec.ts"]
+}
+```
+
+### 엔터티 클래스 작성법
+
+> ⚠️ **중요**: TypeScript strict 모드에서는 `!` (Definite Assignment Assertion) 사용 필요
+
+```typescript
+// apps/backend/src/users/entities/user.entity.ts
+import { ApiProperty } from '@nestjs/swagger';
+
+export class User {
+  @ApiProperty({ description: '사용자 ID', example: 1 })
+  id!: number;  // ! 사용
+
+  @ApiProperty({ description: '사용자 이름', example: '홍길동' })
+  name!: string;  // ! 사용
+
+  @ApiProperty({ description: '이메일 주소', example: 'hong@example.com' })
+  email!: string;  // ! 사용
+}
+```
+
+### DTO 클래스 작성법
+
+```typescript
+// apps/backend/src/users/dto/create-user.dto.ts
+import { ApiProperty } from '@nestjs/swagger';
+import { IsEmail, IsNotEmpty, IsString } from 'class-validator';
+
+export class CreateUserDto {
+  @ApiProperty({ description: '사용자 이름', example: '홍길동' })
+  @IsNotEmpty()
+  @IsString()
+  name!: string;  // ! 사용
+
+  @ApiProperty({ description: '이메일 주소', example: 'hong@example.com' })
+  @IsEmail()
+  email!: string;  // ! 사용
+}
 ```
 
 ## 개발 서버 설정

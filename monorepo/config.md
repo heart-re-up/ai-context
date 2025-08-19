@@ -41,9 +41,9 @@ project-root/
 ```
 config/eslint-config/
 ├── package.json         # 패키지 정의
-├── base.mjs            # 기본 ESLint 설정
-├── react.mjs           # React 프로젝트용
-├── node.mjs            # Node.js 프로젝트용
+├── base.mjs            # 기본 ESLint 설정 (⚠️ globals import 필수)
+├── react.mjs           # React 프로젝트용 (React 19 호환)
+├── node.mjs            # Node.js 프로젝트용 (⚠️ globals import 필수)
 └── lib.mjs             # 라이브러리용 (더 엄격)
 ```
 
@@ -69,6 +69,10 @@ config/eslint-config/
 > - **개발 시**: `import from "@project/eslint-config/react"`는 실제 파일 경로로 직접 참조됨
 
 > 📖 **ESLint 상세 설정 방법**: [quality/eslint.md](../quality/eslint.md)
+> 
+> ⚠️ **주의사항**: 
+> - `base.mjs`와 `node.mjs`에서 `globals` import 누락 시 오류 발생
+> - React 19 사용 시 `react/jsx-uses-react` 규칙 비활성화 필요
 
 ### TypeScript 설정 패키지
 
