@@ -356,37 +356,14 @@ pnpm dev
 
 ### CI/CD 파이프라인
 
-```yaml
-# .github/workflows/test.yml
-name: Test Pipeline
+테스트를 CI/CD 파이프라인에 통합하는 상세한 방법은 별도 가이드를 참고하세요:
 
-on: [push, pull_request]
+👉 **[../cicd/quality-pipeline.md](../cicd/quality-pipeline.md)** - 품질 관리 파이프라인 가이드
 
-jobs:
-  unit-tests:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v2
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 18
-          cache: "pnpm"
+### 테스트 자동화 전략
 
-      - run: pnpm install --frozen-lockfile
-
-      # 라이브러리 단위 테스트
-      - name: Run unit tests
-        run: pnpm --filter @project/shared-lib test:coverage
-
-      # 라이브러리 빌드
-      - name: Build library
-        run: pnpm --filter @project/shared-lib build
-
-      # 통합 테스트
-      - name: Run integration tests
-        run: pnpm --filter @project/shared-lib-demo test:integration
-```
+- **[GitHub Actions](../cicd/github-actions.md)**: GitHub 워크플로우에서 테스트 실행
+- **[Azure Pipelines](../cicd/azure-pipelines.md)**: Azure DevOps에서 테스트 관리
 
 ## 품질 관리
 

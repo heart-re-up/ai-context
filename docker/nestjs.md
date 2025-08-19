@@ -56,61 +56,9 @@ CMD ["pnpm", "--filter=@project/api", "start:dev"]
 1. CI/CD에서 빌드 수행
 2. 빌드 결과물만 Docker 이미지에 포함
 
-### CI/CD 빌드 스크립트 (.github/workflows/deploy.yml)
+CI/CD 파이프라인과 Docker 배포 전략에 대한 상세한 내용은 별도 가이드를 참고하세요:
 
-```yaml
-name: Build and Deploy
-
-on:
-  push:
-    branches: [main]
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18
-
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: 8.15.0
-
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile
-
-      - name: Build API
-        run: pnpm --filter=@project/api build
-
-      - name: Upload build artifacts
-        uses: actions/upload-artifact@v3
-        with:
-          name: api-dist
-          path: apps/api/dist
-
-  docker:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: Download build artifacts
-        uses: actions/download-artifact@v3
-        with:
-          name: api-dist
-          path: apps/api/dist
-
-      - name: Build Docker image
-        run: docker build -t myapp/api:latest .
-
-      - name: Deploy
-        run: docker push myapp/api:latest
-```
+👉 **[../cicd/docker-deployment.md](../cicd/docker-deployment.md)** - Docker 배포 전략 가이드
 
 ### 최적화된 프로덕션 Dockerfile
 

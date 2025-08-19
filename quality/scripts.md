@@ -127,133 +127,15 @@ echo "✅ Pre-commit 체크 완료!"
 
 ## CI/CD 통합
 
-### GitHub Actions 워크플로우
+코드 품질 도구들을 CI/CD 파이프라인과 연동하는 상세한 방법은 별도 가이드를 참고하세요:
 
-```yaml
-# .github/workflows/quality.yml
-name: Code Quality
+👉 **[../cicd/quality-pipeline.md](../cicd/quality-pipeline.md)** - 품질 관리 파이프라인 가이드
 
-on:
-  push:
-    branches: [main, develop]
-  pull_request:
-    branches: [main, develop]
+### 주요 연동 방법
 
-jobs:
-  quality:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [18, 20]
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ matrix.node-version }}
-          cache: "pnpm"
-
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile
-
-      - name: Type check
-        run: pnpm type-check
-
-      - name: Lint
-        run: pnpm lint:ci
-
-      - name: Format check
-        run: pnpm format
-
-      - name: Upload ESLint report
-        if: failure()
-        uses: actions/upload-artifact@v4
-        with:
-          name: eslint-report
-          path: eslint-report.json
-
-  test:
-    runs-on: ubuntu-latest
-    needs: quality
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: "pnpm"
-
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile
-
-      - name: Test
-        run: pnpm test --coverage
-
-      - name: Upload coverage
-        uses: codecov/codecov-action@v3
-```
-
-### 병렬 처리 최적화
-
-```yaml
-# .github/workflows/quality-parallel.yml
-name: Code Quality (Parallel)
-
-on:
-  pull_request:
-    branches: [main]
-
-jobs:
-  lint:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: "pnpm"
-      - run: pnpm install --frozen-lockfile
-      - run: pnpm lint
-
-  format:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: "pnpm"
-      - run: pnpm install --frozen-lockfile
-      - run: pnpm format
-
-  type-check:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: "pnpm"
-      - run: pnpm install --frozen-lockfile
-      - run: pnpm type-check
-
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: "pnpm"
-      - run: pnpm install --frozen-lockfile
-      - run: pnpm test --coverage
-```
+- **[GitHub Actions](../cicd/github-actions.md)**: GitHub 워크플로우 설정
+- **[Azure Pipelines](../cicd/azure-pipelines.md)**: Azure DevOps 파이프라인
+- **[품질 자동화](../cicd/automation-tools.md)**: 자동 수정 및 리포팅
 
 ## 커스텀 스크립트
 
