@@ -247,13 +247,9 @@ git push
 
 ### 팀 온보딩
 
-새 팀원에게 프로젝트 표준을 빠르게 전달:
+새 팀원에게는 이 저장소 링크만 공유하면 됩니다:
 
-```bash
-# 새 팀원 온보딩
-echo "프로젝트 가이드라인은 .ai-context 디렉토리를 참고하세요"
-echo "주요 문서:"
-echo "- .ai-context/typescript.md (TypeScript 설정)"
-echo "- .ai-context/quality/README.md (코드 품질 관리)"
-echo "- .ai-context/cicd/README.md (CI/CD 파이프라인)"
-```
+📖 **프로젝트 가이드라인**: `.ai-context/` 디렉토리 참고  
+🔗 **원본 저장소**: https://github.com/your-org/ai-context
+
+주요 문서들이 `.ai-context/` 디렉토리에 정리되어 있습니다.
