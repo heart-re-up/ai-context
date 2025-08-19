@@ -292,47 +292,14 @@ CMD ["nginx", "-g", "daemon off;"]
 
 ### CI/CD 워크플로우
 
-```yaml
-# .github/workflows/deploy-apps.yml
-name: Deploy Apps
+모노레포에서 앱별 CI/CD 파이프라인 구성에 대한 상세한 내용은 별도 가이드를 참고하세요:
 
-on:
-  push:
-    branches: [main]
-    paths: ["apps/**"]
+👉 **[../cicd/README.md](../cicd/README.md)** - CI/CD 파이프라인 가이드
 
-jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        app: [web-app, admin-dashboard]
+### 주요 배포 전략
 
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: 8
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 18
-          cache: "pnpm"
-
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile
-
-      - name: Build app
-        run: pnpm build --filter=@project/${{ matrix.app }}
-
-      - name: Deploy
-        run: |
-          # 배포 스크립트 실행
-          ./scripts/deploy.sh ${{ matrix.app }}
-```
+- **[GitHub Actions](../cicd/github-actions.md)**: 모노레포 워크플로우 설정
+- **[Docker 배포](../cicd/docker-deployment.md)**: 컨테이너 기반 배포
 
 ## 개발 가이드라인
 

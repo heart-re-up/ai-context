@@ -56,64 +56,9 @@ CMD ["pnpm", "--filter=@project/web", "dev"]
 1. CI/CD에서 빌드 수행
 2. 빌드 결과물만 Docker 이미지에 포함
 
-### CI/CD 빌드 스크립트 (.github/workflows/deploy.yml)
+CI/CD 파이프라인과 Docker 배포 전략에 대한 상세한 내용은 별도 가이드를 참고하세요:
 
-```yaml
-name: Build and Deploy Next.js
-
-on:
-  push:
-    branches: [main]
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18
-
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: 8.15.0
-
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile
-
-      - name: Build Next.js app
-        run: pnpm --filter=@project/web build
-
-      - name: Upload build artifacts
-        uses: actions/upload-artifact@v3
-        with:
-          name: nextjs-build
-          path: |
-            apps/web/.next/standalone
-            apps/web/.next/static
-            apps/web/public
-
-  docker:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: Download build artifacts
-        uses: actions/download-artifact@v3
-        with:
-          name: nextjs-build
-          path: apps/web/
-
-      - name: Build Docker image
-        run: docker build -t myapp/web:latest .
-
-      - name: Deploy
-        run: docker push myapp/web:latest
-```
+👉 **[../cicd/docker-deployment.md](../cicd/docker-deployment.md)** - Docker 배포 전략 가이드
 
 ### 최적화된 프로덕션 Dockerfile
 

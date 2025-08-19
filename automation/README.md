@@ -15,24 +15,17 @@
 - **[Commitlint](./commitlint.md)**: 커밋 메시지 규칙 검증
 - **[Lint-staged](./lint-staged.md)**: Staged 파일만 선택적 검증
 
-## 플랫폼별 CI/CD 설정
+## CI/CD 통합
 
-### GitHub
+자동화 도구들을 CI/CD 파이프라인과 연동하는 방법은 별도 가이드를 참고하세요:
 
-- [GitHub Actions 공식 문서](https://docs.github.com/en/actions)
-- [Dependabot 공식 문서](https://docs.github.com/en/code-security/dependabot)
+👉 **[../cicd/README.md](../cicd/README.md)** - CI/CD 파이프라인 가이드
 
-### GitLab
+### 주요 연동 도구
 
-- [GitLab CI/CD 공식 문서](https://docs.gitlab.com/ee/ci/)
-
-### Azure DevOps
-
-- [Azure Pipelines 공식 문서](https://docs.microsoft.com/en-us/azure/devops/pipelines/)
-
-### Bitbucket
-
-- [Bitbucket Pipelines 공식 문서](https://support.atlassian.com/bitbucket-cloud/docs/get-started-with-bitbucket-pipelines/)
+- **[GitHub Actions](../cicd/github-actions.md)**: GitHub 호스팅 프로젝트
+- **[Azure Pipelines](../cicd/azure-pipelines.md)**: Azure DevOps 환경  
+- **[자동화 도구 연동](../cicd/automation-tools.md)**: Renovate, Changesets 등
 
 ## 도구 선택 가이드
 
