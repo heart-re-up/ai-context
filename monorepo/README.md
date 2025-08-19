@@ -118,10 +118,18 @@ pnpm typecheck
 
 ## 시작하기
 
+### 🚀 빠른 시작
+- **5분 만에 시작**: [quick-start.md](./quick-start.md) - 검증된 설정으로 빠르게 시작
+- **문제 해결**: [troubleshooting.md](./troubleshooting.md) - 자주 발생하는 문제와 해결방법
+
+### 📚 상세 가이드
 1. **워크스페이스 설정**: [workspace.md](./workspace.md)를 참고하여 기본 설정을 완료하세요
 2. **설정 관리**: [config.md](./config.md)를 참고하여 공유 설정을 구성하세요
 3. **앱 개발**: [apps.md](./apps.md)를 참고하여 애플리케이션을 구성하세요
 4. **패키지 개발**: [packages.md](./packages.md)를 참고하여 공유 패키지를 만드세요
+
+### 🔧 특별 주제
+- **React 19 설정**: [react19-setup.md](./react19-setup.md) - React 19 사용 시 주의사항과 설정
 
 ## 추가 자료
 

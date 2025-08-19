@@ -44,10 +44,14 @@ audit-level=moderate
 ### 특정 패키지용 설정
 
 ```ini
-# React 18 타입 관련 이슈 해결
+# React 19 타입 관련 이슈 해결 (권장)
 shamefully-hoist=false
 public-hoist-pattern[]=*eslint*
 public-hoist-pattern[]=*prettier*
+public-hoist-pattern[]=*@types*
+
+# ⚠️ 주의: React 19 사용 시 testing-library 호환성 경고 발생 가능
+# 현재는 기능상 문제없으므로 무시 가능
 ```
 
 ## 2. 루트 package.json 설정
@@ -82,7 +86,9 @@ public-hoist-pattern[]=*prettier*
     "globals": "^15.15.0",
     "prettier": "^3.5.3",
     "turbo": "^2.5.4",
-    "typescript-eslint": "^8.33.1"
+    "typescript": "~5.8.3",
+    "typescript-eslint": "^8.33.1",
+    "rimraf": "^6.0.1"
   },
   "engines": {
     "node": ">=18",
@@ -102,7 +108,13 @@ public-hoist-pattern[]=*prettier*
   "tasks": {
     "build": {
       "dependsOn": ["^build"],
-      "outputs": ["dist/**", ".next/**", "!.next/cache/**", "build/**"]
+      "outputs": [
+        "dist/**", 
+        ".next/**", 
+        "!.next/cache/**", 
+        "build/**",
+        "apps/backend/dist/**"
+      ]
     },
     "lint": {
       "dependsOn": ["^lint"]
