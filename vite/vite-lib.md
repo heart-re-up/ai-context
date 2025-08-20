@@ -153,10 +153,10 @@ function MyComponent() {
 **Tree-shaking 효과:**
 
 ```typescript
-// ❌ 전체 라이브러리 번들 (모든 코드가 포함됨)
+//  전체 라이브러리 번들 (모든 코드가 포함됨)
 import { useLocalStorage } from "@myorg/my-library";
 
-// ✅ hooks만 번들에 포함 (더 작은 번들 크기)
+//  hooks만 번들에 포함 (더 작은 번들 크기)
 import { useLocalStorage } from "@myorg/my-library/hooks";
 ```
 
@@ -374,7 +374,7 @@ import { Button } from '@mylib/components/button';
 
 #### 배럴 Export와의 차이점
 
-**❌ 배럴 방식 (전통적)**
+** 배럴 방식 (전통적)**
 
 ```typescript
 // src/components/index.ts (배럴 파일)
@@ -387,7 +387,7 @@ export { Modal } from "./Modal";
 import { Button } from "@mylib/components"; // 모든 컴포넌트가 번들에 포함될 위험
 ```
 
-**✅ 구조 기반 방식 (Tree-shaking 최적화)**
+** 구조 기반 방식 (Tree-shaking 최적화)**
 
 ```typescript
 // 배럴 파일 없음 - 개별 파일로 직접 접근
@@ -443,7 +443,7 @@ import { useLocalStorage } from "@mylib/hooks"; // 2KB + 다른 훅들
 
 #### 유즈케이스별 포맷 선택 가이드
 
-##### 🔧 케이스 1: Node.js 환경 전용 React 라이브러리
+#####  케이스 1: Node.js 환경 전용 React 라이브러리
 
 ```typescript
 // SSR, 테스트, 빌드 도구에서만 사용
@@ -476,7 +476,7 @@ export default defineConfig({
 - Jest 테스트 환경
 - Node.js 백엔드에서 React 컴포넌트 렌더링
 
-##### 🌐 케이스 2: Node.js + 브라우저 CDN 지원
+#####  케이스 2: Node.js + 브라우저 CDN 지원
 
 ```typescript
 // 가장 범용적인 설정
@@ -597,7 +597,7 @@ export default defineConfig({
 </script>
 ```
 
-##### 🚀 케이스 4: 모던 환경 최적화
+#####  케이스 4: 모던 환경 최적화
 
 ```typescript
 // 최신 환경만 지원 (권장)
@@ -636,10 +636,10 @@ export default defineConfig({
 
 | 포맷     | 번들 크기 | Tree-shaking | 호환성 | CDN 지원 | 추천 용도              |
 | -------- | --------- | ------------ | ------ | -------- | ---------------------- |
-| **es**   | ⭐⭐⭐    | ⭐⭐⭐       | ⭐⭐   | ❌       | 모던 환경, 최적 성능   |
-| **cjs**  | ⭐⭐⭐    | ⭐⭐         | ⭐⭐⭐ | ❌       | Node.js, 레거시 번들러 |
-| **umd**  | ⭐⭐      | ❌           | ⭐⭐⭐ | ⭐⭐⭐   | 범용 호환, CDN 배포    |
-| **iife** | ⭐⭐      | ❌           | ⭐     | ⭐⭐     | 브라우저 전용, 단순함  |
+| **es**   |     |        |    |        | 모던 환경, 최적 성능   |
+| **cjs**  |     |          |  |        | Node.js, 레거시 번들러 |
+| **umd**  |       |            |  |    | 범용 호환, CDN 배포    |
+| **iife** |       |            |      |      | 브라우저 전용, 단순함  |
 
 **핵심 장점:**
 

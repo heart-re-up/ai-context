@@ -2,7 +2,7 @@
 
 ESLint는 JavaScript/TypeScript 코드의 문제를 찾고 코딩 스타일을 일관성 있게 유지하는 린팅 도구입니다.
 
-> 💡 **모노레포에서 ESLint 설정 패키지 구현**은 [monorepo-config.md](./monorepo-config.md#eslint-설정-패키지-구현)를 참고하세요.
+>  **모노레포에서 ESLint 설정 패키지 구현**은 [monorepo-config.md](./monorepo-config.md#eslint-설정-패키지-구현)를 참고하세요.
 
 ## ESLint 9+ Flat Config 소개
 
