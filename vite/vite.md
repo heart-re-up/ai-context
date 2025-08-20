@@ -75,7 +75,7 @@ export default defineConfig({
 
 ### TSConfig와 Vite Alias 동기화
 
-**⚠️ 중요**: Vite와 TypeScript 모두에서 경로 별칭을 설정해야 합니다.
+** 중요**: Vite와 TypeScript 모두에서 경로 별칭을 설정해야 합니다.
 
 ```json
 // tsconfig.json

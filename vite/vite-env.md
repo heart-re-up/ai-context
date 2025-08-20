@@ -226,7 +226,7 @@ const envSchema = z.object({
 try {
   export const env = envSchema.parse(import.meta.env);
 } catch (error) {
-  console.error("❌ 환경 변수 검증 실패:", error);
+  console.error(" 환경 변수 검증 실패:", error);
   throw error;
 }
 
@@ -271,7 +271,7 @@ export function validateEnvironment() {
     throw new Error("VITE_API_URL이 유효한 URL이 아닙니다");
   }
 
-  console.log("✅ 환경 변수 검증 완료");
+  console.log(" 환경 변수 검증 완료");
 }
 
 // main.tsx에서 호출
@@ -394,10 +394,10 @@ export const setupErrorTracking = async () => {
 ### 민감한 정보 처리
 
 ```typescript
-// ❌ 잘못된 예시 - 클라이언트에 노출됨
+//  잘못된 예시 - 클라이언트에 노출됨
 const VITE_API_SECRET = "secret-key"; // 위험!
 
-// ✅ 올바른 예시 - 서버에서만 사용
+//  올바른 예시 - 서버에서만 사용
 const API_SECRET = "secret-key"; // VITE_ 접두사 없음
 
 // 환경 변수 마스킹
@@ -442,20 +442,20 @@ export function maskSensitiveEnv(env: Record<string, string>) {
 export function inspectEnvironment() {
   if (!import.meta.env.DEV) return;
 
-  console.group("🔧 Environment Inspector");
+  console.group(" Environment Inspector");
 
   console.log("Mode:", import.meta.env.MODE);
   console.log("Dev:", import.meta.env.DEV);
   console.log("Prod:", import.meta.env.PROD);
 
-  console.log("\n📝 Environment Variables:");
+  console.log("\n Environment Variables:");
   Object.entries(import.meta.env)
     .filter(([key]) => key.startsWith("VITE_"))
     .forEach(([key, value]) => {
       console.log(`${key}:`, value);
     });
 
-  console.log("\n⚙️ Build Constants:");
+  console.log("\n Build Constants:");
   console.log("Version:", __APP_VERSION__);
   console.log("Build Time:", __BUILD_TIME__);
 

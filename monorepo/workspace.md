@@ -50,7 +50,7 @@ public-hoist-pattern[]=*eslint*
 public-hoist-pattern[]=*prettier*
 public-hoist-pattern[]=*@types*
 
-# ⚠️ 주의: React 19 사용 시 testing-library 호환성 경고 발생 가능
+#  주의: React 19 사용 시 testing-library 호환성 경고 발생 가능
 # 현재는 기능상 문제없으므로 무시 가능
 ```
 

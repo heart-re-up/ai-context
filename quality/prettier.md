@@ -2,7 +2,7 @@
 
 Prettier는 코드 포맷팅을 자동화하여 일관된 코드 스타일을 유지하는 도구입니다.
 
-> 💡 **모노레포에서 Prettier 설정 패키지 구현**은 [monorepo-config.md](./monorepo-config.md#prettier-설정-패키지-구현)를 참고하세요.
+>  **모노레포에서 Prettier 설정 패키지 구현**은 [monorepo-config.md](./monorepo-config.md#prettier-설정-패키지-구현)를 참고하세요.
 
 ## 기본 설정 (prettier.config.mjs)
 
@@ -93,23 +93,23 @@ const message = "It's working"; // Prettier가 자동으로 큰따옴표로 변�
 // trailingComma: "es5" - ES5 호환
 const obj = {
   name: "John",
-  age: 30, // ✅ 객체에 쉼표
+  age: 30, //  객체에 쉼표
 };
 
 function test(
   param1,
-  param2 // ❌ 함수 매개변수에는 없음
+  param2 //  함수 매개변수에는 없음
 ) {}
 
 // trailingComma: "all" - 모던 환경 권장
 const obj = {
   name: "John",
-  age: 30, // ✅ 객체에 쉼표
+  age: 30, //  객체에 쉼표
 };
 
 function test(
   param1,
-  param2 // ✅ 함수 매개변수에도 쉼표
+  param2 //  함수 매개변수에도 쉼표
 ) {}
 
 // Git diff 개선 효과

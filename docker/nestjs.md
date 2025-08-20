@@ -6,7 +6,7 @@ Nest.js API 서버를 위한 Docker 설정 가이드입니다.
 
 **대부분의 경우 개발환경에서는 Docker가 불필요합니다:**
 
-### ❌ Docker 불필요한 일반적인 개발
+###  Docker 불필요한 일반적인 개발
 
 ```bash
 # 로컬에서 직접 실행하는 것이 더 효율적
@@ -14,7 +14,7 @@ pnpm install
 pnpm --filter=@project/api dev
 ```
 
-### ✅ Docker가 필요한 특수한 경우
+###  Docker가 필요한 특수한 경우
 
 1. **팀 환경 통일**: 모든 팀원이 동일한 개발환경이 필요할 때
 2. **복잡한 서비스 의존성**: DB, Redis, Kafka 등 여러 서비스가 필요할 때
@@ -49,7 +49,7 @@ EXPOSE 3000
 CMD ["pnpm", "--filter=@project/api", "start:dev"]
 ```
 
-## 🚀 권장: CI/CD 빌드 + Docker 배포
+##  권장: CI/CD 빌드 + Docker 배포
 
 **가장 효율적인 방법:**
 
@@ -58,7 +58,7 @@ CMD ["pnpm", "--filter=@project/api", "start:dev"]
 
 CI/CD 파이프라인과 Docker 배포 전략에 대한 상세한 내용은 별도 가이드를 참고하세요:
 
-👉 **[../cicd/docker-deployment.md](../cicd/docker-deployment.md)** - Docker 배포 전략 가이드
+ **[../cicd/docker-deployment.md](../cicd/docker-deployment.md)** - Docker 배포 전략 가이드
 
 ### 최적화된 프로덕션 Dockerfile
 

@@ -217,9 +217,9 @@ jobs:
             ### Test Results  
             - Tests: ${tests.numTotalTests}
             - Passed: ${tests.numPassedTests}
-            - Coverage: ${tests.coverageMap ? '✅' : '❌'}
+            - Coverage: ${tests.coverageMap ? '' : ''}
             
-            ${errors > 0 ? '❌ Please fix ESLint errors before merging' : '✅ Code quality looks good!'}
+            ${errors > 0 ? ' Please fix ESLint errors before merging' : ' Code quality looks good!'}
             `;
             
             github.rest.issues.createComment({
@@ -274,7 +274,7 @@ jobs:
         run: |
           curl -X POST ${{ secrets.SLACK_WEBHOOK }} \
             -H 'Content-type: application/json' \
-            -d "{\"text\":\"🚀 Deployed to ${{ steps.env.outputs.environment }}: ${{ steps.env.outputs.url }}\"}"
+            -d "{\"text\":\" Deployed to ${{ steps.env.outputs.environment }}: ${{ steps.env.outputs.url }}\"}"
 ```
 
 ## 모니터링 연동
@@ -301,7 +301,7 @@ jobs:
   run: |
     for i in {1..10}; do
       if curl -f https://app.example.com/health; then
-        echo "✅ Health check passed"
+        echo " Health check passed"
         break
       fi
       echo "⏳ Waiting for service... ($i/10)"
@@ -323,7 +323,7 @@ jobs:
     channel: '#deployments'
     webhook_url: ${{ secrets.SLACK_WEBHOOK }}
     message: |
-      ✅ Deployment successful
+       Deployment successful
       Environment: ${{ steps.env.outputs.environment }}
       Commit: ${{ github.sha }}
 
@@ -335,7 +335,7 @@ jobs:
     channel: '#alerts'
     webhook_url: ${{ secrets.SLACK_WEBHOOK }}
     message: |
-      🚨 Deployment failed
+       Deployment failed
       Please check the logs: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
 ```
 
@@ -348,7 +348,7 @@ jobs:
 - name: Auto rollback on failure
   if: failure()
   run: |
-    echo "🔄 Starting automatic rollback..."
+    echo " Starting automatic rollback..."
     
     # 이전 성공한 배포 찾기
     LAST_SUCCESS=$(git log --format="%H" --grep="deploy: success" -1)
@@ -358,7 +358,7 @@ jobs:
     
     # 롤백 알림
     curl -X POST ${{ secrets.SLACK_WEBHOOK }} \
-      -d "{\"text\":\"🔄 Auto rollback completed to commit: $LAST_SUCCESS\"}"
+      -d "{\"text\":\" Auto rollback completed to commit: $LAST_SUCCESS\"}"
 ```
 
 ## 실용적인 스크립트
@@ -371,10 +371,10 @@ jobs:
 
 set -e
 
-echo "🚀 Starting CI pipeline..."
+echo " Starting CI pipeline..."
 
 # 1. 코드 품질 검사
-echo "📋 Quality checks..."
+echo " Quality checks..."
 pnpm lint
 pnpm format
 pnpm type-check
@@ -384,14 +384,14 @@ echo "🧪 Running tests..."
 pnpm test --coverage
 
 # 3. 빌드
-echo "🔨 Building..."
+echo " Building..."
 pnpm build
 
 # 4. 보안 검사
-echo "🔒 Security audit..."
+echo " Security audit..."
 pnpm audit --audit-level high
 
-echo "✅ CI pipeline completed successfully!"
+echo " CI pipeline completed successfully!"
 ```
 
 ### 배포 스크립트
@@ -403,7 +403,7 @@ echo "✅ CI pipeline completed successfully!"
 ENVIRONMENT=${1:-staging}
 VERSION=${2:-latest}
 
-echo "🚀 Deploying to $ENVIRONMENT..."
+echo " Deploying to $ENVIRONMENT..."
 
 # 환경별 설정 로드
 source .env.$ENVIRONMENT
@@ -416,7 +416,7 @@ docker push $REGISTRY/myapp:$VERSION
 # 컨테이너 업데이트
 docker service update --image $REGISTRY/myapp:$VERSION myapp-service
 
-echo "✅ Deployment to $ENVIRONMENT completed!"
+echo " Deployment to $ENVIRONMENT completed!"
 ```
 
 ## 모범 사례

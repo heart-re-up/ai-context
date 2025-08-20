@@ -2,7 +2,7 @@
 
 Node.js 서버 사이드 환경 변수 설정, 타입 정의, 검증에 대한 가이드입니다.
 
-> **📝 참고**: 클라이언트 사이드(Vite) 환경 변수는 [vite/vite-env.md](../vite/vite-env.md)를 참고하세요.
+> ** 참고**: 클라이언트 사이드(Vite) 환경 변수는 [vite/vite-env.md](../vite/vite-env.md)를 참고하세요.
 
 ## 서버 사이드 vs 클라이언트 사이드
 
@@ -249,10 +249,10 @@ export type Environment = z.infer<typeof envSchema>;
 export function validateEnvironment() {
   try {
     envSchema.parse(process.env);
-    console.log("✅ 환경 변수 검증 완료");
+    console.log(" 환경 변수 검증 완료");
     return true;
   } catch (error) {
-    console.error("❌ 환경 변수 검증 실패:");
+    console.error(" 환경 변수 검증 실패:");
     if (error instanceof z.ZodError) {
       error.errors.forEach((err) => {
         console.error(`  - ${err.path.join(".")}: ${err.message}`);
@@ -276,8 +276,8 @@ if (!validateEnvironment()) {
 }
 
 // 이제 env 객체를 안전하게 사용 가능
-console.log(`🚀 서버가 포트 ${env.PORT}에서 시작됩니다`);
-console.log(`📊 로그 레벨: ${env.LOG_LEVEL}`);
+console.log(` 서버가 포트 ${env.PORT}에서 시작됩니다`);
+console.log(` 로그 레벨: ${env.LOG_LEVEL}`);
 console.log(`🗄️  데이터베이스: ${env.DATABASE_URL.split("@")[1]}`); // 민감 정보 제외
 ```
 

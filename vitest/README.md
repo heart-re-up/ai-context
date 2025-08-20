@@ -2,9 +2,9 @@
 
 Vitest를 사용한 라이브러리 테스트 환경 구성과 전략에 대한 종합 가이드입니다.
 
-## 📁 문서 구성
+##  문서 구성
 
-### 🚀 [vitest.md](./vitest.md) - 기본 설정 가이드
+###  [vitest.md](./vitest.md) - 기본 설정 가이드
 
 Vitest 설치부터 기본 설정까지, 테스트 환경 구축의 모든 것
 
@@ -24,7 +24,7 @@ Vitest 설치부터 기본 설정까지, 테스트 환경 구축의 모든 것
 
 ---
 
-### 📋 [vitest-strategy.md](./vitest-strategy.md) - 테스트 전략
+###  [vitest-strategy.md](./vitest-strategy.md) - 테스트 전략
 
 실용적인 테스트 전략과 개발 워크플로우
 
@@ -44,7 +44,7 @@ Vitest 설치부터 기본 설정까지, 테스트 환경 구축의 모든 것
 
 ---
 
-### ⚡ [vitest-options.md](./vitest-options.md) - 고급 옵션
+###  [vitest-options.md](./vitest-options.md) - 고급 옵션
 
 성능 최적화와 대안 환경들
 
@@ -62,7 +62,7 @@ Vitest 설치부터 기본 설정까지, 테스트 환경 구축의 모든 것
 - 특수한 테스트 요구사항이 있는 경우
 - 대안 도구들을 검토하고 싶은 경우
 
-## 🎯 시작하기 권장 순서
+##  시작하기 권장 순서
 
 ### 1. 처음 시작하는 경우
 
@@ -76,13 +76,13 @@ Vitest 설치부터 기본 설정까지, 테스트 환경 구축의 모든 것
 2. **[vitest-options.md](./vitest-options.md)** 읽고 최적화 방안 검토
 3. **[vitest.md](./vitest.md)** 참고하여 설정 개선
 
-## 🔗 연관 문서
+##  연관 문서
 
 - [../quality/README.md](../quality/README.md) - 코드 품질 도구 (ESLint, Prettier 등)
 - [../vite/README.md](../vite/README.md) - Vite 빌드 설정
 - [../monorepo/README.md](../monorepo/README.md) - 모노레포 구성
 
-## 📊 문서별 특징 비교
+##  문서별 특징 비교
 
 | 문서                   | 난이도 | 주요 초점         | 분량   |
 | ---------------------- | ------ | ----------------- | ------ |
@@ -90,7 +90,7 @@ Vitest 설치부터 기본 설정까지, 테스트 환경 구축의 모든 것
 | **vitest-strategy.md** | 중급   | 전략과 워크플로우 | 포괄적 |
 | **vitest-options.md**  | 고급   | 최적화와 대안     | 전문적 |
 
-## 💡 빠른 참조
+##  빠른 참조
 
 ### 자주 찾는 설정
 
@@ -124,4 +124,4 @@ pnpm test:ui
 
 ---
 
-**💡 TIP**: 각 문서는 독립적으로 읽을 수 있지만, 전체적인 이해를 위해서는 순서대로 읽는 것을 권장합니다.
+** TIP**: 각 문서는 독립적으로 읽을 수 있지만, 전체적인 이해를 위해서는 순서대로 읽는 것을 권장합니다.

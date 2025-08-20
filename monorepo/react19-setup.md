@@ -9,12 +9,12 @@ React 19를 사용한 모노레포 구성 시 주의사항과 설정 방법을 �
 React 19에서 JSX 타입 참조 방식이 변경되었습니다.
 
 ```typescript
-// ❌ React 18 방식 (더 이상 작동하지 않음)
+//  React 18 방식 (더 이상 작동하지 않음)
 function App(): JSX.Element {
   return <div>Hello</div>;
 }
 
-// ✅ React 19 방식
+//  React 19 방식
 function App(): React.JSX.Element {
   return <div>Hello</div>;
 }

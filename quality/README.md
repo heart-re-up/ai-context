@@ -14,7 +14,7 @@
 
 이 디렉토리는 코드 품질을 유지하기 위한 도구들의 **상세한 설정 방법과 실제 구현**을 다룹니다.
 
-> 💡 **모노레포에서의 설정 구조화**는 [`monorepo/config.md`](../monorepo/config.md)를 참고하세요.
+>  **모노레포에서의 설정 구조화**는 [`monorepo/config.md`](../monorepo/config.md)를 참고하세요.
 
 ### 주요 도구
 
@@ -58,7 +58,7 @@ pnpm format
 
 ## 설정 접근 방법
 
-### 🏗️ 구조화 (Monorepo)
+###  구조화 (Monorepo)
 
 모노레포에서 설정을 패키지로 관리하는 방법
 
@@ -66,9 +66,9 @@ pnpm format
 - 모듈간 참조 방법
 - 워크스페이스 통합
 
-👉 **[monorepo/config.md](../monorepo/config.md)**
+ **[monorepo/config.md](../monorepo/config.md)**
 
-### ⚙️ 실제 구현 (Quality)
+###  실제 구현 (Quality)
 
 각 도구의 상세한 설정 파일 작성 방법
 
@@ -76,4 +76,4 @@ pnpm format
 - 실전 예시와 팁
 - 문제 해결 방법
 
-👉 **이 디렉토리의 각 문서들**
+ **이 디렉토리의 각 문서들**
