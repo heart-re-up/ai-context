@@ -17,6 +17,7 @@ mkdir -p apps packages config
 ### 2단계: 워크스페이스 설정
 
 **pnpm-workspace.yaml**
+
 ```yaml
 packages:
   - apps/*
@@ -25,6 +26,7 @@ packages:
 ```
 
 **package.json**
+
 ```json
 {
   "name": "@project/root",
@@ -46,6 +48,7 @@ packages:
 ```
 
 **turbo.json**
+
 ```json
 {
   "$schema": "https://turbo.build/schema.json",
@@ -71,11 +74,13 @@ packages:
 ### 3단계: 공통 설정 생성
 
 #### TypeScript 설정
+
 ```bash
 mkdir -p config/typescript-config
 ```
 
 **config/typescript-config/package.json**
+
 ```json
 {
   "name": "@project/typescript-config",
@@ -90,6 +95,7 @@ mkdir -p config/typescript-config
 ```
 
 **config/typescript-config/base.json**
+
 ```json
 {
   "compilerOptions": {
@@ -112,6 +118,7 @@ mkdir -p apps/frontend
 ```
 
 **apps/frontend/package.json**
+
 ```json
 {
   "name": "@project/frontend",
@@ -130,7 +137,7 @@ mkdir -p apps/frontend
     "@types/react": "^19.1.6",
     "@types/react-dom": "^19.1.5",
     "@vitejs/plugin-react": "^4.5.1",
-    "vite": "^6.3.5"
+    "vite": "^7.1.3"
   }
 }
 ```
@@ -151,6 +158,7 @@ pnpm dev
 ## 📋 체크리스트
 
 ### 필수 파일들
+
 - [ ] `pnpm-workspace.yaml`
 - [ ] `turbo.json`
 - [ ] 루트 `package.json`
@@ -158,6 +166,7 @@ pnpm dev
 - [ ] `.gitignore`
 
 ### 검증 단계
+
 - [ ] `pnpm install` 성공
 - [ ] `pnpm typecheck` 통과
 - [ ] `pnpm build` 성공
@@ -172,6 +181,7 @@ mkdir -p packages/ui-components/src
 ```
 
 **packages/ui-components/package.json**
+
 ```json
 {
   "name": "@project/ui-components",
@@ -188,7 +198,7 @@ mkdir -p packages/ui-components/src
   "devDependencies": {
     "@project/typescript-config": "workspace:*",
     "react": "^19.1.0",
-    "vite": "^6.3.5"
+    "vite": "^7.1.3"
   }
 }
 ```
@@ -200,6 +210,7 @@ mkdir -p apps/backend/src
 ```
 
 **apps/backend/package.json**
+
 ```json
 {
   "name": "@project/backend",

@@ -20,7 +20,7 @@
 cd your-project
 
 # submodule 추가
-git submodule add https://github.com/your-org/ai-context.git .ai-context
+git submodule add https://github.com/heart-re-up/ai-context.git .ai-context
 
 # 초기 내용 다운로드
 git submodule update --init --recursive
@@ -32,7 +32,7 @@ git commit -m "feat: add ai-context submodule for AI guidelines"
 
 ### 2. 기존 프로젝트에 클론
 
-이미 submodule이 설정된 프로젝트를 클론할 때:
+이미 `.gitmodules` 파일로 submodule이 설정된 프로젝트를 클론할 때:
 
 ```bash
 # 방법 1: 클론과 동시에 submodule 다운로드
@@ -80,95 +80,71 @@ git push
 git submodule update --remote
 ```
 
-## ✏️ AI Context 수정하기
+## ✏️ AI Context 문서 개선하기
 
-### 문서 수정 및 기여
+맥락 문서에서 오타를 발견, 또는 개선사항을 기여하는 경우에 서브모듈 컨텐츠가 변경됩니다.
 
-AI 컨텍스트 문서를 개선하고 싶을 때:
+### 서브모듈 내용 변경 시 올바른 Git 작업 흐름
+
+서브모듈의 변경사항을 Git 저장소에 반영하려면, 반드시 서브모듈 디렉토리에서 Git 작업을 수행해야 합니다.
+
+#### 베스트 프랙티스 워크플로우
+
+프로젝트 개발 중 ai-context 문서에 오타나 개선사항을 발견했을 때:
 
 ```bash
-# 1. ai-context 디렉토리로 이동
+# 1. 문서 편집 (어디서든 가능)
+vim .ai-context/README.md  # 또는 code .ai-context/README.md
+
+# 2. 서브모듈로 이동하여 Git 작업 시작
 cd .ai-context
 
-# 2. 새 브랜치 생성
-git checkout -b improve/add-new-guideline
+# 3. 브랜치 생성
+git checkout -b fix/improve-documentation
 
-# 3. 문서 수정
-# (에디터에서 필요한 문서 수정)
-
-# 4. 변경사항 커밋
+# 4. 변경사항 확인 및 커밋
+git diff                    # 변경사항 확인
 git add .
-git commit -m "docs: add new coding guideline for API design"
+git commit -m "docs: improve submodule workflow explanation"
 
 # 5. 원격 저장소에 푸시
-git push origin improve/add-new-guideline
+git push origin fix/improve-documentation
 
 # 6. GitHub에서 Pull Request 생성
-# https://github.com/your-org/ai-context/compare/improve/add-new-guideline
-
-# 7. 메인 프로젝트로 돌아가기
-cd ..
-
-# 8. 수정된 내용을 메인 프로젝트에 반영 (PR 머지 후)
-git submodule update --remote .ai-context
-git add .ai-context
-git commit -m "chore: update ai-context with new guidelines"
+# https://github.com/heart-re-up/ai-context/compare/fix/improve-documentation
 ```
 
-### 긴급 수정 (직접 커밋)
-
-간단한 수정이나 오타 수정의 경우:
+#### PR 승인 후 최신 버전 적용
 
 ```bash
-# ai-context 디렉토리에서 직접 작업
+# PR이 승인되어 main 브랜치에 머지된 후
+
+# 1. 서브모듈을 최신 main으로 업데이트
 cd .ai-context
+git checkout main           # main 브랜치로 스위치
+git pull origin main        # 최신 변경사항 받기
 
-# 파일 수정 후 즉시 커밋
-git add .
-git commit -m "fix: correct typo in coding standards"
-git push origin main
-
-# 메인 프로젝트에 반영
+# 또는 메인 프로젝트에서 한 번에
 cd ..
 git submodule update --remote .ai-context
+
+# 2. (선택사항) 팀 협업 시 메인 프로젝트에 반영
 git add .ai-context
-git commit -m "chore: update ai-context with typo fixes"
-git push
+git commit -m "chore: update ai-context to latest version"
 ```
 
-## 🚨 주의사항
+### 🚨 주의사항
 
-### Submodule 작업시 주의점
+1. **Git 작업은 반드시 서브모듈 디렉토리에서**
+   - 파일 편집은 어디서든 가능
+   - `git add`, `git commit`, `git push` 등은 `.ai-context/` 디렉토리에서만
 
-1. **항상 올바른 디렉토리에서 작업**
-   ```bash
-   # ❌ 잘못된 예: 메인 프로젝트에서 ai-context 파일 수정
-   vim .ai-context/README.md  # 변경사항이 추적되지 않음
-   
-   # ✅ 올바른 예: ai-context 디렉토리에서 작업
-   cd .ai-context
-   vim README.md
-   git add README.md
-   ```
+2. **브랜치 상태 확인**
 
-2. **커밋 순서 중요**
-   ```bash
-   # 1순위: ai-context 저장소에 커밋
-   cd .ai-context
-   git commit -m "docs: update guidelines"
-   git push
-   
-   # 2순위: 메인 프로젝트에 submodule 업데이트 반영
-   cd ..
-   git add .ai-context
-   git commit -m "chore: update ai-context"
-   ```
-
-3. **브랜치 상태 확인**
    ```bash
    # submodule의 현재 상태 확인
    git submodule status
-   
+
    # detached HEAD 상태라면 브랜치로 체크아웃
    cd .ai-context
    git checkout main
@@ -179,17 +155,20 @@ git push
 ### 자주 발생하는 문제
 
 1. **Submodule이 비어있을 때**
+
    ```bash
    git submodule update --init --recursive
    ```
 
 2. **Submodule 변경사항이 반영되지 않을 때**
+
    ```bash
    # 강제 업데이트
    git submodule update --remote --force .ai-context
    ```
 
 3. **Submodule 제거하고 싶을 때**
+
    ```bash
    # submodule 제거
    git submodule deinit .ai-context

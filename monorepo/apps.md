@@ -82,7 +82,7 @@ apps/
     "postcss": "^8.5.1",
     "tailwindcss": "^3.4.16",
     "typescript": "~5.8.3",
-    "vite": "^6.3.5"
+    "vite": "^7.1.3"
   }
 }
 ```
@@ -280,7 +280,7 @@ export const createUser = (data: CreateUserRequest): Promise<User> => {
     "@project/prettier-config": "workspace:*",
     "@nestjs/cli": "^10.0.0",
     "@types/express": "^4.17.17",
-    "@types/node": "^20.3.1"
+    "@types/node": "^22.17.2"
   }
 }
 ```
@@ -308,17 +308,17 @@ export const createUser = (data: CreateUserRequest): Promise<User> => {
 
 ```typescript
 // apps/backend/src/users/entities/user.entity.ts
-import { ApiProperty } from '@nestjs/swagger';
+import { ApiProperty } from "@nestjs/swagger";
 
 export class User {
-  @ApiProperty({ description: '사용자 ID', example: 1 })
-  id!: number;  // ! 사용
+  @ApiProperty({ description: "사용자 ID", example: 1 })
+  id!: number; // ! 사용
 
-  @ApiProperty({ description: '사용자 이름', example: '홍길동' })
-  name!: string;  // ! 사용
+  @ApiProperty({ description: "사용자 이름", example: "홍길동" })
+  name!: string; // ! 사용
 
-  @ApiProperty({ description: '이메일 주소', example: 'hong@example.com' })
-  email!: string;  // ! 사용
+  @ApiProperty({ description: "이메일 주소", example: "hong@example.com" })
+  email!: string; // ! 사용
 }
 ```
 
@@ -326,18 +326,18 @@ export class User {
 
 ```typescript
 // apps/backend/src/users/dto/create-user.dto.ts
-import { ApiProperty } from '@nestjs/swagger';
-import { IsEmail, IsNotEmpty, IsString } from 'class-validator';
+import { ApiProperty } from "@nestjs/swagger";
+import { IsEmail, IsNotEmpty, IsString } from "class-validator";
 
 export class CreateUserDto {
-  @ApiProperty({ description: '사용자 이름', example: '홍길동' })
+  @ApiProperty({ description: "사용자 이름", example: "홍길동" })
   @IsNotEmpty()
   @IsString()
-  name!: string;  // ! 사용
+  name!: string; // ! 사용
 
-  @ApiProperty({ description: '이메일 주소', example: 'hong@example.com' })
+  @ApiProperty({ description: "이메일 주소", example: "hong@example.com" })
   @IsEmail()
-  email!: string;  // ! 사용
+  email!: string; // ! 사용
 }
 ```
 

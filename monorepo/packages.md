@@ -108,7 +108,7 @@ packages/
     "@testing-library/user-event": "^14.0.0",
     "@types/react": "^19.1.6",
     "@types/react-dom": "^19.1.5",
-    "@vitejs/plugin-react": "^4.3.1",
+    "@vitejs/plugin-react": "^4.5.1",
     "@vitest/coverage-v8": "^1.0.0",
     "@vitest/ui": "^1.0.0",
     "jsdom": "^23.0.0",
@@ -116,7 +116,7 @@ packages/
     "react-dom": "^19.1.0",
     "storybook": "^7.6.0",
     "typescript": "~5.8.3",
-    "vite": "^6.3.5",
+    "vite": "^7.1.3",
     "vite-plugin-dts": "^3.9.1",
     "vitest": "^1.0.0"
   }
@@ -168,10 +168,10 @@ packages/
     "prepublishOnly": "pnpm test && pnpm build"
   },
   "devDependencies": {
-    "@types/node": "^20.0.0",
+    "@types/node": "^22.17.2",
     "@vitest/coverage-v8": "^1.0.0",
     "typescript": "~5.8.3",
-    "vite": "^6.3.5",
+    "vite": "^7.1.3",
     "vite-plugin-dts": "^3.9.1",
     "vitest": "^1.0.0"
   }

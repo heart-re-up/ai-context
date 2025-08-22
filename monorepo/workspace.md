@@ -109,9 +109,9 @@ public-hoist-pattern[]=*@types*
     "build": {
       "dependsOn": ["^build"],
       "outputs": [
-        "dist/**", 
-        ".next/**", 
-        "!.next/cache/**", 
+        "dist/**",
+        ".next/**",
+        "!.next/cache/**",
         "build/**",
         "apps/backend/dist/**"
       ]
@@ -196,7 +196,7 @@ public-hoist-pattern[]=*@types*
     "@types/react-dom": "^19.1.5",
     "@vitejs/plugin-react": "^4.5.1",
     "typescript": "~5.8.3",
-    "vite": "^6.3.5"
+    "vite": "^7.1.3"
   }
 }
 ```
@@ -239,12 +239,12 @@ public-hoist-pattern[]=*@types*
     "react-dom": ">=18"
   },
   "devDependencies": {
-    "@vitejs/plugin-react": "^4.3.1",
+    "@vitejs/plugin-react": "^4.5.1",
     "@testing-library/react": "^14.0.0",
     "@testing-library/jest-dom": "^6.0.0",
     "@vitest/coverage-v8": "^1.0.0",
     "jsdom": "^23.0.0",
-    "vite": "^5.3.1",
+    "vite": "^7.1.3",
     "vite-plugin-dts": "^3.9.1",
     "vitest": "^1.0.0"
   }

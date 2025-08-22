@@ -10,7 +10,7 @@ VS Code에서 프로젝트 개발을 위한 최적 설정을 제공합니다.
   "editor.formatOnSave": true, // 파일 저장 시 자동 포맷팅
   "editor.defaultFormatter": "esbenp.prettier-vscode", // 기본 포매터로 Prettier 사용
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true // 저장 시 ESLint 자동 수정 적용
+    "source.fixAll.eslint": "always" // 저장 시 ESLint 자동 수정 적용
   },
   "eslint.validate": [
     "javascript", // JavaScript 파일에서 ESLint 검증
