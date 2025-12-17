@@ -36,7 +36,7 @@ React 19에 맞는 TypeScript 설정:
     "target": "ES2016",
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "module": "ESNext",
-    "jsx": "react-jsx",  // react-jsx 사용
+    "jsx": "react-jsx", // react-jsx 사용
     "useDefineForClassFields": true,
     "strict": true
   }
@@ -49,12 +49,12 @@ React 19에 맞는 TypeScript 설정:
 // package.json
 {
   "dependencies": {
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3"
   },
   "devDependencies": {
-    "@types/react": "^19.1.6",
-    "@types/react-dom": "^19.1.5"
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3"
   }
 }
 ```
@@ -72,10 +72,10 @@ React 19에 맞는 TypeScript 설정:
     "react-dom": ">=19"
   },
   "devDependencies": {
-    "@types/react": "^19.1.6",
-    "@types/react-dom": "^19.1.5",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3"
   }
 }
 ```
@@ -88,12 +88,12 @@ React 19에 맞는 TypeScript 설정:
   "name": "@project/frontend",
   "dependencies": {
     "@project/ui-components": "workspace:*",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3"
   },
   "devDependencies": {
-    "@types/react": "^19.1.6",
-    "@types/react-dom": "^19.1.5"
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3"
   }
 }
 ```
@@ -102,21 +102,18 @@ React 19에 맞는 TypeScript 설정:
 
 ```typescript
 // packages/ui-components/src/components/Button.tsx
-import React from 'react';
+import React from "react";
 
 export interface ButtonProps {
   children: React.ReactNode;
   onClick?: () => void;
-  variant?: 'primary' | 'secondary';
+  variant?: "primary" | "secondary";
 }
 
 // React 19에서는 React.FC 사용을 권장하지 않음
-const Button = ({ children, onClick, variant = 'primary' }: ButtonProps) => {
+const Button = ({ children, onClick, variant = "primary" }: ButtonProps) => {
   return (
-    <button 
-      className={`btn btn-${variant}`}
-      onClick={onClick}
-    >
+    <button className={`btn btn-${variant}`} onClick={onClick}>
       {children}
     </button>
   );
@@ -136,6 +133,7 @@ export default Button;
 ```
 
 **해결방법**:
+
 - 기능상 문제없으므로 경고 무시
 - 향후 React 19 지원 버전으로 업데이트
 
@@ -157,14 +155,14 @@ export default [
   {
     settings: {
       react: {
-        version: 'detect'  // 자동으로 React 버전 감지
-      }
+        version: "detect", // 자동으로 React 버전 감지
+      },
     },
     rules: {
-      'react/jsx-uses-react': 'off',      // React 19에서 불필요
-      'react/react-in-jsx-scope': 'off'   // React 19에서 불필요
-    }
-  }
+      "react/jsx-uses-react": "off", // React 19에서 불필요
+      "react/react-in-jsx-scope": "off", // React 19에서 불필요
+    },
+  },
 ];
 ```
 
@@ -193,7 +191,7 @@ export default [
 
 ```typescript
 // use Hook 활용 (React 19 신규)
-import { use } from 'react';
+import { use } from "react";
 
 function UserProfile({ userPromise }: { userPromise: Promise<User> }) {
   const user = use(userPromise);

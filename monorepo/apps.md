@@ -67,16 +67,16 @@ apps/
     "@project/ui-components": "workspace:*",
     "@project/shared-lib": "workspace:*",
     "@project/types": "workspace:*",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
     "react-router": "^7.6.2"
   },
   "devDependencies": {
     "@project/eslint-config": "workspace:*",
     "@project/typescript-config": "workspace:*",
     "@project/prettier-config": "workspace:*",
-    "@types/react": "^19.1.6",
-    "@types/react-dom": "^19.1.5",
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^4.5.1",
     "autoprefixer": "^10.4.20",
     "postcss": "^8.5.1",
@@ -110,12 +110,12 @@ apps/
     "@project/shared-lib": "workspace:*",
     "@project/types": "workspace:*",
     "next": "^15.2.0",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3"
   },
   "devDependencies": {
-    "@types/react": "^19.1.6",
-    "@types/react-dom": "^19.1.5",
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
     "typescript": "~5.8.3"
   }
 }
@@ -141,7 +141,7 @@ apps/
   "dependencies": {
     "@project/shared-lib": "workspace:*",
     "@project/types": "workspace:*",
-    "react": "^19.1.0",
+    "react": "^19.2.3",
     "react-native": "^0.76.1"
   },
   "devDependencies": {
@@ -152,7 +152,7 @@ apps/
     "@react-native/eslint-config": "^0.76.1",
     "@react-native/metro-config": "^0.76.1",
     "@react-native/typescript-config": "^0.76.1",
-    "@types/react": "^19.1.6",
+    "@types/react": "^19.2.7",
     "typescript": "~5.8.3"
   }
 }
@@ -308,17 +308,17 @@ export const createUser = (data: CreateUserRequest): Promise<User> => {
 
 ```typescript
 // apps/backend/src/users/entities/user.entity.ts
-import { ApiProperty } from '@nestjs/swagger';
+import { ApiProperty } from "@nestjs/swagger";
 
 export class User {
-  @ApiProperty({ description: '사용자 ID', example: 1 })
-  id!: number;  // ! 사용
+  @ApiProperty({ description: "사용자 ID", example: 1 })
+  id!: number; // ! 사용
 
-  @ApiProperty({ description: '사용자 이름', example: '홍길동' })
-  name!: string;  // ! 사용
+  @ApiProperty({ description: "사용자 이름", example: "홍길동" })
+  name!: string; // ! 사용
 
-  @ApiProperty({ description: '이메일 주소', example: 'hong@example.com' })
-  email!: string;  // ! 사용
+  @ApiProperty({ description: "이메일 주소", example: "hong@example.com" })
+  email!: string; // ! 사용
 }
 ```
 
@@ -326,18 +326,18 @@ export class User {
 
 ```typescript
 // apps/backend/src/users/dto/create-user.dto.ts
-import { ApiProperty } from '@nestjs/swagger';
-import { IsEmail, IsNotEmpty, IsString } from 'class-validator';
+import { ApiProperty } from "@nestjs/swagger";
+import { IsEmail, IsNotEmpty, IsString } from "class-validator";
 
 export class CreateUserDto {
-  @ApiProperty({ description: '사용자 이름', example: '홍길동' })
+  @ApiProperty({ description: "사용자 이름", example: "홍길동" })
   @IsNotEmpty()
   @IsString()
-  name!: string;  // ! 사용
+  name!: string; // ! 사용
 
-  @ApiProperty({ description: '이메일 주소', example: 'hong@example.com' })
+  @ApiProperty({ description: "이메일 주소", example: "hong@example.com" })
   @IsEmail()
-  email!: string;  // ! 사용
+  email!: string; // ! 사용
 }
 ```
 

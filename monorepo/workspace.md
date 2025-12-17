@@ -109,9 +109,9 @@ public-hoist-pattern[]=*@types*
     "build": {
       "dependsOn": ["^build"],
       "outputs": [
-        "dist/**", 
-        ".next/**", 
-        "!.next/cache/**", 
+        "dist/**",
+        ".next/**",
+        "!.next/cache/**",
         "build/**",
         "apps/backend/dist/**"
       ]
@@ -187,13 +187,13 @@ public-hoist-pattern[]=*@types*
   "dependencies": {
     "@project/shared-lib": "workspace:*",
     "@project/ui-components": "workspace:*",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
     "react-router": "^7.6.2"
   },
   "devDependencies": {
-    "@types/react": "^19.1.6",
-    "@types/react-dom": "^19.1.5",
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^4.5.1",
     "typescript": "~5.8.3",
     "vite": "^6.3.5"
