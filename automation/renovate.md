@@ -4,7 +4,7 @@ Renovate는 프로젝트의 의존성을 자동으로 업데이트하는 도구�
 
 ## 왜 Renovate를 사용해야 할까요?
 
-### 📊 현실: 의존성 관리의 고민들
+###  현실: 의존성 관리의 고민들
 
 **의존성 관리, 정말 골치 아프죠:**
 
@@ -24,7 +24,7 @@ npm test               # 테스트 돌려보고
 git checkout package-lock.json
 ```
 
-### 🎯 Renovate가 해결하는 문제들
+###  Renovate가 해결하는 문제들
 
 **1. 보안 취약점 대응**
 
@@ -49,7 +49,7 @@ git checkout package-lock.json
 - 모든 프로젝트가 동일한 업데이트 정책 적용
 - 팀원 개인차로 인한 버전 불일치 방지
 
-### 💡 실제 경험담
+###  실제 경험담
 
 **도입 전:**
 
@@ -58,20 +58,20 @@ git checkout package-lock.json
 개발자B: "아, 그거 언제 나온 건데? 우리 프로젝트들 다 확인해야겠네"
 개발자C: "이번 스프린트는 바빠서... 다음에 하면 안 되나?"
 PM: "보안 이슈인데 언제까지 처리 가능한가요?"
-🔄 2주 후...
+ 2주 후...
 개발자A: "아직 못 했는데 또 다른 패키지에서 이슈가..."
 ```
 
 **도입 후:**
 
 ```
-[자동] 🔒 Security Alert: lodash 4.17.20 → 4.17.21
-✅ 테스트 통과
-✅ 자동 병합 완료
+[자동]  Security Alert: lodash 4.17.20 → 4.17.21
+ 테스트 통과
+ 자동 병합 완료
 개발자A: "어? 언제 lodash 업데이트됐지? 아, Renovate가 했구나!"
 ```
 
-### 🚀 비즈니스 가치
+###  비즈니스 가치
 
 **개발 속도 향상**
 
@@ -99,21 +99,21 @@ PM: "보안 이슈인데 언제까지 처리 가능한가요?"
 
 ## 설치 방법 - 상황별 선택 가이드
 
-### 🌐 SaaS vs Self-hosted 선택하기
+###  SaaS vs Self-hosted 선택하기
 
 **Renovate는 SaaS 서비스**이기 때문에 기본적으로 **외부 서비스와 연결**해야 합니다.
 
-**📊 비교표:**
+** 비교표:**
 
 | 구분            | GitHub App (SaaS) | Self-hosted         |
 | --------------- | ----------------- | ------------------- |
-| **설치 난이도** | ⭐ 매우 쉬움      | ⭐⭐⭐ 복잡함       |
-| **유지보수**    | ❌ 불필요         | ⭐⭐⭐ 직접 관리    |
-| **보안**        | ⭐⭐ 외부 의존    | ⭐⭐⭐ 완전 통제    |
+| **설치 난이도** |  매우 쉬움      |  복잡함       |
+| **유지보수**    |  불필요         |  직접 관리    |
+| **보안**        |  외부 의존    |  완전 통제    |
 | **비용**        | 🆓 무료           | 💰 인프라 비용      |
 | **권장 대상**   | 일반 프로젝트     | 금융/정부/보안 중시 |
 
-### 🔗 1. GitHub App 설치 (권장)
+###  1. GitHub App 설치 (권장)
 
 **언제 사용하나요?**
 
@@ -141,10 +141,10 @@ npm outdated     # 업데이트 가능한 패키지 확인
    - **"All repositories"**: 모든 저장소에 적용 (조직 계정 권장)
    - **"Selected repositories"**: 특정 저장소만 선택 (개인 계정 권장)
 4. **권한 확인**:
-   - ✅ Pull Request 생성/수정
-   - ✅ Issues 생성 (Dependency Dashboard용)
-   - ✅ Repository contents 읽기
-   - ✅ Checks 상태 읽기 (CI 연동용)
+   -  Pull Request 생성/수정
+   -  Issues 생성 (Dependency Dashboard용)
+   -  Repository contents 읽기
+   -  Checks 상태 읽기 (CI 연동용)
 
 **설치 완료 확인:**
 
@@ -204,14 +204,14 @@ RENOVATE_TOKEN="your_token" renovate --config-file=renovate-config.js
 
 **Self-hosted 장단점:**
 
-**✅ 장점:**
+** 장점:**
 
 - 완전한 데이터 통제권
 - 커스텀 규칙 무제한 추가
 - 내부 네트워크 전용 패키지 저장소 지원
 - 감사 로그 완전 관리
 
-**❌ 단점:**
+** 단점:**
 
 - 서버 관리 부담 (업데이트, 모니터링, 백업)
 - 토큰 관리의 복잡성
@@ -239,7 +239,7 @@ RENOVATE_TOKEN="your_token" renovate --config-file=renovate-config.js
 # - 토큰 권한 최소화 (repo scope만)
 ```
 
-### 🚨 첫 설치 후 주의사항
+###  첫 설치 후 주의사항
 
 **어떤 방법을 선택하든:**
 
@@ -263,7 +263,7 @@ RENOVATE_TOKEN="your_token" renovate --config-file=renovate-config.js
 
 ## 기본 설정 - 한 줄씩 이해하기
 
-### 🚀 최소 동작 설정 (renovate.json)
+###  최소 동작 설정 (renovate.json)
 
 **파일 위치**: 프로젝트 루트에 `renovate.json` 생성
 
@@ -274,7 +274,7 @@ RENOVATE_TOKEN="your_token" renovate --config-file=renovate-config.js
 }
 ```
 
-**📋 각 설정 설명:**
+** 각 설정 설명:**
 
 ```json
 {
@@ -310,7 +310,7 @@ RENOVATE_TOKEN="your_token" renovate --config-file=renovate-config.js
 "Update dependency @types/node to v18.15.11"
 ```
 
-### 📁 설정 파일 위치별 우선순위
+###  설정 파일 위치별 우선순위
 
 Renovate는 여러 위치에서 설정을 찾습니다:
 
@@ -331,7 +331,7 @@ your-project/
 - JSON 표준 문법
 - IDE 지원 우수
 
-### 🔧 설정이 적용되는 과정
+###  설정이 적용되는 과정
 
 ```mermaid
 graph TD
@@ -350,7 +350,7 @@ graph TD
 4. **업데이트 확인**: npm 레지스트리에서 새 버전 확인
 5. **PR 생성**: 업데이트가 필요한 경우 자동 PR 생성
 
-### 🎯 프로젝트별 첫 설정 추천
+###  프로젝트별 첫 설정 추천
 
 **React 프로젝트:**
 
@@ -466,7 +466,7 @@ graph TD
   "prBodyTemplate": "{{{table}}}{{{notes}}}{{{changelogs}}}",
 
   "dependencyDashboard": true,
-  "dependencyDashboardTitle": "🔄 Dependency Updates Dashboard",
+  "dependencyDashboardTitle": " Dependency Updates Dashboard",
 
   "platformAutomerge": true,
   "automergeSchedule": ["after 10pm every weekday"],
@@ -489,20 +489,20 @@ graph TD
 {
   "extends": [
     "config:base", // 📦 기본 필수 설정
-    ":dependencyDashboard", // 📊 의존성 현황판
-    ":semanticCommits", // 📝 체계적인 커밋 메시지
-    ":preserveSemverRanges", // 🔒 버전 범위 보존
+    ":dependencyDashboard", //  의존성 현황판
+    ":semanticCommits", //  체계적인 커밋 메시지
+    ":preserveSemverRanges", //  버전 범위 보존
     "group:allNonMajor", // 📎 업데이트 그룹화
     ":automergeMinor", // 🤖 minor 자동 병합
     ":automergePatch", // 🤖 patch 자동 병합
-    ":rebaseStalePrs" // 🔄 오래된 PR 자동 갱신
+    ":rebaseStalePrs" //  오래된 PR 자동 갱신
   ]
 }
 ```
 
 ### 📦 주요 프리셋 상세 가이드
 
-#### 🏗️ config:base (필수)
+####  config:base (필수)
 
 ```json
 // 이 설정이 포함하는 내용:
@@ -527,13 +527,13 @@ graph TD
 
 **언제 사용:** 모든 프로젝트에 필수
 
-#### 📊 :dependencyDashboard
+####  :dependencyDashboard
 
 ```json
 // 활성화되는 기능:
 {
   "dependencyDashboard": true,
-  "dependencyDashboardTitle": "🔄 Dependency Dashboard",
+  "dependencyDashboardTitle": " Dependency Dashboard",
   "dependencyDashboardHeader": "이 이슈에서 모든 의존성 업데이트를 관리합니다",
   "dependencyDashboardFooter": "renovate.json에서 설정을 수정할 수 있습니다"
 }
@@ -542,7 +542,7 @@ graph TD
 **결과:** 저장소에 "Dependency Dashboard" 이슈가 자동 생성되어 모든 의존성 현황을 한눈에 파악
 **언제 사용:** 팀 프로젝트에 강력 추천
 
-#### 📝 :semanticCommits
+####  :semanticCommits
 
 ```json
 // 커밋 메시지 형식:
@@ -556,7 +556,7 @@ graph TD
 **결과:** `chore(deps): update dependency react to v18.2.0` 형태의 체계적 커밋
 **언때 사용:** Conventional Commits를 사용하는 프로젝트
 
-#### 🔒 :preserveSemverRanges
+####  :preserveSemverRanges
 
 ```json
 // Before: "react": "^17.0.0"
@@ -573,12 +573,12 @@ graph TD
 
 ```json
 // 여러 개의 개별 PR 대신:
-// ❌ "Update dependency react to v18.1.0"
-// ❌ "Update dependency react-dom to v18.1.0"
-// ❌ "Update dependency @types/react to v18.0.1"
+//  "Update dependency react to v18.1.0"
+//  "Update dependency react-dom to v18.1.0"
+//  "Update dependency @types/react to v18.0.1"
 
 // 하나의 그룹 PR로:
-// ✅ "Update all non-major dependencies"
+//  "Update all non-major dependencies"
 ```
 
 **언제 사용:** PR 개수를 줄이고 싶을 때
@@ -605,7 +605,7 @@ graph TD
 **주의:** CI 테스트 통과가 전제 조건
 **언제 사용:** 안정적인 CI/CD가 구축된 프로젝트
 
-#### 🔄 :rebaseStalePrs
+####  :rebaseStalePrs
 
 ```json
 {
@@ -617,9 +617,9 @@ graph TD
 **결과:** 오래된 PR을 자동으로 최신 상태로 갱신
 **언제 사용:** 활발한 개발이 이루어지는 프로젝트
 
-### 🎯 상황별 프리셋 조합 추천
+###  상황별 프리셋 조합 추천
 
-**🚀 빠른 개발팀 (스타트업)**
+** 빠른 개발팀 (스타트업)**
 
 ```json
 {
@@ -659,7 +659,7 @@ graph TD
 }
 ```
 
-**🔒 보안 중시 프로젝트**
+** 보안 중시 프로젝트**
 
 ```json
 {
@@ -721,7 +721,7 @@ graph TD
 
 ```json
 {
-  // 📝 기본 스케줄 설정
+  //  기본 스케줄 설정
   "schedule": [
     "after 10pm every weekday", // 평일 오후 10시 이후
     "before 5am every weekday", // 평일 오전 5시 이전
@@ -768,7 +768,7 @@ graph TD
 }
 ```
 
-#### 🎯 실무 스케줄 패턴
+####  실무 스케줄 패턴
 
 **🌙 야간 업무 방해 방지**
 
@@ -792,7 +792,7 @@ _이유: 개발자들이 작업하지 않는 시간에 PR 생성_
 
 _이유: 주간 계획 세우기 전에 미리 의존성 현황 파악_
 
-**🚀 즉시 처리 (스타트업)**
+** 즉시 처리 (스타트업)**
 
 ```json
 {
@@ -813,7 +813,7 @@ _이유: 빠른 개발 사이클, 즉시 업데이트 적용_
 
 _이유: 신중한 변경 관리, 충분한 검토 시간_
 
-#### ⚡ 긴급 vs 일반 업데이트 분리
+####  긴급 vs 일반 업데이트 분리
 
 ```json
 {
@@ -822,7 +822,7 @@ _이유: 신중한 변경 관리, 충분한 검토 시간_
 
   "packageRules": [
     {
-      // 🚨 보안 취약점은 즉시 처리
+      //  보안 취약점은 즉시 처리
       "matchDatasources": ["npm"],
       "vulnerabilityAlerts": {
         "enabled": true,
@@ -830,12 +830,12 @@ _이유: 신중한 변경 관리, 충분한 검토 시간_
       }
     },
     {
-      // 📈 major 업데이트는 월간 처리
+      //  major 업데이트는 월간 처리
       "matchUpdateTypes": ["major"],
       "schedule": ["on the first monday of the month"]
     },
     {
-      // 🔧 patch 업데이트는 주간 처리
+      //  patch 업데이트는 주간 처리
       "matchUpdateTypes": ["patch"],
       "schedule": ["before 9am on monday"]
     }
@@ -872,11 +872,11 @@ _이유: 신중한 변경 관리, 충분한 검토 시간_
 
 ```json
 {
-  // ❌ 잘못된 예: 시간대 미설정
+  //  잘못된 예: 시간대 미설정
   "schedule": ["after 10pm every weekday"]
   // → UTC 기준으로 동작 (한국시간 오전 7시!)
 
-  // ✅ 올바른 예: 시간대 명시
+  //  올바른 예: 시간대 명시
   "schedule": ["after 10pm every weekday"],
   "timezone": "Asia/Seoul"
   // → 한국시간 기준으로 동작
@@ -891,7 +891,7 @@ _이유: 신중한 변경 관리, 충분한 검토 시간_
 - `Europe/London` (영국)
 - `UTC` (협정 세계시)
 
-#### 📊 스케줄 효과 비교
+####  스케줄 효과 비교
 
 | 스케줄 전략   | 장점           | 단점           | 추천 대상 |
 | ------------- | -------------- | -------------- | --------- |
@@ -900,7 +900,7 @@ _이유: 신중한 변경 관리, 충분한 검토 시간_
 | **주간 배치** | 계획적 관리    | 취약점 노출    | 신중한 팀 |
 | **월간 배치** | 안정성 우선    | 기술 부채 누적 | 대기업    |
 
-#### 🔍 스케줄 디버깅
+####  스케줄 디버깅
 
 **설정이 동작하는지 확인:**
 
@@ -913,9 +913,9 @@ _이유: 신중한 변경 관리, 충분한 검토 시간_
 
 **일반적인 문제:**
 
-- ❌ `timezone` 미설정 → UTC로 동작
-- ❌ 너무 제한적인 스케줄 → 업데이트 안 됨
-- ❌ `schedule: []` → 완전 비활성화
+-  `timezone` 미설정 → UTC로 동작
+-  너무 제한적인 스케줄 → 업데이트 안 됨
+-  `schedule: []` → 완전 비활성화
 
 ### 커밋 메시지 커스터마이징 - 템플릿 문법 완전 가이드
 
@@ -925,24 +925,24 @@ _이유: 신중한 변경 관리, 충분한 검토 시간_
 
 ```json
 {
-  // 📝 기본 템플릿 구성 요소들
+  //  기본 템플릿 구성 요소들
   "commitMessagePrefix": "chore(deps):", // 고정 접두사
   "commitMessageAction": "update", // 동작 설명 (update/add/remove)
   "commitMessageTopic": "{{depName}}", // {{변수}} = HTML 이스케이프됨
   "commitMessageExtra": "to {{newVersion}}", // 추가 정보
   "commitMessageSuffix": "[skip ci]", // 고정 접미사
 
-  // 📋 커밋 본문 (선택사항)
+  //  커밋 본문 (선택사항)
   "commitBody": "See release notes: {{{releases}}}", // {{{변수}}} = 원본 HTML 그대로
 
-  // 🎯 시맨틱 커밋 설정
+  //  시맨틱 커밋 설정
   "semanticCommits": "enabled", // "enabled"|"disabled"|"auto"
   "semanticCommitType": "chore", // commit type
   "semanticCommitScope": "deps" // commit scope
 }
 ```
 
-#### 🔍 템플릿 변수 괄호 문법
+####  템플릿 변수 괄호 문법
 
 **{{ }} vs {{{ }}} 차이점:**
 
@@ -975,7 +975,7 @@ See release notes:
 * Fix memory leak by @author in #123
 ```
 
-#### 🎨 주요 템플릿 변수들
+####  주요 템플릿 변수들
 
 ```json
 {
@@ -983,7 +983,7 @@ See release notes:
   "commitMessageTopic": "{{depName}}", // 패키지명: "react"
   "commitMessageExtra": "to {{newVersion}}", // 새 버전: "18.2.0"
 
-  // 🔄 기타 유용한 변수들
+  //  기타 유용한 변수들
   "prTitle": "{{depName}} {{currentVersion}} → {{newVersion}}",
   // currentVersion: 현재 버전 "18.1.0"
   // newVersion: 새 버전 "18.2.0"
@@ -991,11 +991,11 @@ See release notes:
   // newVersionMinor: 부 버전 "2"
   // newVersionPatch: 패치 버전 "0"
 
-  // 📊 업데이트 타입
+  //  업데이트 타입
   "commitMessage": "{{depName}} {{updateType}} update",
   // updateType: "major"|"minor"|"patch"|"pin"|"rollback"
 
-  // 📁 경로 정보
+  //  경로 정보
   "commitMessage": "{{parentDir}}: update {{depName}}",
   // parentDir: "packages/ui", "apps/web" 등
 
@@ -1005,9 +1005,9 @@ See release notes:
 }
 ```
 
-#### 🎯 실무 커밋 메시지 패턴
+####  실무 커밋 메시지 패턴
 
-**📝 Basic Pattern (기본)**
+** Basic Pattern (기본)**
 
 ```json
 {
@@ -1049,7 +1049,7 @@ See release notes:
 
 **결과:** `[AUTO] bump react 18.1.0 → 18.2.0 [skip ci]`
 
-**🔒 Security Pattern (보안 업데이트)**
+** Security Pattern (보안 업데이트)**
 
 ```json
 {
@@ -1057,7 +1057,7 @@ See release notes:
     {
       "matchDatasources": ["npm"],
       "vulnerabilityAlerts": {
-        "commitMessagePrefix": "🔒 SECURITY:",
+        "commitMessagePrefix": " SECURITY:",
         "commitMessageAction": "fix",
         "commitMessageTopic": "{{depName}}",
         "commitMessageExtra": "vulnerability in {{currentVersion}}"
@@ -1067,7 +1067,7 @@ See release notes:
 }
 ```
 
-**결과:** `🔒 SECURITY: fix lodash vulnerability in 4.17.20`
+**결과:** ` SECURITY: fix lodash vulnerability in 4.17.20`
 
 **📂 Monorepo Pattern (모노레포)**
 
@@ -1108,39 +1108,39 @@ See release notes:
 - `types: update type definitions`
 - `react: update react ecosystem`
 
-#### 🚨 일반적인 실수들
+####  일반적인 실수들
 
-**❌ 잘못된 예시들:**
+** 잘못된 예시들:**
 
 ```json
 {
   // 1. 괄호 실수
-  "commitMessageTopic": "{depName}", // ❌ 단일 괄호
-  "commitMessageTopic": "{{depName}", // ❌ 괄호 불일치
+  "commitMessageTopic": "{depName}", //  단일 괄호
+  "commitMessageTopic": "{{depName}", //  괄호 불일치
 
   // 2. 존재하지 않는 변수
-  "commitMessageTopic": "{{packageName}}", // ❌ depName이 맞음
+  "commitMessageTopic": "{{packageName}}", //  depName이 맞음
 
   // 3. 문법 오류
-  "commitMessageTopic": "{{depName.name}}", // ❌ 객체 접근 불가
+  "commitMessageTopic": "{{depName.name}}", //  객체 접근 불가
 
   // 4. 보안 위험
-  "commitMessageTopic": "{{{depName}}}" // ⚠️ 패키지명에는 비추천
+  "commitMessageTopic": "{{{depName}}}" //  패키지명에는 비추천
 }
 ```
 
-**✅ 올바른 예시들:**
+** 올바른 예시들:**
 
 ```json
 {
-  "commitMessageTopic": "{{depName}}", // ✅ 기본 패키지명
-  "commitMessageExtra": "to v{{newVersion}}", // ✅ 버전 정보
-  "commitBody": "{{{releases}}}", // ✅ 릴리즈 노트 (HTML 허용)
-  "prTitle": "Update {{depName}} to {{newVersion}}" // ✅ PR 제목
+  "commitMessageTopic": "{{depName}}", //  기본 패키지명
+  "commitMessageExtra": "to v{{newVersion}}", //  버전 정보
+  "commitBody": "{{{releases}}}", //  릴리즈 노트 (HTML 허용)
+  "prTitle": "Update {{depName}} to {{newVersion}}" //  PR 제목
 }
 ```
 
-#### 🔧 커밋 메시지 디버깅
+####  커밋 메시지 디버깅
 
 **설정 테스트 방법:**
 
@@ -1167,7 +1167,7 @@ See release notes:
 
 **좋은 지적입니다!** 이해를 위해 명확히 설명드리겠습니다:
 
-#### 📁 파일 구조와 역할 분리
+####  파일 구조와 역할 분리
 
 ```bash
 monorepo-project/
@@ -1187,7 +1187,7 @@ monorepo-project/
 - `pnpm-workspace.yaml`: **pnpm에게** "어떤 폴더들이 패키지인지" 알려줌
 - `renovate.json`: **Renovate에게** "어떻게 업데이트할지" 알려줌
 
-#### 🔗 pnpm workspace 설정 예시
+####  pnpm workspace 설정 예시
 
 **pnpm-workspace.yaml (pnpm용):**
 
@@ -1223,7 +1223,7 @@ packages:
 }
 ```
 
-### 🎯 pnpm 모노레포 완전 설정 가이드
+###  pnpm 모노레포 완전 설정 가이드
 
 #### 1️⃣ pnpm workspace 인식 과정
 
@@ -1244,7 +1244,7 @@ packages:
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": ["config:base"],
 
-  // 🔧 pnpm 전용 옵션들
+  //  pnpm 전용 옵션들
   "rangeStrategy": "bump", // pnpm의 유연한 버전 관리 활용
   "postUpdateOptions": ["pnpmDedupe"], // 중복 패키지 정리 (중요!)
   "lockFileMaintenance": {
@@ -1279,7 +1279,7 @@ packages:
   "additionalBranchPrefix": "{{parentDir}}-", // 브랜치: "apps-web-update-react"
   "commitMessagePrefix": "{{parentDir}}:", // 커밋: "apps/web: update react"
 
-  // 🚀 성능 최적화
+  //  성능 최적화
   "prConcurrentLimit": 3, // 동시 PR 개수 제한 (모노레포는 PR이 많아짐)
   "prHourlyLimit": 5 // 시간당 PR 개수 제한
 }
@@ -1293,14 +1293,14 @@ packages:
 {
   "packageRules": [
     {
-      // 🎯 공통 의존성 (모든 패키지에서 사용)
+      //  공통 의존성 (모든 패키지에서 사용)
       "matchPackageNames": ["react", "typescript", "eslint"],
       "groupName": "common dependencies",
       "commitMessagePrefix": "deps:",
       "reviewers": ["@tech-lead"]
     },
     {
-      // 🔧 개발 의존성만 (빌드 도구 등)
+      //  개발 의존성만 (빌드 도구 등)
       "matchDepTypes": ["devDependencies"],
       "matchPaths": ["packages/*/package.json"],
       "automerge": true,
@@ -1321,7 +1321,7 @@ packages:
 {
   "packageRules": [
     {
-      // 🌐 웹 앱 전용 의존성
+      //  웹 앱 전용 의존성
       "matchPaths": ["apps/web/**"],
       "labels": ["web-app"],
       "reviewers": ["@web-team"],
@@ -1338,7 +1338,7 @@ packages:
 }
 ```
 
-### 🔍 postUpdateOptions 상세 설명
+###  postUpdateOptions 상세 설명
 
 ```json
 {
@@ -1364,36 +1364,36 @@ apps/web/node_modules/lodash@4.17.19
 # → 설치 속도 향상, 디스크 사용량 감소
 ```
 
-### 🚨 모노레포 일반적인 문제들
+###  모노레포 일반적인 문제들
 
-**❌ 문제 1: 무한 PR 생성**
+** 문제 1: 무한 PR 생성**
 
 ```json
 // 문제 상황
 {
   "packageRules": [
     {
-      "matchPaths": ["packages/*"], // ❌ 모든 파일 매칭
+      "matchPaths": ["packages/*"], //  모든 파일 매칭
       "groupName": "packages"
     }
   ]
 }
 ```
 
-**✅ 해결책:**
+** 해결책:**
 
 ```json
 {
   "packageRules": [
     {
-      "matchPaths": ["packages/*/package.json"], // ✅ package.json만 매칭
+      "matchPaths": ["packages/*/package.json"], //  package.json만 매칭
       "groupName": "packages"
     }
   ]
 }
 ```
 
-**❌ 문제 2: 내부 패키지 업데이트 시도**
+** 문제 2: 내부 패키지 업데이트 시도**
 
 ```json
 // packages/ui/package.json
@@ -1405,7 +1405,7 @@ apps/web/node_modules/lodash@4.17.19
 }
 ```
 
-**✅ 해결책:**
+** 해결책:**
 
 ```json
 {
@@ -1418,9 +1418,9 @@ apps/web/node_modules/lodash@4.17.19
 }
 ```
 
-### 🎯 팀별 맞춤 모노레포 전략
+###  팀별 맞춤 모노레포 전략
 
-**🚀 빠른 개발팀:**
+** 빠른 개발팀:**
 
 ```json
 {
@@ -1525,7 +1525,7 @@ apps/web/node_modules/lodash@4.17.19
 | **팀**    | `@org/team-name` | 팀 멤버 전체    | 조직 팀 설정     |
 | **조직**  | `@organization`  | 조직 관리자     | 조직 권한        |
 
-#### 🔧 실제 GitHub 설정과 연동
+####  실제 GitHub 설정과 연동
 
 **GitHub Teams 설정 예시:**
 
@@ -1545,7 +1545,7 @@ your-org/
 {
   "packageRules": [
     {
-      // 🌐 프론트엔드 의존성
+      //  프론트엔드 의존성
       "matchPaths": ["frontend/**"],
       "reviewers": ["@your-org/frontend-team"],
       "labels": ["frontend"]
@@ -1557,7 +1557,7 @@ your-org/
       "labels": ["backend"]
     },
     {
-      // 🚨 보안 취약점
+      //  보안 취약점
       "vulnerabilityAlerts": {
         "assignees": ["@your-org/security-team"],
         "reviewers": ["@your-org/tech-leads"],
@@ -1565,7 +1565,7 @@ your-org/
       }
     },
     {
-      // 📈 Major 업데이트 (중요한 변경)
+      //  Major 업데이트 (중요한 변경)
       "matchUpdateTypes": ["major"],
       "assignees": ["@your-org/tech-leads"],
       "reviewers": ["@your-org/frontend-team", "@your-org/backend-team"]
@@ -1574,7 +1574,7 @@ your-org/
 }
 ```
 
-#### 🎯 assignees vs reviewers 차이점
+####  assignees vs reviewers 차이점
 
 ```json
 {
@@ -1582,7 +1582,7 @@ your-org/
     {
       "matchUpdateTypes": ["major"],
 
-      // 📋 assignees = "이 PR의 책임자" (작업 할당)
+      //  assignees = "이 PR의 책임자" (작업 할당)
       "assignees": ["@tech-lead"],
       // → 할 일 목록에 추가됨
       // → PR 완료까지 책임
@@ -1627,33 +1627,33 @@ your-org/
 }
 ```
 
-#### 🚨 일반적인 멘션 실수들
+####  일반적인 멘션 실수들
 
-**❌ 잘못된 예시들:**
+** 잘못된 예시들:**
 
 ```json
 {
   // 1. @ 기호 누락
-  "assignees": ["security-team"], // ❌ 멘션 안됨
+  "assignees": ["security-team"], //  멘션 안됨
 
   // 2. 존재하지 않는 팀
-  "reviewers": ["@non-existent-team"], // ❌ 오류 발생
+  "reviewers": ["@non-existent-team"], //  오류 발생
 
   // 3. 권한 없는 팀 멘션
-  "assignees": ["@external-contractors"], // ❌ 저장소 접근 권한 없음
+  "assignees": ["@external-contractors"], //  저장소 접근 권한 없음
 
   // 4. 개인 정보 노출
-  "assignees": ["@john.doe@company.com"] // ❌ 이메일은 안됨
+  "assignees": ["@john.doe@company.com"] //  이메일은 안됨
 }
 ```
 
-**✅ 올바른 예시들:**
+** 올바른 예시들:**
 
 ```json
 {
-  "assignees": ["@security-team"], // ✅ 팀 멘션
-  "reviewers": ["@john-doe", "@jane-smith"], // ✅ 개인 멘션
-  "assignees": ["@org/security-team"] // ✅ 조직/팀 멘션
+  "assignees": ["@security-team"], //  팀 멘션
+  "reviewers": ["@john-doe", "@jane-smith"], //  개인 멘션
+  "assignees": ["@org/security-team"] //  조직/팀 멘션
 }
 ```
 
@@ -1669,7 +1669,7 @@ your-org/
       "prCreation": "not-pending" // CI 완료 후 알림
     },
     {
-      // 🚨 긴급 보안 업데이트 → 즉시 알림
+      //  긴급 보안 업데이트 → 즉시 알림
       "vulnerabilityAlerts": {
         "assignees": ["@security-team"],
         "schedule": ["at any time"],
@@ -1762,7 +1762,7 @@ your-org/
 
 ## Best Practices - 실전 노하우
 
-### 🚀 단계별 도입 전략
+###  단계별 도입 전략
 
 **1단계: 안전하게 시작하기 (첫 2주)**
 
@@ -1815,7 +1815,7 @@ _목표: 위험도 낮은 업데이트부터 자동화_
 
 _목표: 안정적인 자동화 체계 구축_
 
-### 🎯 팀별 맞춤 설정
+###  팀별 맞춤 설정
 
 **스타트업/빠른 개발팀**
 
@@ -1870,7 +1870,7 @@ _특징: 계획적 업데이트, 충분한 검토 시간_
 
 _특징: 보안 우선, 강화된 리뷰 프로세스_
 
-### 🔧 실전 팁
+###  실전 팁
 
 **1. 그룹화로 PR 개수 관리**
 
@@ -1945,7 +1945,7 @@ _👍 업무 시간 방해 없이 자동 처리_
 
 _👍 문제 있는 패키지는 별도 관리_
 
-### 📊 성과 측정
+###  성과 측정
 
 **도입 전후 비교 메트릭:**
 
@@ -1967,7 +1967,7 @@ _👍 문제 있는 패키지는 별도 관리_
 ```json
 {
   "dependencyDashboard": true,
-  "dependencyDashboardTitle": "🔄 Renovate Dashboard",
+  "dependencyDashboardTitle": " Renovate Dashboard",
   "dependencyDashboardHeader": "This issue lists Renovate updates",
   "dependencyDashboardFooter": "---\n_Configure Renovate in `renovate.json`_"
 }
@@ -2239,4 +2239,4 @@ Renovate는 단순한 도구가 아니라 **개발팀의 생산성과 안정성�
 - 팀 전체의 일관된 의존성 관리
 - 새로운 기능과 성능 개선을 놓치지 않음
 
-**"아 이걸 설정해야 좋겠구나~"** 맞죠? 지금 바로 시작해보세요! 🚀
+**"아 이걸 설정해야 좋겠구나~"** 맞죠? 지금 바로 시작해보세요! 

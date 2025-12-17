@@ -2,14 +2,14 @@
 
 프로젝트 전반에 일관된 AI 작동을 위한 컨텍스트(페르소나, 규칙, 가이드라인) 저장소입니다. 각 프로젝트에 Git 서브모듈로 추가하여 사용하세요.
 
-## 📋 목차
+## 목차
 
 - [Submodule로 연결하기](#submodule로-연결하기)
 - [일상 사용법](#일상-사용법)
 - [문서 구조](#문서-구조)
 - [기여하기](#기여하기)
 
-## 🔗 Submodule로 연결하기
+## Submodule로 연결하기
 
 ### 1. 새 프로젝트에 추가
 
@@ -44,7 +44,7 @@ cd your-project
 git submodule update --init --recursive
 ```
 
-## 🔄 일상 사용법
+## 일상 사용법
 
 ### Submodule 업데이트
 
@@ -80,7 +80,7 @@ git push
 git submodule update --remote
 ```
 
-## ✏️ AI Context 수정하기
+## AI Context 수정하기
 
 ### 문서 수정 및 기여
 
@@ -136,16 +136,16 @@ git commit -m "chore: update ai-context with typo fixes"
 git push
 ```
 
-## 🚨 주의사항
+## 주의사항
 
 ### Submodule 작업시 주의점
 
 1. **항상 올바른 디렉토리에서 작업**
    ```bash
-   # ❌ 잘못된 예: 메인 프로젝트에서 ai-context 파일 수정
+   # 잘못된 예: 메인 프로젝트에서 ai-context 파일 수정
    vim .ai-context/README.md  # 변경사항이 추적되지 않음
    
-   # ✅ 올바른 예: ai-context 디렉토리에서 작업
+   # 올바른 예: ai-context 디렉토리에서 작업
    cd .ai-context
    vim README.md
    git add README.md
@@ -174,7 +174,7 @@ git push
    git checkout main
    ```
 
-## 🛠️ 문제 해결
+## 문제 해결
 
 ### 자주 발생하는 문제
 
@@ -203,7 +203,7 @@ git push
    git submodule update --recursive
    ```
 
-## 📁 문서 구조
+## 문서 구조
 
 ```
 .ai-context/
@@ -220,7 +220,7 @@ git push
 └── vscode/                # VS Code 설정
 ```
 
-## 🤝 기여하기
+## 기여하기
 
 ### 새 가이드라인 추가
 
@@ -235,7 +235,7 @@ git push
 2. 큰 변경사항은 이슈로 먼저 논의
 3. 실제 프로젝트 적용 경험을 바탕으로 업데이트
 
-## 💡 활용 팁
+## 활용 팁
 
 ### AI 어시스턴트와 함께 사용
 
@@ -249,7 +249,7 @@ git push
 
 새 팀원에게는 이 저장소 링크만 공유하면 됩니다:
 
-📖 **프로젝트 가이드라인**: `.ai-context/` 디렉토리 참고  
-🔗 **원본 저장소**: https://github.com/your-org/ai-context
+**프로젝트 가이드라인**: `.ai-context/` 디렉토리 참고  
+**원본 저장소**: https://github.com/your-org/ai-context
 
 주요 문서들이 `.ai-context/` 디렉토리에 정리되어 있습니다.

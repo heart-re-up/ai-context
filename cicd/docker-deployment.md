@@ -391,7 +391,7 @@ CMD ["node", "dist/index.js"]
 IMAGE_NAME="myapp:${GITHUB_SHA}"
 CONTAINER_NAME="myapp"
 
-echo "🚀 Starting rolling deployment..."
+echo " Starting rolling deployment..."
 
 # 새 컨테이너 시작
 docker run -d \
@@ -404,14 +404,14 @@ docker run -d \
 echo "⏳ Waiting for health check..."
 for i in {1..30}; do
   if curl -f http://localhost:3001/health; then
-    echo "✅ New container is healthy"
+    echo " New container is healthy"
     break
   fi
   sleep 2
 done
 
 # 트래픽 전환 (로드밸런서 설정)
-echo "🔄 Switching traffic..."
+echo " Switching traffic..."
 # nginx/traefik 설정 업데이트
 
 # 기존 컨테이너 정리
@@ -419,7 +419,7 @@ docker stop "${CONTAINER_NAME}" || true
 docker rm "${CONTAINER_NAME}" || true
 docker rename "${CONTAINER_NAME}-new" "${CONTAINER_NAME}"
 
-echo "✅ Deployment completed"
+echo " Deployment completed"
 ```
 
 ### Blue-Green 배포
@@ -431,7 +431,7 @@ echo "✅ Deployment completed"
 CURRENT_COLOR=$(docker ps --format "table {{.Names}}" | grep -E "(blue|green)" | head -1 | sed 's/.*-//')
 NEW_COLOR=$([ "$CURRENT_COLOR" = "blue" ] && echo "green" || echo "blue")
 
-echo "🎯 Deploying to ${NEW_COLOR} environment..."
+echo " Deploying to ${NEW_COLOR} environment..."
 
 # 새 환경에 배포
 docker run -d \

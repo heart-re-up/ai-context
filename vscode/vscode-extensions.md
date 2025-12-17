@@ -25,12 +25,12 @@ VS Code에서 프로젝트 개발을 위한 추천 확장 프로그램 목록입
 
 ## 확장 프로그램 상세 설명
 
-### 🎨 코드 포맷팅 및 린팅
+###  코드 포맷팅 및 린팅
 
 - **Prettier** (`esbenp.prettier-vscode`): 코드 자동 포맷팅
 - **ESLint** (`dbaeumer.vscode-eslint`): JavaScript/TypeScript 코드 품질 검사
 
-### 🎯 React 개발
+###  React 개발
 
 - **Simple React Snippets** (`burkeholland.simple-react-snippets`): 기본 React 스니펫
 - **ES7+ React/Redux/React-Native snippets** (`dsznajder.es7-react-js-snippets`): 확장된 React 스니펫
@@ -40,11 +40,11 @@ VS Code에서 프로젝트 개발을 위한 추천 확장 프로그램 목록입
 - **Auto Rename Tag** (`formulahendry.auto-rename-tag`): 태그 이름 자동 변경
 - **Auto Close Tag** (`formulahendry.auto-close-tag`): 태그 자동 닫기
 
-### 🎨 CSS 및 스타일링
+###  CSS 및 스타일링
 
 - **Tailwind CSS IntelliSense** (`bradlc.vscode-tailwindcss`): Tailwind CSS 자동완성 및 클래스 제안
 
-### 🔧 개발 도구
+###  개발 도구
 
 - **Path Intellisense** (`christian-kohler.path-intellisense`): 파일 경로 자동완성
 - **EditorConfig** (`editorconfig.editorconfig`): 에디터 설정 통일

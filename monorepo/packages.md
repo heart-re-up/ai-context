@@ -623,7 +623,7 @@ pnpm changeset publish
 
 ## 설정 관리
 
-**⚠️ 중요**: ESLint, TypeScript, Prettier 등의 설정 파일은 **별도 `config/` 디렉토리**에서 관리하는 것을 권장합니다.
+** 중요**: ESLint, TypeScript, Prettier 등의 설정 파일은 **별도 `config/` 디렉토리**에서 관리하는 것을 권장합니다.
 
 자세한 내용은 [설정 파일 관리 가이드](./config.md)를 참고하세요.
 

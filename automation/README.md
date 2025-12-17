@@ -19,7 +19,7 @@
 
 자동화 도구들을 CI/CD 파이프라인과 연동하는 방법은 별도 가이드를 참고하세요:
 
-👉 **[../cicd/README.md](../cicd/README.md)** - CI/CD 파이프라인 가이드
+ **[../cicd/README.md](../cicd/README.md)** - CI/CD 파이프라인 가이드
 
 ### 주요 연동 도구
 

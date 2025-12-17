@@ -52,7 +52,7 @@ TypeScript 컴파일러 설정과 프로젝트별 설정 패턴을 다룹니다.
 }
 ```
 
-> ⚠️ **React 19 주의사항**: 
+>  **React 19 주의사항**: 
 > - JSX 타입: `React.JSX.Element` 사용
 > - 경로 매핑에서 `/*` 제거 (직접 참조)
 
@@ -98,7 +98,7 @@ TypeScript 컴파일러 설정과 프로젝트별 설정 패턴을 다룹니다.
 }
 ```
 
-> ⚠️ **라이브러리 패키지 주의사항**: 
+>  **라이브러리 패키지 주의사항**: 
 > - React 타입 의존성 (`@types/react`, `@types/react-dom`) 명시적 설치 필요
 > - peerDependencies에 React 19 이상 명시
 

@@ -2,11 +2,11 @@
 
 모노레포에서 ESLint, TypeScript, Prettier 등의 설정 파일을 체계적으로 구조화하고 모듈간 공유하는 방법에 대한 가이드입니다.
 
-> 💡 **상세한 도구별 설정 방법**은 [`quality/` 디렉토리](../quality/README.md)를 참고하세요.
+>  **상세한 도구별 설정 방법**은 [`quality/` 디렉토리](../quality/README.md)를 참고하세요.
 
 ## 설정 파일 구조 전략
 
-### 📁 별도 config 디렉토리 (권장)
+###  별도 config 디렉토리 (권장)
 
 ```
 project-root/
@@ -25,7 +25,7 @@ project-root/
     └── admin/
 ```
 
-### 🎯 장점
+###  장점
 
 - **중앙화**: 모든 설정이 한 곳에서 관리됨
 - **재사용성**: 다양한 모듈 타입별 설정 제공
@@ -41,9 +41,9 @@ project-root/
 ```
 config/eslint-config/
 ├── package.json         # 패키지 정의
-├── base.mjs            # 기본 ESLint 설정 (⚠️ globals import 필수)
+├── base.mjs            # 기본 ESLint 설정 ( globals import 필수)
 ├── react.mjs           # React 프로젝트용 (React 19 호환)
-├── node.mjs            # Node.js 프로젝트용 (⚠️ globals import 필수)
+├── node.mjs            # Node.js 프로젝트용 ( globals import 필수)
 └── lib.mjs             # 라이브러리용 (더 엄격)
 ```
 
@@ -62,15 +62,15 @@ config/eslint-config/
 }
 ```
 
-> **📝 `files` 옵션 설명**:
+> ** `files` 옵션 설명**:
 >
 > - **NPM 배포용**: NPM에 패키지를 퍼블리시할 때 포함할 파일들을 지정
 > - **모노레포에서는 무관**: 워크스페이스 내에서는 `files` 와 관계없이 모든 파일에 접근 가능
 > - **개발 시**: `import from "@project/eslint-config/react"`는 실제 파일 경로로 직접 참조됨
 
-> 📖 **ESLint 상세 설정 방법**: [quality/eslint.md](../quality/eslint.md)
+>  **ESLint 상세 설정 방법**: [quality/eslint.md](../quality/eslint.md)
 > 
-> ⚠️ **주의사항**: 
+>  **주의사항**: 
 > - `base.mjs`와 `node.mjs`에서 `globals` import 누락 시 오류 발생
 > - React 19 사용 시 `react/jsx-uses-react` 규칙 비활성화 필요
 
@@ -99,7 +99,7 @@ config/typescript-config/
 }
 ```
 
-> 📖 **TypeScript 상세 설정 방법**: [typescript.md](../typescript.md)
+>  **TypeScript 상세 설정 방법**: [typescript.md](../typescript.md)
 
 ### Prettier 설정 패키지
 
@@ -118,7 +118,7 @@ config/prettier-config/
 }
 ```
 
-> 📖 **Prettier 상세 설정 방법**: [quality/prettier.md](../quality/prettier.md)
+>  **Prettier 상세 설정 방법**: [quality/prettier.md](../quality/prettier.md)
 
 ## 워크스페이스 통합
 
@@ -224,7 +224,7 @@ import reactConfig from "@project/eslint-config/react";
 export default reactConfig;
 ```
 
-> **✅ 핵심**: 워크스페이스에서 `@project/eslint-config/react`는
+> ** 핵심**: 워크스페이스에서 `@project/eslint-config/react`는
 > `config/eslint-config/react.mjs` 파일을 직접 참조합니다.
 > `files` 옵션과는 **무관**합니다.
 
@@ -363,7 +363,7 @@ pnpm -r typecheck
 #!/bin/bash
 # scripts/migrate-config.sh
 
-echo "🔄 설정 파일 마이그레이션 시작..."
+echo " 설정 파일 마이그레이션 시작..."
 
 # 1. config 디렉토리 생성
 mkdir -p config/{eslint-config,typescript-config,prettier-config}
@@ -386,7 +386,7 @@ echo '{"name": "@project/eslint-config", "version": "1.0.0"}' > config/eslint-co
 echo '{"name": "@project/typescript-config", "version": "1.0.0"}' > config/typescript-config/package.json
 echo '{"name": "@project/prettier-config", "version": "1.0.0"}' > config/prettier-config/package.json
 
-echo "✅ 마이그레이션 완료!"
+echo " 마이그레이션 완료!"
 ```
 
 ## 모범 사례

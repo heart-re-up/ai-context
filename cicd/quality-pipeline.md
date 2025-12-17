@@ -288,7 +288,7 @@ jobs:
     # 테스트 커버리지 80% 이상
     COVERAGE=$(cat coverage/coverage-summary.json | jq '.total.lines.pct')
     if (( $(echo "$COVERAGE < 80" | bc -l) )); then
-      echo "❌ Coverage is below 80%: $COVERAGE%"
+      echo " Coverage is below 80%: $COVERAGE%"
       exit 1
     fi
     
@@ -296,11 +296,11 @@ jobs:
     pnpm lint --format json --output-file eslint-report.json
     ERRORS=$(cat eslint-report.json | jq '[.[].errorCount] | add')
     if [ "$ERRORS" -gt 0 ]; then
-      echo "❌ ESLint errors found: $ERRORS"
+      echo " ESLint errors found: $ERRORS"
       exit 1
     fi
     
-    echo "✅ Quality gate passed"
+    echo " Quality gate passed"
 ```
 
 ### 브랜치 보호 규칙
@@ -391,7 +391,7 @@ jobs:
     channel: '#dev-alerts'
     webhook_url: ${{ secrets.SLACK_WEBHOOK }}
     message: |
-      🚨 Quality check failed
+       Quality check failed
       Repository: ${{ github.repository }}
       Branch: ${{ github.ref }}
       Commit: ${{ github.sha }}
@@ -408,11 +408,11 @@ jobs:
     script: |
       const coverage = require('./coverage/coverage-summary.json');
       const comment = `
-      ## 📊 Quality Report
+      ##  Quality Report
       
       - **Test Coverage**: ${coverage.total.lines.pct}%
       - **ESLint Errors**: 0
-      - **Build Status**: ✅ Passed
+      - **Build Status**:  Passed
       `;
       
       github.rest.issues.createComment({
@@ -446,7 +446,7 @@ jobs:
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-echo "🔍 Running quality checks..."
+echo " Running quality checks..."
 
 # 변경된 파일만 검사
 pnpm lint-staged
@@ -454,7 +454,7 @@ pnpm lint-staged
 # 타입 체크
 pnpm type-check
 
-echo "✅ Quality checks passed!"
+echo " Quality checks passed!"
 ```
 
 ## 모범 사례

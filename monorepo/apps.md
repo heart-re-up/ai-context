@@ -38,7 +38,7 @@ apps/
 
 ## 애플리케이션별 package.json 설정
 
-> ⚠️ **React 19 주의사항**: JSX 타입은 `React.JSX.Element` 사용, Tailwind CSS는 3.x 버전 권장
+>  **React 19 주의사항**: JSX 타입은 `React.JSX.Element` 사용, Tailwind CSS는 3.x 버전 권장
 
 ### 웹 애플리케이션 (React 19 + Vite)
 
@@ -304,7 +304,7 @@ export const createUser = (data: CreateUserRequest): Promise<User> => {
 
 ### 엔터티 클래스 작성법
 
-> ⚠️ **중요**: TypeScript strict 모드에서는 `!` (Definite Assignment Assertion) 사용 필요
+>  **중요**: TypeScript strict 모드에서는 `!` (Definite Assignment Assertion) 사용 필요
 
 ```typescript
 // apps/backend/src/users/entities/user.entity.ts
@@ -400,7 +400,7 @@ CMD ["nginx", "-g", "daemon off;"]
 
 모노레포에서 앱별 CI/CD 파이프라인 구성에 대한 상세한 내용은 별도 가이드를 참고하세요:
 
-👉 **[../cicd/README.md](../cicd/README.md)** - CI/CD 파이프라인 가이드
+ **[../cicd/README.md](../cicd/README.md)** - CI/CD 파이프라인 가이드
 
 ### 주요 배포 전략
 

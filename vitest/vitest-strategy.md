@@ -358,7 +358,7 @@ pnpm dev
 
 테스트를 CI/CD 파이프라인에 통합하는 상세한 방법은 별도 가이드를 참고하세요:
 
-👉 **[../cicd/quality-pipeline.md](../cicd/quality-pipeline.md)** - 품질 관리 파이프라인 가이드
+ **[../cicd/quality-pipeline.md](../cicd/quality-pipeline.md)** - 품질 관리 파이프라인 가이드
 
 ### 테스트 자동화 전략
 
@@ -395,7 +395,7 @@ fi
 ### 1. 테스트 격리 원칙
 
 ```typescript
-// ❌ 좋지 않은 예 - 전역 상태 공유
+//  좋지 않은 예 - 전역 상태 공유
 let globalCounter = 0;
 
 describe("Counter tests", () => {
@@ -405,7 +405,7 @@ describe("Counter tests", () => {
   });
 });
 
-// ✅ 좋은 예 - 각 테스트 독립
+//  좋은 예 - 각 테스트 독립
 describe("Counter tests", () => {
   it("increments", () => {
     const { result } = renderHook(() => useCounter(0));
@@ -418,14 +418,14 @@ describe("Counter tests", () => {
 ### 2. 의미 있는 테스트 작성
 
 ```typescript
-// ❌ 구현 세부사항 테스트
+//  구현 세부사항 테스트
 it("calls useState with initial value", () => {
   const setStateSpy = vi.spyOn(React, "useState");
   renderHook(() => useCounter(5));
   expect(setStateSpy).toHaveBeenCalledWith(5);
 });
 
-// ✅ 동작 결과 테스트
+//  동작 결과 테스트
 it("initializes with provided value", () => {
   const { result } = renderHook(() => useCounter(5));
   expect(result.current.count).toBe(5);
@@ -435,7 +435,7 @@ it("initializes with provided value", () => {
 ### 3. 적절한 테스트 범위
 
 ```typescript
-// ✅ 핵심 기능 집중 테스트
+//  핵심 기능 집중 테스트
 describe("useLocalStorage", () => {
   it("persists value to localStorage", () => {
     const { result } = renderHook(() => useLocalStorage("key", "initial"));

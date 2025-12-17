@@ -111,7 +111,7 @@ pnpm commitlint --edit "$1"
 . "$(dirname -- "$0")/_/husky.sh"
 
 # 타입 체크
-echo "🔍 타입 체크 중..."
+echo " 타입 체크 중..."
 pnpm type-check
 
 # 린트 체크 (변경된 파일만)
@@ -122,14 +122,14 @@ pnpm lint-staged
 echo "🧪 테스트 실행 중..."
 pnpm test --passWithNoTests --findRelatedTests $(git diff --cached --name-only --diff-filter=ACM | grep -E '\.(ts|tsx|js|jsx)$' | tr '\n' ' ')
 
-echo "✅ Pre-commit 체크 완료!"
+echo " Pre-commit 체크 완료!"
 ```
 
 ## CI/CD 통합
 
 코드 품질 도구들을 CI/CD 파이프라인과 연동하는 상세한 방법은 별도 가이드를 참고하세요:
 
-👉 **[../cicd/quality-pipeline.md](../cicd/quality-pipeline.md)** - 품질 관리 파이프라인 가이드
+ **[../cicd/quality-pipeline.md](../cicd/quality-pipeline.md)** - 품질 관리 파이프라인 가이드
 
 ### 주요 연동 방법
 
@@ -147,14 +147,14 @@ echo "✅ Pre-commit 체크 완료!"
 
 set -e
 
-echo "🚀 코드 품질 분석 시작..."
+echo " 코드 품질 분석 시작..."
 
 # 타입 체크
-echo "📋 TypeScript 타입 체크..."
+echo " TypeScript 타입 체크..."
 pnpm type-check
 
 # ESLint 실행
-echo "🔍 ESLint 검사..."
+echo " ESLint 검사..."
 pnpm lint --format=json --output-file=reports/eslint.json
 
 # Prettier 체크
@@ -163,7 +163,7 @@ pnpm format
 
 # 복잡도 분석 (선택사항)
 if command -v madge &> /dev/null; then
-  echo "📊 의존성 복잡도 분석..."
+  echo " 의존성 복잡도 분석..."
   madge --circular --warning src/
 fi
 
@@ -173,7 +173,7 @@ if [ -f "dist/stats.json" ]; then
   npx bundle-analyzer dist/stats.json
 fi
 
-echo "✅ 코드 품질 분석 완료!"
+echo " 코드 품질 분석 완료!"
 ```
 
 ### 자동 수정 스크립트
@@ -184,10 +184,10 @@ echo "✅ 코드 품질 분석 완료!"
 
 set -e
 
-echo "🔧 코드 자동 수정 시작..."
+echo " 코드 자동 수정 시작..."
 
 # ESLint 자동 수정
-echo "🔨 ESLint 자동 수정..."
+echo " ESLint 자동 수정..."
 pnpm lint:fix
 
 # Prettier 자동 포맷팅
@@ -201,10 +201,10 @@ if command -v organize-imports-cli &> /dev/null; then
 fi
 
 # Git add (수정된 파일들)
-echo "📝 변경사항 스테이징..."
+echo " 변경사항 스테이징..."
 git add .
 
-echo "✅ 자동 수정 완료!"
+echo " 자동 수정 완료!"
 ```
 
 ### 품질 리포트 생성 스크립트
@@ -216,7 +216,7 @@ const path = require("path");
 const { execSync } = require("child_process");
 
 async function generateQualityReport() {
-  console.log("📊 코드 품질 리포트 생성 중...");
+  console.log(" 코드 품질 리포트 생성 중...");
 
   const reports = {};
 
@@ -295,7 +295,7 @@ async function generateQualityReport() {
 
   fs.writeFileSync("reports/quality-report.html", htmlReport);
 
-  console.log("✅ 리포트 생성 완료:");
+  console.log(" 리포트 생성 완료:");
   console.log("  - JSON: reports/quality-summary.json");
   console.log("  - HTML: reports/quality-report.html");
 }
@@ -508,7 +508,7 @@ node_modules/.cache/
 #!/bin/bash
 # scripts/debug-quality.sh
 
-echo "🔍 코드 품질 도구 디버깅..."
+echo " 코드 품질 도구 디버깅..."
 
 echo "Node.js 버전:"
 node --version
