@@ -131,7 +131,7 @@ export default tseslint.config(
       "@typescript-eslint/prefer-nullish-coalescing": "error",
       "@typescript-eslint/prefer-optional-chain": "error",
     },
-  }
+  },
 );
 ```
 
@@ -158,7 +158,7 @@ export default tseslint.config(
       "@typescript-eslint/await-thenable": "error",
       "@typescript-eslint/no-unnecessary-type-assertion": "error",
     },
-  }
+  },
 );
 ```
 
@@ -210,7 +210,7 @@ export default tseslint.config(
         version: "detect", // 자동 감지 또는 "19.1"
       },
     },
-  }
+  },
 );
 ```
 
@@ -234,7 +234,7 @@ export default tseslint.config(
         { allowConstantExport: true },
       ],
     },
-  }
+  },
 );
 ```
 
@@ -443,7 +443,7 @@ export default tseslint.config(
       "prefer-const": "error",
       "no-var": "error",
     },
-  }
+  },
 );
 ```
 

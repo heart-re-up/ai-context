@@ -252,12 +252,10 @@ export default defineConfig({
 ### 자주 발생하는 이슈
 
 1. **별칭이 작동하지 않음**
-
    - TSConfig paths와 Vite alias 모두 설정했는지 확인
    - baseUrl 설정 확인
 
 2. **HMR이 작동하지 않음**
-
    - 파일 확장자 확인 (.tsx, .ts)
    - Fast Refresh 설정 확인
 

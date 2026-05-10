@@ -1,5 +1,7 @@
 # TypeScript 설정 가이드
 
+> 이 가이드는 **React 19.2** 기준으로 작성되었습니다.
+
 TypeScript 컴파일러 설정과 프로젝트별 설정 패턴을 다룹니다.
 
 ## TypeScript 설정 가이드
@@ -21,7 +23,7 @@ TypeScript 컴파일러 설정과 프로젝트별 설정 패턴을 다룹니다.
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx",  // React 19 권장 설정
+    "jsx": "react-jsx",
 
     /* 코드 품질 */
     "strict": true,
@@ -44,6 +46,8 @@ TypeScript 컴파일러 설정과 프로젝트별 설정 패턴을 다룹니다.
     "vite.config.ts",
     "src/**/*.js",
     "src/**/*.jsx",
+    "src/**/*.js",
+    "src/**/*.jsx",
     "src/**/*.ts",
     "src/**/*.tsx",
     "types/**/*.ts"
@@ -52,7 +56,8 @@ TypeScript 컴파일러 설정과 프로젝트별 설정 패턴을 다룹니다.
 }
 ```
 
-> ⚠️ **React 19 주의사항**: 
+> ⚠️ **React 19 주의사항**:
+>
 > - JSX 타입: `React.JSX.Element` 사용
 > - 경로 매핑에서 `/*` 제거 (직접 참조)
 
@@ -98,7 +103,8 @@ TypeScript 컴파일러 설정과 프로젝트별 설정 패턴을 다룹니다.
 }
 ```
 
-> ⚠️ **라이브러리 패키지 주의사항**: 
+> ⚠️ **라이브러리 패키지 주의사항**:
+>
 > - React 타입 의존성 (`@types/react`, `@types/react-dom`) 명시적 설치 필요
 > - peerDependencies에 React 19 이상 명시
 
@@ -143,12 +149,14 @@ TypeScript 컴파일러 설정과 프로젝트별 설정 패턴을 다룹니다.
 
 1. **모듈 네이밍**: 모든 모듈은 `@project/` 접두사 사용
 2. **TypeScript 설정**: 각 모듈은 독립적인 tsconfig.json 보유
-3. **React 19 사용 시**: 
-   - JSX 타입: `React.JSX.Element` 사용
-   - 필수 의존성: `@types/react`, `@types/react-dom` 명시적 설치
-4. **NestJS 사용 시**: 
+3. **React 19.2 사용 시**:
+   - JSX 타입: 반환 타입 생략 권장, 명시 시 `React.JSX.Element` 사용 (`JSX.Element` 불가)
+   - `React.FC` 사용 금지
+   - `interface` 대신 `type` 사용
+   - 필수 의존성: `@types/react@^19.2.0`, `@types/react-dom@^19.2.0` 명시적 설치
+4. **NestJS 사용 시**:
    - 엔터티/DTO 클래스에서 `!` (Definite Assignment Assertion) 사용
    - strict 모드에서 프로퍼티 초기화 오류 방지
-5. **경로 매핑**: 
+5. **경로 매핑**:
    - include 경로를 각 패키지에서 명시적으로 재정의
    - 상대 경로 문제 방지
