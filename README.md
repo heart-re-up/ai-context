@@ -213,6 +213,7 @@ git push
 ├── docker/                # Docker 설정 가이드
 ├── monorepo/              # 모노레포 구성 가이드
 ├── node/                  # Node.js 프로젝트 설정
+├── conventions/         # React 컴포넌트·훅 코딩 규약
 ├── quality/               # 코드 품질 관리
 ├── typescript.md          # TypeScript 설정 가이드
 ├── vite/                  # Vite 빌드 도구 설정
