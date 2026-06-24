@@ -129,15 +129,15 @@ mkdir -p apps/frontend
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "react": "^19.2.3",
-    "react-dom": "^19.2.3"
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7"
   },
   "devDependencies": {
     "@project/typescript-config": "workspace:*",
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^4.5.1",
-    "vite": "^6.3.5"
+    "vite": "^7"
   }
 }
 ```
@@ -197,8 +197,8 @@ mkdir -p packages/ui-components/src
   },
   "devDependencies": {
     "@project/typescript-config": "workspace:*",
-    "react": "^19.2.3",
-    "vite": "^6.3.5"
+    "react": "^19.2.7",
+    "vite": "^7"
   }
 }
 ```

@@ -67,9 +67,9 @@ apps/
     "@project/ui-components": "workspace:*",
     "@project/shared-lib": "workspace:*",
     "@project/types": "workspace:*",
-    "react": "^19.2.3",
-    "react-dom": "^19.2.3",
-    "react-router": "^7.6.2"
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+    "react-router": "^8"
   },
   "devDependencies": {
     "@project/eslint-config": "workspace:*",
@@ -82,7 +82,7 @@ apps/
     "postcss": "^8.5.1",
     "tailwindcss": "^3.4.16",
     "typescript": "~5.8.3",
-    "vite": "^6.3.5"
+    "vite": "^7"
   }
 }
 ```
@@ -110,8 +110,8 @@ apps/
     "@project/shared-lib": "workspace:*",
     "@project/types": "workspace:*",
     "next": "^15.2.0",
-    "react": "^19.2.3",
-    "react-dom": "^19.2.3"
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7"
   },
   "devDependencies": {
     "@types/react": "^19.2.7",
@@ -141,7 +141,7 @@ apps/
   "dependencies": {
     "@project/shared-lib": "workspace:*",
     "@project/types": "workspace:*",
-    "react": "^19.2.3",
+    "react": "^19.2.7",
     "react-native": "^0.76.1"
   },
   "devDependencies": {

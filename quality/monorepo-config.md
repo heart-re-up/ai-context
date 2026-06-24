@@ -80,7 +80,7 @@ export default tseslint.config(
       "prefer-const": "error",
       "no-var": "error",
     },
-  }
+  },
 );
 ```
 
@@ -372,7 +372,7 @@ module.exports = {
     "vite-plugin-dts": "^3.9.1"
   },
   "peerDependencies": {
-    "vite": "^6.0.0"
+    "vite": "^7"
   }
 }
 ```

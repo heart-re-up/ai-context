@@ -49,8 +49,8 @@ React 19에 맞는 TypeScript 설정:
 // package.json
 {
   "dependencies": {
-    "react": "^19.2.3",
-    "react-dom": "^19.2.3"
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7"
   },
   "devDependencies": {
     "@types/react": "^19.2.7",
@@ -74,8 +74,8 @@ React 19에 맞는 TypeScript 설정:
   "devDependencies": {
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
-    "react": "^19.2.3",
-    "react-dom": "^19.2.3"
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7"
   }
 }
 ```
@@ -88,8 +88,8 @@ React 19에 맞는 TypeScript 설정:
   "name": "@project/frontend",
   "dependencies": {
     "@project/ui-components": "workspace:*",
-    "react": "^19.2.3",
-    "react-dom": "^19.2.3"
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7"
   },
   "devDependencies": {
     "@types/react": "^19.2.7",

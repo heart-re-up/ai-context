@@ -112,11 +112,11 @@ packages/
     "@vitest/coverage-v8": "^1.0.0",
     "@vitest/ui": "^1.0.0",
     "jsdom": "^23.0.0",
-    "react": "^19.2.3",
-    "react-dom": "^19.2.3",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
     "storybook": "^7.6.0",
     "typescript": "~5.8.3",
-    "vite": "^6.3.5",
+    "vite": "^7",
     "vite-plugin-dts": "^3.9.1",
     "vitest": "^1.0.0"
   }
@@ -171,7 +171,7 @@ packages/
     "@types/node": "^20.0.0",
     "@vitest/coverage-v8": "^1.0.0",
     "typescript": "~5.8.3",
-    "vite": "^6.3.5",
+    "vite": "^7",
     "vite-plugin-dts": "^3.9.1",
     "vitest": "^1.0.0"
   }
@@ -460,7 +460,7 @@ describe("Button", () => {
 // packages/shared-lib/src/utils/date.ts
 export const formatDate = (
   date: Date,
-  format: "short" | "long" = "short"
+  format: "short" | "long" = "short",
 ): string => {
   const options: Intl.DateTimeFormatOptions =
     format === "long"
@@ -501,7 +501,7 @@ class ApiClient {
 
   async request<T>(
     endpoint: string,
-    options: RequestInit = {}
+    options: RequestInit = {},
   ): Promise<ApiResponse<T>> {
     const url = `${this.baseURL}${endpoint}`;
     const config: RequestInit = {

@@ -86,8 +86,8 @@ project-root/
   },
   "dependencies": {
     "@project/shared-lib": "workspace:*",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0"
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7"
   }
 }
 ```
@@ -490,7 +490,7 @@ describe("useLocalStorage", () => {
    // 루트 package.json에서 통일
    {
      "peerDependencies": {
-       "react": "^18.0.0",
+       "react": "^19.2.7",
        "react-dom": "^18.0.0"
      }
    }

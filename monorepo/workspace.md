@@ -187,16 +187,16 @@ public-hoist-pattern[]=*@types*
   "dependencies": {
     "@project/shared-lib": "workspace:*",
     "@project/ui-components": "workspace:*",
-    "react": "^19.2.3",
-    "react-dom": "^19.2.3",
-    "react-router": "^7.6.2"
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+    "react-router": "^8"
   },
   "devDependencies": {
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^4.5.1",
     "typescript": "~5.8.3",
-    "vite": "^6.3.5"
+    "vite": "^7"
   }
 }
 ```
@@ -244,7 +244,7 @@ public-hoist-pattern[]=*@types*
     "@testing-library/jest-dom": "^6.0.0",
     "@vitest/coverage-v8": "^1.0.0",
     "jsdom": "^23.0.0",
-    "vite": "^5.3.1",
+    "vite": "^7",
     "vite-plugin-dts": "^3.9.1",
     "vitest": "^1.0.0"
   }
