@@ -112,6 +112,29 @@ export class User {
 }
 ```
 
+### 3. `tsc -b --noEmit`과 project references 조합 — TS6310
+
+**문제**: composite 패키지를 `references`로 참조하는 프로젝트에서 `tsc -b --noEmit`을 실행하면 항상 실패
+
+```bash
+tsconfig.json(24,5): error TS6310: Referenced project '.../packages/shared' may not disable emit.
+```
+
+**원인**: `tsc -b`(빌드 모드)에서 커맨드라인으로 넘긴 `--noEmit`은 참조된 모든 composite 프로젝트에도 emit 비활성화를 강제 전파한다. composite 프로젝트는 정의상 선언 파일(`.d.ts`)을 emit해야 하므로 이 조합 자체가 `TS6310`을 발생시킨다. 참조 패키지를 먼저 `build`해도 해결되지 않는다(빌드 순서·캐시 문제가 아님).
+
+**해결방법**: `references`가 있는 패키지의 `typecheck` 스크립트에서 `--noEmit`을 제거한다. `dist`는 `.gitignore` 대상이라 emit 자체는 부작용이 없다.
+
+```json
+// apps/admin-api-nestjs/package.json 등
+{
+  "scripts": {
+    "typecheck": "tsc -b" // --noEmit 제거
+  }
+}
+```
+
+`references`가 없는 패키지(`packages/shared`, `packages/database` 등)나 `-b` 없이 `tsc --noEmit`만 쓰는 앱(`user-web`, `overlay-web`)은 영향 없음.
+
 ## ESLint 설정 문제
 
 ### 1. 공유 ESLint 설정에서 globals import 누락
