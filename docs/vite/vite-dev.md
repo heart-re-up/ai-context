@@ -479,7 +479,32 @@ export const devLog = (...args: any[]) => {
    }
    ```
 
-2. **프록시 설정이 작동하지 않음**
+2. **프록시 설정이 작동하지 않음 — 경로 불일치(404)**
+
+   프론트엔드가 `/api/...`로 요청하고 dev proxy가 경로를 그대로 백엔드에 넘기는데, 백엔드 라우트에 `/api` 접두사가 없으면 항상 404가 난다.
+
+   ```typescript
+   // ❌ rewrite 없음 — /api/auth/login → 백엔드에 /api/auth/login으로 도착
+   proxy: {
+     '/api': {
+       target: 'http://localhost:8080',
+       changeOrigin: true,
+     },
+   }
+
+   // ✅ rewrite로 접두사 제거 — /api/auth/login → 백엔드에 /auth/login으로 도착
+   proxy: {
+     '/api': {
+       target: 'http://localhost:8080',
+       changeOrigin: true,
+       rewrite: (path) => path.replace(/^\/api/, ''),
+     },
+   }
+   ```
+
+   **헷갈리기 쉬운 점**: 브라우저 Network 탭에 요청이 dev 서버 포트(예: `localhost:3000`)로 보이는 것은 **정상**이다. `fetch('/api/...')`처럼 relative path로 요청하면 브라우저는 항상 현재 페이지 origin을 기준으로 표시하고, 실제 다른 호스트로의 전달(proxy)은 vite dev 서버 내부에서 일어나 브라우저에는 보이지 않는다.
+
+3. **프록시 설정이 작동하지 않음 — 경로 패턴**
 
    ```typescript
    // 경로 확인
@@ -491,14 +516,14 @@ export const devLog = (...args: any[]) => {
    }
    ```
 
-3. **메모리 부족 오류**
+4. **메모리 부족 오류**
 
    ```bash
    # Node.js 메모리 늘리기
    NODE_OPTIONS="--max-old-space-size=4096" npm run dev
    ```
 
-4. **느린 시작 속도**
+5. **느린 시작 속도**
    ```typescript
    optimizeDeps: {
      force: true, // 의존성 강제 재빌드 (한 번만)

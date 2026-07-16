@@ -1,0 +1,26 @@
+---
+description: ESLint·Prettier·EditorConfig — 코드 품질·포맷·에디터 일관성 설정 파일 작업 시 적용
+globs:
+  - "eslint.config.*"
+  - "prettier.config.*"
+  - ".editorconfig"
+  - ".eslintrc*"
+  - ".prettierrc*"
+---
+
+# 코드 품질 도구
+
+- **ESLint 9+**: `.eslintrc*` 대신 flat config `eslint.config.mjs`를 쓴다. 플러그인은 `extends`가 아니라 명시적 `import` + 배열 항목으로 등록한다.
+- **역할 분리**: Prettier = 포맷, ESLint = 로직·품질. 포맷 규칙은 Prettier에 맡기고 ESLint와 충돌하지 않게 한다.
+- **EditorConfig**: `.editorconfig`로 indent·줄바꿈·charset을 에디터 간 통일한다(ESLint/Prettier와 중복 규칙은 한쪽에만).
+- **워크플로우**: 개발 중 에디터 실시간 검사 → 저장 시 Prettier → 커밋 전 lint-staged → CI 전체 검증.
+- **모노레포**: 공유 설정은 `config/*` 패키지로 중앙화하고 각 워크스페이스에서 re-export한다.
+
+세부 설정·구현 가이드:
+
+- [품질 도구 개요](../docs/quality/README.md)
+- [ESLint](../docs/quality/eslint.md)
+- [Prettier](../docs/quality/prettier.md)
+- [EditorConfig](../docs/quality/editorconfig.md)
+- [스크립트·자동화](../docs/quality/scripts.md)
+- [모노레포 설정 구현](../docs/quality/monorepo-config.md)

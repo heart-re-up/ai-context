@@ -1,0 +1,21 @@
+---
+description: pnpm+Turbo 모노레포 구성 중 겪는 전형적 문제 — TS6310(tsc -b --noEmit + project references), ESLint globals 누락, Turbo build output 경고, 워크스페이스 의존성·React 19 타입 충돌 등의 증상이 보이면 참고
+---
+
+# 모노레포(pnpm + Turbo) 구성 문제
+
+아래 증상이 보이면 먼저 [문제 해결 가이드](../docs/monorepo/troubleshooting.md)를 확인한다 — 원인이 옵션 조합 자체의 제약이라 재시도·재빌드로는 해결되지 않는 경우가 많다.
+
+- `TS6310: Referenced project '...' may not disable emit` → `tsc -b`에 `--noEmit`을 같이 쓰면 항상 발생. `references`가 있는 패키지의 `typecheck`는 `--noEmit` 없이 `tsc -b`만 쓴다.
+- ESLint 공유 설정에서 `globals is not defined` → `globals` 모듈 import 누락.
+- `WARNING no output files found for task ...#build` → `turbo.json`의 `outputs`에 실제 빌드 산출 경로(프레임워크별로 다름)가 빠짐.
+- React 19 도입 후 `Cannot find namespace 'JSX'` → `JSX.Element` 대신 `React.JSX.Element` 사용.
+
+그 외 워크스페이스 구조·설정 배경은 다음을 참고한다.
+
+- [워크스페이스 기본 구성](../docs/monorepo/workspace.md)
+- [apps/ 구성](../docs/monorepo/apps.md)
+- [packages/ 구성](../docs/monorepo/packages.md)
+- [공유 설정(config/) 구성](../docs/monorepo/config.md)
+- [빠른 시작](../docs/monorepo/quick-start.md)
+- [React 19 설정 주의사항](../docs/monorepo/react19-setup.md)

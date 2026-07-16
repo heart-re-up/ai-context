@@ -1,0 +1,23 @@
+---
+description: Vitest 테스트 — vitest.config, 단위·컴포넌트 테스트 파일 작성·설정 작업 시 적용
+globs:
+  - "vitest.config.*"
+  - "vitest.*.config.*"
+  - "**/*.test.*"
+  - "**/*.spec.*"
+---
+
+# Vitest 테스트
+
+- **React/DOM 테스트**: `test.environment: "jsdom"` + `@testing-library/react` + `setupFiles`에서 `@testing-library/jest-dom` 로드.
+- **setupFiles**: `ResizeObserver`·`matchMedia` 등 브라우저 API는 테스트 전역에서 mock한다.
+- **alias**: `vitest.config`의 `resolve.alias`를 Vite/TSConfig와 동일하게 맞춘다.
+- **pre-commit 연동**: `vitest related --run`으로 변경 파일 관련 테스트만 실행한다(lint-staged 패턴).
+- **환경 선택**: 기본은 jsdom. 성능이 critical하고 DOM이 단순할 때만 happy-dom을 검토한다.
+
+세부 가이드:
+
+- [Vitest 개요](../docs/vitest/README.md)
+- [기본 설정](../docs/vitest/vitest.md)
+- [테스트 전략](../docs/vitest/vitest-strategy.md)
+- [고급 옵션](../docs/vitest/vitest-options.md)

@@ -1,0 +1,24 @@
+---
+description: Docker·Compose·이미지 빌드 — 서버 앱(SSR/API/DB) 컨테이너화, Dockerfile, docker-compose 설정 작업 시 적용
+globs:
+  - "**/Dockerfile"
+  - "**/Dockerfile.*"
+  - "docker-compose*.yml"
+  - "docker-compose*.yaml"
+  - "**/.dockerignore"
+---
+
+# Docker 설정
+
+- **SPA 정적 배포**(순수 React/Vue/Angular)는 Docker 없이 CDN·정적 호스팅이 보통 더 단순하다. SSR·API 서버·DB·Redis 등 서버 런타임이 있을 때 Docker를 검토한다.
+- **로컬 개발**: 대부분 `pnpm dev`가 Docker보다 빠르다. 팀 환경 통일·다중 서비스 연동·프로덕션 모방이 필요할 때만 dev용 Dockerfile을 쓴다.
+- **프로덕션 권장**: CI에서 빌드 → 빌드 산출물만 런타임 이미지에 `COPY`하는 가벼운 이미지. 멀티스테이지 빌드는 Docker 내부 전체 빌드가 필요할 때의 대안이다.
+- **보안**: `node:alpine` + 비root 사용자(`adduser`/`USER`), `HEALTHCHECK`, 프로덕션 의존성만 설치.
+- **이미지 태깅**: `latest`만 쓰지 말고 Git SHA·빌드 번호로 버전을 고정한다.
+
+앱·인프라별 가이드:
+
+- [Docker 개요](../docs/docker/README.md)
+- [Next.js](../docs/docker/nextjs.md)
+- [Nest.js](../docs/docker/nestjs.md)
+- [데이터베이스](../docs/docker/database.md)

@@ -1,0 +1,18 @@
+---
+description: TypeScript 컴파일러 설정 — tsconfig.json, project references, React/NestJS 타입 옵션 작업 시 적용
+globs:
+  - "tsconfig*.json"
+  - "**/tsconfig*.json"
+---
+
+# TypeScript 설정
+
+- **Vite/번들러 앱**: `moduleResolution: "bundler"`, `noEmit: true`, `jsx: "react-jsx"`. 앱은 emit 없이 타입체크만 한다.
+- **라이브러리 패키지**: `declaration` + `declarationMap` + `outDir: "dist"`. 테스트 파일은 `exclude`에 `**/*.test.*` 포함.
+- **React 19**: 반환 타입 명시 시 `React.JSX.Element`(`JSX.Element` 불가). `React.FC` 사용 금지. `@types/react`·`@types/react-dom` 명시 설치.
+- **project references + `tsc -b`**: 참조되는 프로젝트에 `--noEmit`을 같이 쓰면 `TS6310`이 난다 — references 패키지는 `tsc -b`만 사용한다.
+- **paths**: Vite alias와 `compilerOptions.paths`를 동기화하고, 모노레포에서는 각 패키지 `include`를 명시해 상대 경로 오류를 막는다.
+
+세부 설정·앱/패키지별 예시:
+
+- [TypeScript 설정 가이드](../docs/typescript.md)

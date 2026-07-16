@@ -125,7 +125,7 @@ tsconfig.json(24,5): error TS6310: Referenced project '.../packages/shared' may 
 **해결방법**: `references`가 있는 패키지의 `typecheck` 스크립트에서 `--noEmit`을 제거한다. `dist`는 `.gitignore` 대상이라 emit 자체는 부작용이 없다.
 
 ```json
-// apps/admin-api-nestjs/package.json 등
+// apps/backend/package.json 등
 {
   "scripts": {
     "typecheck": "tsc -b" // --noEmit 제거
@@ -133,7 +133,7 @@ tsconfig.json(24,5): error TS6310: Referenced project '.../packages/shared' may 
 }
 ```
 
-`references`가 없는 패키지(`packages/shared`, `packages/database` 등)나 `-b` 없이 `tsc --noEmit`만 쓰는 앱(`user-web`, `overlay-web`)은 영향 없음.
+`references`가 없는 패키지나 `-b` 없이 `tsc --noEmit`만 쓰는 프런트엔드 앱은 영향 없음.
 
 ## ESLint 설정 문제
 

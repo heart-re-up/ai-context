@@ -1,0 +1,25 @@
+---
+description: Vite 빌드·개발 서버·플러그인·환경 변수·라이브러리 패키징 — vite.config 설정 작업 시 적용
+globs:
+  - "vite.config.*"
+  - "vite.*.config.*"
+---
+
+# Vite 빌드 설정
+
+- **alias 동기화**: `resolve.alias`와 `tsconfig.json` `paths`를 반드시 함께 맞춘다. 한쪽만 설정하면 IDE 경고 또는 빌드 `Cannot find module`이 난다.
+- **의존성 사전 번들**: 자주 쓰는 패키지는 `optimizeDeps.include`로, WASM·네이티브 바이너리 패키지는 `optimizeDeps.exclude`로 esbuild 사전 번들에서 제외한다.
+- **HMR 미동작** → Fast Refresh 플러그인·파일 확장자·프록시 설정을 확인한다.
+- **앱 vs 라이브러리**: SPA는 `vite.config.ts`, npm 패키지 배포는 `build.lib`·declaration 출력 설정을 별도 구성한다(`vite-lib` 가이드).
+- **환경 변수**: 클라이언트 노출은 `VITE_` 접두사만. 민감 정보는 서버 env로 분리한다.
+
+세부 가이드:
+
+- [빌드 설정 개요](../docs/vite/README.md)
+- [Vite 기본 설정](../docs/vite/vite.md)
+- [플러그인](../docs/vite/vite-plugins.md)
+- [개발 서버·HMR](../docs/vite/vite-dev.md)
+- [환경 변수](../docs/vite/vite-env.md)
+- [라이브러리 빌드](../docs/vite/vite-lib.md)
+- [optimizeDeps 504 (lazy 라우트)](../docs/vite/vite-optimizedeps-lazy-routes.md)
+- [React 하이드레이션 오류(#418)](../docs/vite/react-hydration-mismatch-pitfalls.md)

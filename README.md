@@ -205,21 +205,31 @@ git push
 
 ## 📁 문서 구조
 
+이 저장소는 **Cursor Project Rules로도 직접 동작**하도록 `docs/`(사람이 읽는 배경·상세 문서)와 `rules/`(Cursor가 자동으로 로드하는 `.mdc` 규칙)로 나뉜다. 그래서 컨슈머 프로젝트에 이 저장소를 서브모듈로 추가할 때는 **`.cursor/rules/` 아래**(예: `.cursor/rules/ai-context`)에 checkout해야 한다 — `rules/*.mdc`가 `.cursor/rules/` 밖에 있으면 Cursor가 자동으로 인식하지 못한다.
+
 ```
-.ai-context/
-├── README.md              # 이 파일
-├── automation/            # 자동화 도구 설정
-├── cicd/                  # CI/CD 파이프라인 가이드
-├── docker/                # Docker 설정 가이드
-├── monorepo/              # 모노레포 구성 가이드
-├── node/                  # Node.js 프로젝트 설정
-├── conventions/         # React 컴포넌트·훅 코딩 규약
-├── quality/               # 코드 품질 관리
-├── typescript.md          # TypeScript 설정 가이드
-├── vite/                  # Vite 빌드 도구 설정
-├── vitest/                # Vitest 테스트 설정
-└── vscode/                # VS Code 설정
+ai-context/                 # 컨슈머 프로젝트의 .cursor/rules/ai-context 등에 checkout
+├── README.md               # 이 파일
+├── docs/                   # 사람이 읽는 배경·상세 문서 (기존 구조 그대로, 위치만 이동)
+│   ├── automation/         # 자동화 도구 설정
+│   ├── cicd/                # CI/CD 파이프라인 가이드
+│   ├── conventions/         # React 컴포넌트·훅 코딩 규약
+│   ├── docker/              # Docker 설정 가이드
+│   ├── monorepo/            # 모노레포 구성 가이드
+│   ├── node/                 # Node.js 프로젝트 설정
+│   ├── quality/              # 코드 품질 관리
+│   ├── vite/                 # Vite 빌드 도구 설정
+│   ├── vitest/                # Vitest 테스트 설정
+│   ├── vscode/                # VS Code 설정
+│   ├── wasm/                   # WebAssembly 개발 가이드
+│   └── typescript.md           # TypeScript 설정 가이드
+└── rules/                  # Cursor가 자동 로드하는 slim 라우터 (.mdc)
+    ├── conventions.mdc      # globs 기반 — 컴포넌트/훅 파일 작성 시 자동 첨부
+    ├── monorepo.mdc         # description 기반 — 증상이 맞을 때만 소환
+    └── ...                  # 주제별로 계속 추가
 ```
+
+각 `rules/*.mdc`는 핵심 규칙만 몇 줄로 압축하고, 상세 배경·예시는 `docs/`를 링크한다(전체 내용을 `.mdc`에 인라인하지 않음 — 컨텍스트 낭비 방지). 어떤 주제를 `alwaysApply`/`globs`/`description` 중 무엇으로 트리거할지는 그 주제가 "얼마나 자주 참고돼야 하는가"로 판단한다 — 예: 코딩 컨벤션은 `globs`로 항상 붙고, 트러블슈팅은 `description`으로 증상이 맞을 때만, VS Code 설정처럼 온보딩 1회성인 주제는 라우터 없이 `docs/`만 둔다.
 
 ## 🤝 기여하기
 

@@ -15,6 +15,10 @@
 - **[Commitlint](./commitlint.md)**: 커밋 메시지 규칙 검증
 - **[Lint-staged](./lint-staged.md)**: Staged 파일만 선택적 검증
 
+### Cursor Cloud Agent
+
+- **[Cursor Cloud Agent 함정](./cursor-cloud-agent-gotchas.md)**: GitHub Issue 트리거 설정, PAT 워크어라운드, Cloud VM Node 버전
+
 ## CI/CD 통합
 
 자동화 도구들을 CI/CD 파이프라인과 연동하는 방법은 별도 가이드를 참고하세요:

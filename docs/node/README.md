@@ -39,6 +39,22 @@ Node.js와 패키지 매니저 버전을 팀원 간에 동기화하는 방법:
 - **코드 품질**: 린트, 포맷팅, 타입 체크
 - **환경별 실행**: 개발/스테이징/프로덕션 환경 분기
 
+### 🐛 [NestJS `tsx watch` dev 런타임 함정](./nestjs-tsx-decorator-metadata.md)
+
+`tsx watch`(esbuild)로 NestJS dev 서버를 띄울 때 DI가 깨지는 문제:
+
+- **근본 원인**: esbuild가 `emitDecoratorMetadata`를 지원하지 않음
+- **증상**: 주입 필드 `undefined`, DB 연동 엔드포인트 500
+- **검증**: `tsc`로 컴파일된 `dist` 산출물로 실행
+
+### 🗄️ [Prisma CLI + Azure Entra 인증 제한](./prisma-azure-entra-cli-limitation.md)
+
+Azure SQL + Entra 인증 환경에서 Prisma CLI와 런타임 adapter의 지원 차이:
+
+- **런타임**: `@prisma/adapter-mssql` + Entra 인증 지원
+- **CLI**: `migrate`/`db push`/`db pull`은 Entra 미지원
+- **워크어라운드**: `migrate diff`로 SQL 생성 후 adapter 경로로 실행
+
 ## 모노레포 연동
 
 Node.js 환경 설정과 모노레포 워크스페이스 설정의 연관성:

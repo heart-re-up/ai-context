@@ -1,0 +1,23 @@
+---
+description: React 컴포넌트·커스텀 훅 코딩 규약 — 계약·네이밍·ref·성능·조건부 훅. 컴포넌트/훅 파일을 작성·수정할 때 항상 적용
+globs:
+  - "**/*.tsx"
+  - "**/use*.ts"
+  - "**/use*.tsx"
+---
+
+# React 컴포넌트·커스텀 훅 규약
+
+- **역할 분리**: 구독·복잡한 동기화·DOM 생명주기는 커스텀 훅으로, 컴포넌트는 렌더·이벤트 바인딩만. "두꺼운" 컴포넌트보다 훅 + 얇은 UI.
+- **ref**: `forwardRef` 대신 `ref`를 일반 prop으로 받는다(React 19). 훅은 구독 대상에 붙일 `RefCallback`을 반환하는 패턴과 짝을 이룬다.
+- **props**: `OwnProps` + `ComponentPropsWithRef` 등 호스트 props 분리, 단일 루트, `pick`/`omit`으로 충돌 방지.
+- **성능**: JSX 전체를 `useMemo`/`useCallback`으로 감싸지 않는다 — 자식에 넘기는 객체·함수나 비싼 계산만 안정화. 리마운트가 필요하면 `key`를 쓰고 메모이제이션으로 숨기지 않는다.
+- **조건부 훅 금지**: `use*` 호출 순서가 바뀌지 않게 유지한다.
+
+세부 규칙(네이밍 표, 예시, 불리언·반환 객체 규칙 등):
+
+- [계약·네이밍·구조](../docs/conventions/convention-contract.md)
+- [Own과 호스트 props](../docs/conventions/convention-own-host-props.md)
+- [컴포넌트](../docs/conventions/convention-component.md)
+- [커스텀 훅](../docs/conventions/convention-hook.md)
+- [라이브러리 선택](../docs/conventions/convention-libraries.md)

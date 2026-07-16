@@ -62,6 +62,20 @@ Vite 프로젝트의 환경 변수 관리:
 - **배포 설정**: npm 패키지 배포 준비
 - **트리 셰이킹**: 번들 크기 최적화
 
+### 🐛 [optimizeDeps 콜드스타트 504 (lazy 라우트)](./vite-optimizedeps-lazy-routes.md)
+
+React Router Framework Mode 등 lazy 라우트 뒤 의존성을 Vite가 늦게 발견해 `504 (Outdated Optimize Dep)`가 뜨는 문제:
+
+- **근본 원인**: esbuild 1차 스캔이 `import()` 경계를 넘지 못함
+- **해결**: `optimizeDeps.entries: ['src/**/*.{ts,tsx}']`
+
+### 🐛 [React 하이드레이션 오류(#418)](./react-hydration-mismatch-pitfalls.md)
+
+React error #418(치명적 하이드레이션 불일치)의 대표 원인:
+
+- **`prerender` + SPA fallback 불일치**: 정적 호스팅 rewrite가 홈 전용 HTML을 모든 경로에 서빙
+- **서드파티 스크립트 타이밍**: Analytics/Clarity를 `hydrateRoot` 이전에 주입
+
 ### 🧪 [테스트 설정](../vitest/README.md)
 
 Vitest를 사용한 라이브러리 테스트 환경:

@@ -1,0 +1,15 @@
+---
+description: WASM·SharedArrayBuffer·COOP/COEP·멀티스레드 WASM — `SharedArrayBuffer is not defined`, WASM 로딩 실패, `optimizeDeps` 번들링 오류, pthread/Worker 기반 WASM, Cross-Origin Isolation 헤더 설정이 필요할 때 참고
+---
+
+# WebAssembly (WASM)
+
+- **멀티스레드 WASM**(pthread 등)은 `SharedArrayBuffer`가 필요하고, 이는 **Cross-Origin Isolation** 헤더 없이는 동작하지 않는다: `Cross-Origin-Opener-Policy: same-origin`, `Cross-Origin-Embedder-Policy: require-corp`.
+- **`SharedArrayBuffer is not defined`** → dev 서버 `server.headers` 또는 배포 호스팅(Vercel/Netlify/SWA 등)에 COOP/COEP 설정. Vite dev `headers`만으로는 프로덕션에 적용되지 않는다.
+- **WASM 패키지는 `optimizeDeps.exclude`**: Vite가 esbuild로 사전 번들하면 WASM 바이너리가 손상되거나 런타임 오류가 난다.
+- **로딩**: 수 MB~수십 MB 바이너리는 지연 로딩(`idle`→`loading`→`ready`→`error`). 수 초 이상 연산은 Web Worker로 메인 스레드 블로킹을 피한다.
+- **COOP/COEP 부작용**: `crossorigin` 없는 외부 리소스·서드파티 스크립트·`window.opener` 팝업이 차단될 수 있다.
+
+상세 제약·오류 표·배포별 헤더 설정:
+
+- [WASM 개발 가이드](../docs/wasm/README.md)

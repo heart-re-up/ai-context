@@ -1,0 +1,26 @@
+---
+description: Node.js 런타임·버전·환경 변수·npm scripts — package.json engines, .nvmrc, .env 설정 작업 시 적용
+globs:
+  - "package.json"
+  - "**/package.json"
+  - ".nvmrc"
+  - ".node-version"
+  - ".env*"
+---
+
+# Node.js 개발 환경
+
+- **버전 고정**: `.nvmrc` 또는 `.node-version` + `package.json` `engines`로 팀 간 Node·패키지 매니저 버전을 맞춘다.
+- **서버 vs 클라이언트 env**: Node(서버)는 접두사 제한 없음·민감 정보 가능. Vite(클라이언트)는 `VITE_` 접두사만 번들에 노출된다 — 비밀키는 서버 env에만 둔다.
+- **`.env.local`은 gitignore** 대상. 커밋용 템플릿은 `.env.example`만 유지한다.
+- **런타임 검증**: Zod 등으로 필수 env를 앱 시작 시 검증한다. 누락·형식 오류를 런타임 이전에 잡는다.
+- **스크립트 패턴**: `dev`/`build`/`test`/`lint`/`typecheck`를 루트·워크스페이스별로 일관되게 정의한다.
+
+세부 가이드:
+
+- [Node.js 개요](../docs/node/README.md)
+- [버전 관리](../docs/node/version-management.md)
+- [환경 변수](../docs/node/environment-variables.md)
+- [스크립트 관리](../docs/node/scripts.md)
+- [NestJS `tsx watch` dev 런타임 함정](../docs/node/nestjs-tsx-decorator-metadata.md)
+- [Prisma CLI + Azure Entra 인증 제한](../docs/node/prisma-azure-entra-cli-limitation.md)
