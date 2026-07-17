@@ -27,9 +27,9 @@
 - 공유 컴포넌트, 유틸리티 함수, 타입 정의 등
 - 자세한 내용: [packages.md](./packages.md)
 
-### 4. 설정 관리 (config/)
+### 4. 설정 관리 (packages/tooling-*)
 
-- ESLint, TypeScript, Prettier 등 공유 설정
+- ESLint, TypeScript, Prettier 등 공유 설정도 `packages/` 안에 `tooling-` 접두사로 둔다 (별도 최상위 `config/` 디렉토리 불필요)
 - 프로젝트 전체의 일관된 코드 품질 유지
 - 자세한 내용: [config.md](./config.md)
 
@@ -63,12 +63,11 @@ project-root/
 │   └── admin-dashboard/    # 관리자 대시보드
 ├── packages/               # 공유 패키지들
 │   ├── ui-components/      # UI 컴포넌트 라이브러리
-│   ├── shared-lib/         # 공유 유틸리티 및 로직
-│   └── types/              # 공유 타입 정의
-├── config/                 # 공유 설정 (권장)
-│   ├── eslint-config/      # ESLint 설정
-│   ├── typescript-config/  # TypeScript 설정
-│   └── prettier-config/    # Prettier 설정
+│   ├── lib-shared/         # 공유 유틸리티 및 로직
+│   ├── types/              # 공유 타입 정의
+│   ├── tooling-eslint-config/     # ESLint 설정 (권장: config/ 대신 packages/ 안에 배치)
+│   ├── tooling-typescript-config/ # TypeScript 설정
+│   └── tooling-prettier-config/   # Prettier 설정
 ├── package.json            # 루트 패키지 설정
 ├── pnpm-workspace.yaml     # 워크스페이스 설정
 ├── turbo.json              # Turbo 설정

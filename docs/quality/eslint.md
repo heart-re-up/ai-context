@@ -372,7 +372,7 @@ export default [
 
 모노레포에서는 ESLint 설정을 패키지로 만들어 중앙에서 관리하는 것이 효율적입니다.
 
-#### config/eslint-config/package.json
+#### packages/tooling-eslint-config/package.json
 
 ```json
 {
@@ -403,7 +403,7 @@ export default [
 }
 ```
 
-#### config/eslint-config/base.mjs
+#### packages/tooling-eslint-config/base.mjs
 
 ```javascript
 import js from "@eslint/js";
@@ -447,7 +447,7 @@ export default tseslint.config(
 );
 ```
 
-#### config/eslint-config/react.mjs
+#### packages/tooling-eslint-config/react.mjs
 
 ```javascript
 import baseConfig from "./base.mjs";
@@ -490,7 +490,7 @@ export default [
 ];
 ```
 
-#### config/eslint-config/lib.mjs
+#### packages/tooling-eslint-config/lib.mjs
 
 ```javascript
 import baseConfig from "./base.mjs";
@@ -509,7 +509,7 @@ export default [
 ];
 ```
 
-#### config/eslint-config/node.mjs
+#### packages/tooling-eslint-config/node.mjs
 
 ```javascript
 import baseConfig from "./base.mjs";

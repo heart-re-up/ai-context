@@ -132,14 +132,14 @@ TypeScript 컴파일러 설정과 프로젝트별 설정 패턴을 다룹니다.
 ## 데모 앱에서 라이브러리 참조
 
 ```json
-// apps/shared-lib-demo/tsconfig.json
+// apps/lib-shared-demo/tsconfig.json
 {
   "compilerOptions": {
     "paths": {
       // 개발 중에는 소스 직접 참조 (빠른 피드백)
-      "@project/shared-lib": ["../../packages/shared-lib/src/index.ts"]
+      "@project/lib-shared": ["../../packages/lib-shared/src/index.ts"]
       // 프로덕션에서는 빌드된 파일 참조
-      // "@project/shared-lib": ["../../packages/shared-lib/dist/index.d.ts"]
+      // "@project/lib-shared": ["../../packages/lib-shared/dist/index.d.ts"]
     }
   }
 }

@@ -6,40 +6,40 @@
 
 ## 설정 파일 구조 전략
 
-### 📁 별도 config 디렉토리 (권장)
+### 📁 packages/ 안에 접두사로 구분 (권장)
+
+설정 패키지도 결국 워크스페이스가 참조하는 패키지이므로, `apps/`·`packages/` 외에 별도 최상위 `config/` 글롭을 추가로 관리할 필요는 없습니다. `packages/` 안에서 `tooling-` 접두사로 구분하면 워크스페이스 글롭(`packages/*`)이 하나로 유지되고, 정렬만으로도 설정 패키지가 한눈에 묶여 보입니다.
 
 ```
 project-root/
-├── config/                    # 모든 설정 파일 중앙 관리
-│   ├── eslint-config/         # ESLint 설정 패키지
-│   ├── typescript-config/     # TypeScript 설정 패키지
-│   ├── prettier-config/       # Prettier 설정 패키지
-│   ├── vite-config/          # Vite 설정 패키지
-│   └── vitest-config/        # Vitest 설정 패키지
-├── packages/                  # 비즈니스 로직 패키지들
-│   ├── ui-components/
-│   ├── shared-lib/
+├── packages/
+│   ├── tooling-eslint-config/     # ESLint 설정 패키지
+│   ├── tooling-typescript-config/ # TypeScript 설정 패키지
+│   ├── tooling-prettier-config/   # Prettier 설정 패키지
+│   ├── tooling-vite-config/       # Vite 설정 패키지
+│   ├── tooling-vitest-config/     # Vitest 설정 패키지
+│   ├── ui-components/             # 비즈니스 로직 패키지들
+│   ├── lib-shared/
 │   └── types/
-└── apps/                     # 애플리케이션들
+└── apps/                          # 애플리케이션들
     ├── web/
     └── admin/
 ```
 
 ### 🎯 장점
 
-- **중앙화**: 모든 설정이 한 곳에서 관리됨
+- **일관성**: 다른 패키지와 동일하게 `packages/*` 글롭 하나로 워크스페이스가 관리됨
 - **재사용성**: 다양한 모듈 타입별 설정 제공
 - **유지보수**: 설정 변경 시 한 번만 수정
-- **일관성**: 프로젝트 전체에 동일한 규칙 적용
+- **정렬 가능성**: `tooling-` 접두사로 알파벳 정렬만으로도 설정 패키지가 그룹화됨
 - **확장성**: 새로운 도구 설정 추가 용이
-- **명확성**: 설정과 비즈니스 로직 분리
 
 ## 설정 패키지 구조
 
 ### ESLint 설정 패키지
 
 ```
-config/eslint-config/
+packages/tooling-eslint-config/
 ├── package.json         # 패키지 정의
 ├── base.mjs            # 기본 ESLint 설정 (⚠️ globals import 필수)
 ├── react.mjs           # React 프로젝트용 (React 19 호환)
@@ -77,7 +77,7 @@ config/eslint-config/
 ### TypeScript 설정 패키지
 
 ```
-config/typescript-config/
+packages/tooling-typescript-config/
 ├── package.json         # 패키지 정의
 ├── base.json           # 기본 TypeScript 설정
 ├── app.json            # 애플리케이션용 (DOM, React)
@@ -104,7 +104,7 @@ config/typescript-config/
 ### Prettier 설정 패키지
 
 ```
-config/prettier-config/
+packages/tooling-prettier-config/
 ├── package.json         # 패키지 정의
 └── index.js            # Prettier 설정
 ```
@@ -122,13 +122,14 @@ config/prettier-config/
 
 ## 워크스페이스 통합
 
-### 1. pnpm-workspace.yaml 업데이트
+### 1. pnpm-workspace.yaml
+
+설정 패키지도 `packages/*` 글롭에 포함되므로 별도 항목을 추가할 필요가 없습니다.
 
 ```yaml
 packages:
   - apps/*
   - packages/*
-  - config/* # 설정 패키지 추가
 ```
 
 ### 2. 설정 패키지 vs NPM 패키지
@@ -136,7 +137,7 @@ packages:
 #### 워크스페이스 내 설정 패키지 (권장)
 
 ```json
-// config/eslint-config/package.json
+// packages/tooling-eslint-config/package.json
 {
   "name": "@project/eslint-config",
   "private": true, // 외부 배포 안함
@@ -152,7 +153,7 @@ packages:
 #### 외부 배포용 설정 패키지
 
 ```json
-// config/eslint-config/package.json
+// packages/tooling-eslint-config/package.json
 {
   "name": "@company/eslint-config",
   "private": false, // NPM 배포
@@ -206,7 +207,7 @@ packages:
 ```bash
 # 모노레포 구조
 project-root/
-├── config/eslint-config/
+├── packages/tooling-eslint-config/
 │   ├── package.json          # "name": "@project/eslint-config"
 │   ├── base.mjs             # 실제 파일
 │   └── react.mjs            # 실제 파일
@@ -219,13 +220,13 @@ project-root/
 // 이 import는 다음과 같이 해석됩니다:
 import reactConfig from "@project/eslint-config/react";
 //                     ↓
-//         실제로는: ../../config/eslint-config/react.mjs
+//         실제로는: ../../packages/tooling-eslint-config/react.mjs
 
 export default reactConfig;
 ```
 
 > **✅ 핵심**: 워크스페이스에서 `@project/eslint-config/react`는
-> `config/eslint-config/react.mjs` 파일을 직접 참조합니다.
+> `packages/tooling-eslint-config/react.mjs` 파일을 직접 참조합니다.
 > `files` 옵션과는 **무관**합니다.
 
 ### 애플리케이션에서 사용
@@ -338,20 +339,20 @@ pnpm -r typecheck
 
 ### 기존 프로젝트에서 적용하기
 
-1. **config 디렉토리 생성**
+1. **설정 패키지 디렉토리 생성**
 
    ```bash
-   mkdir -p config/{eslint-config,typescript-config,prettier-config}
+   mkdir -p packages/tooling-{eslint-config,typescript-config,prettier-config}
    ```
 
 2. **설정 파일 이동 및 패키지화**
 
-   - 기존 설정 파일들을 config 디렉토리로 이동
+   - 기존 설정 파일들을 각 `packages/tooling-*` 디렉토리로 이동
    - 각 설정을 독립 패키지로 구성
 
 3. **워크스페이스 설정 업데이트**
 
-   - `pnpm-workspace.yaml`에 config 추가
+   - 이미 `packages/*` 글롭에 포함되므로 `pnpm-workspace.yaml` 변경은 불필요
    - 루트 `package.json`에 설정 패키지 의존성 추가
 
 4. **기존 프로젝트 설정 업데이트**
@@ -365,26 +366,26 @@ pnpm -r typecheck
 
 echo "🔄 설정 파일 마이그레이션 시작..."
 
-# 1. config 디렉토리 생성
-mkdir -p config/{eslint-config,typescript-config,prettier-config}
+# 1. 설정 패키지 디렉토리 생성
+mkdir -p packages/tooling-{eslint-config,typescript-config,prettier-config}
 
 # 2. 기존 설정 파일 이동
 if [ -f "eslint.config.mjs" ]; then
-  mv eslint.config.mjs config/eslint-config/base.mjs
+  mv eslint.config.mjs packages/tooling-eslint-config/base.mjs
 fi
 
 if [ -f "tsconfig.json" ]; then
-  cp tsconfig.json config/typescript-config/base.json
+  cp tsconfig.json packages/tooling-typescript-config/base.json
 fi
 
 if [ -f "prettier.config.mjs" ]; then
-  mv prettier.config.mjs config/prettier-config/index.js
+  mv prettier.config.mjs packages/tooling-prettier-config/index.js
 fi
 
 # 3. 패키지 파일 생성
-echo '{"name": "@project/eslint-config", "version": "1.0.0"}' > config/eslint-config/package.json
-echo '{"name": "@project/typescript-config", "version": "1.0.0"}' > config/typescript-config/package.json
-echo '{"name": "@project/prettier-config", "version": "1.0.0"}' > config/prettier-config/package.json
+echo '{"name": "@project/eslint-config", "version": "1.0.0"}' > packages/tooling-eslint-config/package.json
+echo '{"name": "@project/typescript-config", "version": "1.0.0"}' > packages/tooling-typescript-config/package.json
+echo '{"name": "@project/prettier-config", "version": "1.0.0"}' > packages/tooling-prettier-config/package.json
 
 echo "✅ 마이그레이션 완료!"
 ```

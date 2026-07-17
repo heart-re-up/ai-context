@@ -65,7 +65,7 @@ apps/
   },
   "dependencies": {
     "@project/ui-components": "workspace:*",
-    "@project/shared-lib": "workspace:*",
+    "@project/lib-shared": "workspace:*",
     "@project/types": "workspace:*",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
@@ -107,7 +107,7 @@ apps/
   },
   "dependencies": {
     "@project/ui-components": "workspace:*",
-    "@project/shared-lib": "workspace:*",
+    "@project/lib-shared": "workspace:*",
     "@project/types": "workspace:*",
     "next": "^15.2.0",
     "react": "^19.2.7",
@@ -139,7 +139,7 @@ apps/
     "clean": "rimraf .turbo node_modules ios/build android/build"
   },
   "dependencies": {
-    "@project/shared-lib": "workspace:*",
+    "@project/lib-shared": "workspace:*",
     "@project/types": "workspace:*",
     "react": "^19.2.7",
     "react-native": "^0.76.1"
@@ -215,7 +215,7 @@ export default defineConfig(({ mode }) => ({
 ```typescript
 // apps/web-app/src/App.tsx
 import { Button, Card } from "@project/ui-components";
-import { formatDate, apiClient } from "@project/shared-lib";
+import { formatDate, apiClient } from "@project/lib-shared";
 import type { User, ApiResponse } from "@project/types";
 
 export default function App() {
@@ -231,7 +231,7 @@ export default function App() {
 
 ```typescript
 // apps/web-app/src/api/users.ts
-import { apiClient } from "@project/shared-lib";
+import { apiClient } from "@project/lib-shared";
 import type { User, CreateUserRequest } from "@project/types";
 
 export const getUsers = (): Promise<User[]> => {
@@ -424,7 +424,7 @@ CMD ["nginx", "-g", "daemon off;"]
 
 ### 코드 공유 원칙
 
-1. **비즈니스 로직**: `packages/shared-lib`으로 분리
+1. **비즈니스 로직**: `packages/lib-shared`으로 분리
 2. **UI 컴포넌트**: `packages/ui-components`로 분리
 3. **타입 정의**: `packages/types`로 분리
 4. **앱별 특수 로직**: 해당 앱 내부에 유지

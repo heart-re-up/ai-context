@@ -29,7 +29,7 @@
 ```
 project-root/
 ├── packages/
-│   └── shared-lib/            # 라이브러리 패키지
+│   └── lib-shared/            # 라이브러리 패키지
 │       ├── src/
 │       │   ├── components/
 │       │   ├── hooks/
@@ -41,7 +41,7 @@ project-root/
 │       └── package.json
 ├── apps/
 │   ├── main-app/              # 메인 애플리케이션
-│   └── shared-lib-demo/       # 라이브러리 데모/통합 테스트 앱
+│   └── lib-shared-demo/       # 라이브러리 데모/통합 테스트 앱
 │       ├── src/
 │       │   ├── examples/      # 사용 예제들
 │       │   └── tests/         # 통합 테스트
@@ -52,11 +52,11 @@ project-root/
 
 ### 패키지별 역할 분담
 
-#### 라이브러리 패키지 (`packages/shared-lib`)
+#### 라이브러리 패키지 (`packages/lib-shared`)
 
 ```json
 {
-  "name": "@project/shared-lib",
+  "name": "@project/lib-shared",
   "scripts": {
     "test": "vitest",
     "test:run": "vitest run",
@@ -72,11 +72,11 @@ project-root/
 }
 ```
 
-#### 데모 앱 (`apps/shared-lib-demo`)
+#### 데모 앱 (`apps/lib-shared-demo`)
 
 ```json
 {
-  "name": "@project/shared-lib-demo",
+  "name": "@project/lib-shared-demo",
   "private": true,
   "scripts": {
     "dev": "vite",
@@ -85,7 +85,7 @@ project-root/
     "preview": "vite preview"
   },
   "dependencies": {
-    "@project/shared-lib": "workspace:*",
+    "@project/lib-shared": "workspace:*",
     "react": "^19.2.7",
     "react-dom": "^19.2.7"
   }
@@ -242,9 +242,9 @@ describe("useCounter", () => {
 ### 데모 앱 구조
 
 ```typescript
-// apps/shared-lib-demo/src/App.tsx
+// apps/lib-shared-demo/src/App.tsx
 import React from "react";
-import { Button, useCounter } from "@project/shared-lib";
+import { Button, useCounter } from "@project/lib-shared";
 
 function App() {
   const { count, increment, decrement } = useCounter(0);
@@ -277,7 +277,7 @@ export default App;
 ### 통합 테스트 예시
 
 ```typescript
-// apps/shared-lib-demo/src/tests/integration.test.tsx
+// apps/lib-shared-demo/src/tests/integration.test.tsx
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, it, expect } from "vitest";
@@ -322,7 +322,7 @@ describe("Library Integration Tests", () => {
 
 ```bash
 # 1. 라이브러리 개발 및 테스트
-cd packages/shared-lib
+cd packages/lib-shared
 
 # 단위 테스트 watch 모드
 pnpm test
@@ -334,7 +334,7 @@ pnpm test:coverage
 pnpm build
 
 # 3. 데모 앱에서 통합 테스트
-cd ../../apps/shared-lib-demo
+cd ../../apps/lib-shared-demo
 pnpm dev
 ```
 
@@ -344,11 +344,11 @@ pnpm dev
 
 ```bash
 # 터미널 1: 라이브러리 watch 빌드
-cd packages/shared-lib
+cd packages/lib-shared
 pnpm build:watch
 
 # 터미널 2: 데모 앱 실행
-cd apps/shared-lib-demo
+cd apps/lib-shared-demo
 pnpm dev
 ```
 
@@ -384,9 +384,9 @@ pnpm dev
 . "$(dirname -- "$0")/_/husky.sh"
 
 # 변경된 라이브러리가 있는 경우만 테스트 실행
-if git diff --cached --name-only | grep -q "packages/shared-lib/"; then
+if git diff --cached --name-only | grep -q "packages/lib-shared/"; then
   echo "Running library tests..."
-  pnpm --filter @project/shared-lib test:run
+  pnpm --filter @project/lib-shared test:run
 fi
 ```
 
@@ -464,7 +464,7 @@ describe("useLocalStorage", () => {
 
    ```bash
    # 라이브러리 재빌드
-   cd packages/shared-lib
+   cd packages/lib-shared
    pnpm build
 
    # 또는 watch 모드 사용
@@ -474,7 +474,7 @@ describe("useLocalStorage", () => {
 2. **타입 정의 파일 문제**
 
    ```typescript
-   // packages/shared-lib/tsconfig.json
+   // packages/lib-shared/tsconfig.json
    {
      "compilerOptions": {
        "declaration": true,

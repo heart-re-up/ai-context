@@ -30,7 +30,7 @@ function App() {
 React 19에 맞는 TypeScript 설정:
 
 ```json
-// config/typescript-config/app.json
+// packages/tooling-typescript-config/app.json
 {
   "compilerOptions": {
     "target": "ES2016",
@@ -150,7 +150,7 @@ pnpm ls react-dom
 ### 3. ESLint React 설정
 
 ```javascript
-// config/eslint-config/react.mjs
+// packages/tooling-eslint-config/react.mjs
 export default [
   {
     settings: {

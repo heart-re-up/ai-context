@@ -11,7 +11,7 @@
 mkdir my-monorepo && cd my-monorepo
 
 # 기본 디렉토리 구조 생성
-mkdir -p apps packages config
+mkdir -p apps packages
 ```
 
 ### 2단계: 워크스페이스 설정
@@ -22,7 +22,6 @@ mkdir -p apps packages config
 packages:
   - apps/*
   - packages/*
-  - config/*
 ```
 
 **package.json**
@@ -76,10 +75,10 @@ packages:
 #### TypeScript 설정
 
 ```bash
-mkdir -p config/typescript-config
+mkdir -p packages/tooling-typescript-config
 ```
 
-**config/typescript-config/package.json**
+**packages/tooling-typescript-config/package.json**
 
 ```json
 {
@@ -94,7 +93,7 @@ mkdir -p config/typescript-config
 }
 ```
 
-**config/typescript-config/base.json**
+**packages/tooling-typescript-config/base.json**
 
 ```json
 {

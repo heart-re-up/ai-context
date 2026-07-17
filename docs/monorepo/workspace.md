@@ -185,7 +185,7 @@ public-hoist-pattern[]=*@types*
     "clean": "rimraf .turbo dist node_modules"
   },
   "dependencies": {
-    "@project/shared-lib": "workspace:*",
+    "@project/lib-shared": "workspace:*",
     "@project/ui-components": "workspace:*",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
@@ -201,11 +201,11 @@ public-hoist-pattern[]=*@types*
 }
 ```
 
-### 라이브러리 모듈 (packages/shared-lib/package.json)
+### 라이브러리 모듈 (packages/lib-shared/package.json)
 
 ```json
 {
-  "name": "@project/shared-lib",
+  "name": "@project/lib-shared",
   "version": "1.0.0",
   "description": "Shared Library",
   "private": false,
@@ -258,7 +258,7 @@ public-hoist-pattern[]=*@types*
 ```json
 {
   "dependencies": {
-    "@project/shared-lib": "workspace:*",
+    "@project/lib-shared": "workspace:*",
     "@project/ui-components": "workspace:*"
   }
 }
@@ -271,7 +271,7 @@ public-hoist-pattern[]=*@types*
 pnpm add axios --filter=@project/main-app
 
 # 워크스페이스 패키지 추가
-pnpm add @project/shared-lib --workspace --filter=@project/main-app
+pnpm add @project/lib-shared --workspace --filter=@project/main-app
 ```
 
 ## NPM 배포 설정 (선택사항)
@@ -291,5 +291,5 @@ pnpm add @project/shared-lib --workspace --filter=@project/main-app
 pnpm link --global
 
 # 사용할 프로젝트에서
-pnpm link --global @project/shared-lib
+pnpm link --global @project/lib-shared
 ```

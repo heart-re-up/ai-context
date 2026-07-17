@@ -6,7 +6,7 @@
 
 ## ESLint 설정 패키지 구현
 
-### config/eslint-config/package.json
+### packages/tooling-eslint-config/package.json
 
 ```json
 {
@@ -38,7 +38,7 @@
 }
 ```
 
-### config/eslint-config/base.mjs
+### packages/tooling-eslint-config/base.mjs
 
 ```javascript
 import js from "@eslint/js";
@@ -84,7 +84,7 @@ export default tseslint.config(
 );
 ```
 
-### config/eslint-config/react.mjs
+### packages/tooling-eslint-config/react.mjs
 
 ```javascript
 import baseConfig from "./base.mjs";
@@ -132,7 +132,7 @@ export default [
 ];
 ```
 
-### config/eslint-config/lib.mjs
+### packages/tooling-eslint-config/lib.mjs
 
 ```javascript
 import baseConfig from "./base.mjs";
@@ -151,7 +151,7 @@ export default [
 ];
 ```
 
-### config/eslint-config/node.mjs
+### packages/tooling-eslint-config/node.mjs
 
 ```javascript
 import baseConfig from "./base.mjs";
@@ -177,7 +177,7 @@ export default [
 
 ## TypeScript 설정 패키지 구현
 
-### config/typescript-config/package.json
+### packages/tooling-typescript-config/package.json
 
 ```json
 {
@@ -195,7 +195,7 @@ export default [
 }
 ```
 
-### config/typescript-config/base.json
+### packages/tooling-typescript-config/base.json
 
 ```json
 {
@@ -230,7 +230,7 @@ export default [
 }
 ```
 
-### config/typescript-config/app.json
+### packages/tooling-typescript-config/app.json
 
 ```json
 {
@@ -253,7 +253,7 @@ export default [
 }
 ```
 
-### config/typescript-config/lib.json
+### packages/tooling-typescript-config/lib.json
 
 ```json
 {
@@ -273,7 +273,7 @@ export default [
 }
 ```
 
-### config/typescript-config/node.json
+### packages/tooling-typescript-config/node.json
 
 ```json
 {
@@ -298,7 +298,7 @@ export default [
 
 ## Prettier 설정 패키지 구현
 
-### config/prettier-config/package.json
+### packages/tooling-prettier-config/package.json
 
 ```json
 {
@@ -310,7 +310,7 @@ export default [
 }
 ```
 
-### config/prettier-config/index.js
+### packages/tooling-prettier-config/index.js
 
 ```javascript
 /** @type {import("prettier").Config} */
@@ -354,7 +354,7 @@ module.exports = {
 
 ## Vite 설정 패키지 구현
 
-### config/vite-config/package.json
+### packages/tooling-vite-config/package.json
 
 ```json
 {
@@ -377,7 +377,7 @@ module.exports = {
 }
 ```
 
-### config/vite-config/app.js
+### packages/tooling-vite-config/app.js
 
 ```javascript
 import { defineConfig } from "vite";
@@ -411,7 +411,7 @@ export default defineConfig(({ mode }) => ({
 }));
 ```
 
-### config/vite-config/lib.js
+### packages/tooling-vite-config/lib.js
 
 ```javascript
 import { defineConfig } from "vite";
@@ -505,7 +505,7 @@ export default mergeConfig(libConfig, {
 
 ```bash
 # 설정 변경 후 버전 업데이트
-cd config/eslint-config
+cd packages/tooling-eslint-config
 npm version patch
 
 # 또는 changeset 사용

@@ -117,7 +117,7 @@ export class User {
 **문제**: composite 패키지를 `references`로 참조하는 프로젝트에서 `tsc -b --noEmit`을 실행하면 항상 실패
 
 ```bash
-tsconfig.json(24,5): error TS6310: Referenced project '.../packages/shared' may not disable emit.
+tsconfig.json(24,5): error TS6310: Referenced project '.../packages/lib-shared' may not disable emit.
 ```
 
 **원인**: `tsc -b`(빌드 모드)에서 커맨드라인으로 넘긴 `--noEmit`은 참조된 모든 composite 프로젝트에도 emit 비활성화를 강제 전파한다. composite 프로젝트는 정의상 선언 파일(`.d.ts`)을 emit해야 하므로 이 조합 자체가 `TS6310`을 발생시킨다. 참조 패키지를 먼저 `build`해도 해결되지 않는다(빌드 순서·캐시 문제가 아님).
@@ -142,7 +142,7 @@ tsconfig.json(24,5): error TS6310: Referenced project '.../packages/shared' may 
 **문제**: ESLint 설정 파일에서 globals 모듈 import 누락
 
 ```javascript
-// config/eslint-config/node.mjs
+// packages/tooling-eslint-config/node.mjs
 export default [
   ...base,
   {
@@ -158,7 +158,7 @@ export default [
 **해결방법**: 필요한 모듈을 명시적으로 import
 
 ```javascript
-// config/eslint-config/node.mjs
+// packages/tooling-eslint-config/node.mjs
 import base from "./base.mjs";
 import globals from "globals"; // 추가
 

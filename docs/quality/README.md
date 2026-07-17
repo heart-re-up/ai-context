@@ -56,7 +56,7 @@ pnpm format
 | ESLint            | 코드 품질   | `eslint.config.mjs`   | 오류 탐지, 코딩 규칙 | [eslint.md](./eslint.md)                   |
 | EditorConfig      | 에디터 설정 | `.editorconfig`       | 에디터 간 일관성     | [editorconfig.md](./editorconfig.md)       |
 | Husky/lint-staged | Git 훅      | `package.json`        | 커밋 전 자동 검사    | [scripts.md](./scripts.md)                 |
-| 모노레포 설정     | 설정 패키지 | `config/*/`           | 중앙화된 설정 관리   | [monorepo-config.md](./monorepo-config.md) |
+| 모노레포 설정     | 설정 패키지 | `packages/tooling-*/` | 중앙화된 설정 관리   | [monorepo-config.md](./monorepo-config.md) |
 
 ## 설정 접근 방법
 

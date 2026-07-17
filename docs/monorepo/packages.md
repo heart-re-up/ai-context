@@ -25,7 +25,7 @@ packages/
 │   ├── package.json
 │   ├── vite.lib.config.ts
 │   └── tsconfig.json
-├── shared-lib/              # 공유 유틸리티 및 비즈니스 로직
+├── lib-shared/              # 공유 유틸리티 및 비즈니스 로직
 │   ├── src/
 │   │   ├── api/
 │   │   ├── utils/
@@ -40,14 +40,15 @@ packages/
 │   │   └── index.ts
 │   ├── package.json
 │   └── tsconfig.json
-├── config/                  # 공유 설정 (별도 config/ 디렉토리로 이동 권장)
-│   ├── eslint-config/
-│   ├── typescript-config/
-│   └── vite-config/
+├── tooling-eslint-config/   # 공유 ESLint 설정 (설정도 packages/* 안에 둔다)
+├── tooling-typescript-config/ # 공유 TypeScript 설정
+├── tooling-vite-config/     # 공유 Vite 설정
 └── tools/                   # 개발 도구
     ├── build-scripts/
     └── dev-tools/
 ```
+
+> 💡 설정 패키지(ESLint·TypeScript·Prettier 등)를 별도 최상위 `config/` 디렉토리로 분리할 필요는 없습니다. `tooling-` 접두사로 `packages/*` 안에 두면 워크스페이스 글롭이 하나로 유지되고 정렬로 그룹화됩니다. 자세한 내용: [config.md](./config.md)
 
 ## 패키지별 설정
 
@@ -127,7 +128,7 @@ packages/
 
 ```json
 {
-  "name": "@project/shared-lib",
+  "name": "@project/lib-shared",
   "version": "1.0.0",
   "description": "Shared Library with utilities and business logic",
   "private": false,
@@ -292,7 +293,7 @@ packages/ui-components/
 ### 공유 라이브러리 구조
 
 ```
-packages/shared-lib/
+packages/lib-shared/
 ├── src/
 │   ├── api/
 │   │   ├── client.ts
@@ -457,7 +458,7 @@ describe("Button", () => {
 ## 유틸리티 함수 예시
 
 ```typescript
-// packages/shared-lib/src/utils/date.ts
+// packages/lib-shared/src/utils/date.ts
 export const formatDate = (
   date: Date,
   format: "short" | "long" = "short",
@@ -485,7 +486,7 @@ export const addDays = (date: Date, days: number): Date => {
 ## API 클라이언트 예시
 
 ```typescript
-// packages/shared-lib/src/api/client.ts
+// packages/lib-shared/src/api/client.ts
 import type { ApiResponse } from "@project/types";
 
 class ApiClient {
