@@ -371,5 +371,5 @@ export default defineConfig({
 ## 관련 문서
 
 - [../typescript.md](../typescript.md) - TypeScript 설정
-- [../quality.md](../quality.md) - 코드 품질 도구
+- [../quality/README.md](../quality/README.md) - 코드 품질 도구
 - [../vitest/README.md](../vitest/README.md) - Vitest 테스트 설정

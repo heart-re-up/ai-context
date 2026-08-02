@@ -27,10 +27,7 @@ docker/
 ├── README.md              # 이 파일
 ├── nextjs.md             # Next.js 앱용 Docker 설정
 ├── nestjs.md             # Nest.js API용 Docker 설정
-├── database.md           # 데이터베이스 컨테이너 설정
-└── compose/              # Docker Compose 예제들
-    ├── development.md    # 개발 환경 설정
-    └── production.md     # 프로덕션 환경 설정
+└── database.md           # 데이터베이스 컨테이너 설정
 ```
 
 ## 🚀 빠른 시작
@@ -40,7 +37,6 @@ docker/
 - **Next.js 앱**: `nextjs.md` 참조
 - **Nest.js API**: `nestjs.md` 참조
 - **데이터베이스**: `database.md` 참조
-- **전체 환경**: `compose/` 디렉토리 참조
 
 ## 📚 추가 리소스
 

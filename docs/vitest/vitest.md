@@ -33,7 +33,7 @@ React 컴포넌트 테스트를 위해서는 **jsdom**을 권장합니다:
 - ✅ **안정성** - 충분히 검증된 환경
 - ✅ **풍부한 커뮤니티** 지원
 
-> **다른 환경 옵션들** (happy-dom, 브라우저 테스트 등)이 궁금하다면 [고급 옵션 가이드](./vitest-other-options.md)를 참고하세요.
+> **다른 환경 옵션들** (happy-dom, 브라우저 테스트 등)이 궁금하다면 [고급 옵션 가이드](./vitest-options.md)를 참고하세요.
 
 ## 기본 설정
 
@@ -55,7 +55,7 @@ pnpm add -D @testing-library/react @testing-library/jest-dom @testing-library/us
 | `@testing-library/jest-dom`   | DOM 관련 assertion 확장    | 권장                 |
 | `@testing-library/user-event` | 사용자 상호작용 시뮬레이션 | 권장                 |
 
-> **더 많은 옵션과 대안들**이 궁금하다면 [고급 옵션 가이드](./vitest-other-options.md)를 참고하세요.
+> **더 많은 옵션과 대안들**이 궁금하다면 [고급 옵션 가이드](./vitest-options.md)를 참고하세요.
 
 ### 기본 vitest.config.ts
 
