@@ -2,6 +2,8 @@
 
 Renovate는 프로젝트의 의존성을 자동으로 업데이트하는 도구입니다. GitHub, GitLab, Azure DevOps 등 다양한 플랫폼을 지원합니다.
 
+> 아래 대화·수치·케이스 스터디는 이해를 돕기 위한 예시이며, 특정 프로젝트의 실측 데이터가 아니다. 실제 효과는 팀·리포지토리 상황에 따라 다르다.
+
 ## 왜 Renovate를 사용해야 할까요?
 
 ### 📊 현실: 의존성 관리의 고민들
@@ -270,7 +272,7 @@ RENOVATE_TOKEN="your_token" renovate --config-file=renovate-config.js
 ```json
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:base"]
+  "extends": ["config:recommended"]
 }
 ```
 
@@ -283,8 +285,8 @@ RENOVATE_TOKEN="your_token" renovate --config-file=renovate-config.js
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
 
   // 2. 사전 정의된 설정 묶음을 가져옴
-  // config:base = Renovate의 기본 권장 설정들
-  "extends": ["config:base"]
+  // config:recommended = Renovate의 기본 권장 설정들
+  "extends": ["config:recommended"]
 }
 ```
 
@@ -292,7 +294,7 @@ RENOVATE_TOKEN="your_token" renovate --config-file=renovate-config.js
 
 **네, 맞습니다!** 이 두 줄이면 Renovate가 동작합니다.
 
-**config:base가 포함하는 내용:**
+**config:recommended가 포함하는 내용:**
 
 - 매주 의존성 확인
 - patch와 minor 업데이트 자동 PR 생성
@@ -345,7 +347,7 @@ graph TD
 **실제 동작 순서:**
 
 1. **설정 로드**: renovate.json 읽기
-2. **프리셋 확장**: config:base의 모든 규칙 가져오기
+2. **프리셋 확장**: config:recommended의 모든 규칙 가져오기
 3. **패키지 스캔**: package.json, package-lock.json 분석
 4. **업데이트 확인**: npm 레지스트리에서 새 버전 확인
 5. **PR 생성**: 업데이트가 필요한 경우 자동 PR 생성
@@ -357,7 +359,7 @@ graph TD
 ```json
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:base"],
+  "extends": ["config:recommended"],
   "timezone": "Asia/Seoul"
 }
 ```
@@ -367,7 +369,7 @@ graph TD
 ```json
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:base", "config:js-lib"],
+  "extends": ["config:recommended", "config:js-lib"],
   "timezone": "Asia/Seoul"
 }
 ```
@@ -377,7 +379,7 @@ graph TD
 ```json
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:base"],
+  "extends": ["config:recommended"],
   "timezone": "Asia/Seoul",
   "vulnerabilityAlerts": {
     "enabled": true
@@ -390,7 +392,7 @@ graph TD
 ```json
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:base"],
+  "extends": ["config:recommended"],
   "timezone": "Asia/Seoul",
   "postUpdateOptions": ["pnpmDedupe"]
 }
@@ -404,7 +406,7 @@ graph TD
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:base",
+    "config:recommended",
     ":dependencyDashboard",
     ":semanticCommits",
     ":preserveSemverRanges"
@@ -488,7 +490,7 @@ graph TD
 ```json
 {
   "extends": [
-    "config:base", // 📦 기본 필수 설정
+    "config:recommended", // 📦 기본 필수 설정
     ":dependencyDashboard", // 📊 의존성 현황판
     ":semanticCommits", // 📝 체계적인 커밋 메시지
     ":preserveSemverRanges", // 🔒 버전 범위 보존
@@ -502,7 +504,7 @@ graph TD
 
 ### 📦 주요 프리셋 상세 가이드
 
-#### 🏗️ config:base (필수)
+#### 🏗️ config:recommended (필수)
 
 ```json
 // 이 설정이 포함하는 내용:
@@ -624,7 +626,7 @@ graph TD
 ```json
 {
   "extends": [
-    "config:base",
+    "config:recommended",
     ":dependencyDashboard",
     ":automergeMinor",
     ":automergePatch",
@@ -638,7 +640,7 @@ graph TD
 ```json
 {
   "extends": [
-    "config:base",
+    "config:recommended",
     ":dependencyDashboard",
     ":semanticCommits",
     ":preserveSemverRanges"
@@ -651,7 +653,7 @@ graph TD
 ```json
 {
   "extends": [
-    "config:base",
+    "config:recommended",
     ":semanticCommits",
     ":preserveSemverRanges",
     "helpers:pinGitHubActionDigests" // GitHub Actions 보안 강화
@@ -664,7 +666,7 @@ graph TD
 ```json
 {
   "extends": [
-    "config:base",
+    "config:recommended",
     ":dependencyDashboard",
     "docker:enableMajor", // Docker 이미지도 관리
     "security:openssf-scorecard" // 오픈소스 보안 점수 확인
@@ -1202,7 +1204,7 @@ packages:
 
 ```json
 {
-  "extends": ["config:base"],
+  "extends": ["config:recommended"],
   "postUpdateOptions": ["pnpmDedupe"],
 
   "packageRules": [
@@ -1242,7 +1244,7 @@ packages:
 ```json
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:base"],
+  "extends": ["config:recommended"],
 
   // 🔧 pnpm 전용 옵션들
   "rangeStrategy": "bump", // pnpm의 유연한 버전 관리 활용
@@ -1424,7 +1426,7 @@ apps/web/node_modules/lodash@4.17.19
 
 ```json
 {
-  "extends": ["config:base"],
+  "extends": ["config:recommended"],
   "postUpdateOptions": ["pnpmDedupe"],
   "schedule": ["at any time"],
   "automerge": true,
@@ -1441,7 +1443,7 @@ apps/web/node_modules/lodash@4.17.19
 
 ```json
 {
-  "extends": ["config:base"],
+  "extends": ["config:recommended"],
   "postUpdateOptions": ["pnpmDedupe"],
   "schedule": ["before 9am on monday"],
   "prConcurrentLimit": 2,
@@ -1768,7 +1770,7 @@ your-org/
 
 ```json
 {
-  "extends": ["config:base"],
+  "extends": ["config:recommended"],
   "dryRun": "full", // 실제 PR 생성하지 않고 로그만 확인
   "packageRules": [
     {
@@ -1785,7 +1787,7 @@ _목표: 어떤 업데이트가 올지 파악하고 팀 적응시간 확보_
 
 ```json
 {
-  "extends": ["config:base"],
+  "extends": ["config:recommended"],
   "packageRules": [
     {
       "matchUpdateTypes": ["patch"],
@@ -1802,7 +1804,7 @@ _목표: 위험도 낮은 업데이트부터 자동화_
 
 ```json
 {
-  "extends": ["config:base", ":dependencyDashboard"],
+  "extends": ["config:recommended", ":dependencyDashboard"],
   "vulnerabilityAlerts": { "enabled": true, "automerge": true },
   "packageRules": [
     {
@@ -1821,7 +1823,7 @@ _목표: 안정적인 자동화 체계 구축_
 
 ```json
 {
-  "extends": ["config:base", ":automergeMinor", ":automergePatch"],
+  "extends": ["config:recommended", ":automergeMinor", ":automergePatch"],
   "prCreation": "immediate",
   "automergeSchedule": ["at any time"]
 }
@@ -1833,7 +1835,7 @@ _특징: 빠른 업데이트, 즉시 반영_
 
 ```json
 {
-  "extends": ["config:base"],
+  "extends": ["config:recommended"],
   "schedule": ["before 5am on monday"],
   "prConcurrentLimit": 3,
   "packageRules": [
@@ -1851,7 +1853,7 @@ _특징: 계획적 업데이트, 충분한 검토 시간_
 
 ```json
 {
-  "extends": ["config:base"],
+  "extends": ["config:recommended"],
   "vulnerabilityAlerts": {
     "enabled": true,
     "labels": ["security", "urgent"],
@@ -2027,7 +2029,7 @@ npm outdated | wc -l        # 업데이트 필요한 패키지 47개
 
 ```json
 {
-  "extends": ["config:base"],
+  "extends": ["config:recommended"],
   "dryRun": "full",
   "schedule": ["before 5am on monday"]
 }
@@ -2043,7 +2045,7 @@ npm outdated | wc -l        # 업데이트 필요한 패키지 47개
 
 ```json
 {
-  "extends": ["config:base"],
+  "extends": ["config:recommended"],
   "packageRules": [
     {
       "matchUpdateTypes": ["patch"],
@@ -2060,7 +2062,7 @@ npm outdated | wc -l        # 업데이트 필요한 패키지 47개
 
 ```json
 {
-  "extends": ["config:base", ":dependencyDashboard"],
+  "extends": ["config:recommended", ":dependencyDashboard"],
   "vulnerabilityAlerts": { "enabled": true, "automerge": true },
   "packageRules": [
     {
@@ -2089,7 +2091,7 @@ npm outdated | wc -l        # 업데이트 필요한 패키지 47개
 
 ```json
 {
-  "extends": ["config:base"],
+  "extends": ["config:recommended"],
   "schedule": ["before 5am on the first monday of the month"],
   "prConcurrentLimit": 3,
   "packageRules": [
