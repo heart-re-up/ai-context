@@ -17,7 +17,7 @@ globs:
 - **hook 미실행** → `.husky/*` 실행 권한(`chmod +x`)·`package.json`의 `prepare`(husky init) 확인.
 - **commitlint**: Conventional Commits 형식(`type(scope): subject`). `commit-msg` hook에서 `commitlint --edit $1` 연동.
 - **Changesets**: 모노레포 패키지 버전·CHANGELOG는 PR에 changeset 파일 포함 후 `changeset version` → `changeset publish` 흐름.
-- **Renovate**: 루트 `renovate.json` + `extends: ["config:base"]`로 시작. 첫 도입은 `dryRun: "full"`로 시뮬레이션, `timezone` 미설정 시 UTC 기준으로 동작한다.
+- **Renovate**: 루트 `renovate.json` + `extends: ["config:recommended"]`로 시작. 첫 도입은 `dryRun: "full"`로 시뮬레이션, `timezone` 미설정 시 UTC 기준으로 동작한다.
 
 세부 설정·도구별 가이드:
 
