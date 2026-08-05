@@ -224,12 +224,13 @@ ai-context/                 # 컨슈머 프로젝트의 .cursor/rules/ai-context
 │   ├── wasm/                   # WebAssembly 개발 가이드
 │   └── typescript.md           # TypeScript 설정 가이드
 └── rules/                  # Cursor가 자동 로드하는 slim 라우터 (.mdc)
+    ├── comments.mdc         # alwaysApply — 함수·분기 주석
     ├── conventions.mdc      # globs 기반 — 컴포넌트/훅 파일 작성 시 자동 첨부
     ├── monorepo.mdc         # description 기반 — 증상이 맞을 때만 소환
     └── ...                  # 주제별로 계속 추가
 ```
 
-각 `rules/*.mdc`는 핵심 규칙만 몇 줄로 압축하고, 상세 배경·예시는 `docs/`를 링크한다(전체 내용을 `.mdc`에 인라인하지 않음 — 컨텍스트 낭비 방지). 어떤 주제를 `alwaysApply`/`globs`/`description` 중 무엇으로 트리거할지는 그 주제가 "얼마나 자주 참고돼야 하는가"로 판단한다 — 예: 코딩 컨벤션은 `globs`로 항상 붙고, 트러블슈팅은 `description`으로 증상이 맞을 때만, VS Code 설정처럼 온보딩 1회성인 주제는 라우터 없이 `docs/`만 둔다.
+각 `rules/*.mdc`는 핵심 규칙만 몇 줄로 압축하고, 상세 배경·예시는 `docs/`를 링크한다(전체 내용을 `.mdc`에 인라인하지 않음 — 컨텍스트 낭비 방지). 어떤 주제를 `alwaysApply`/`globs`/`description` 중 무엇으로 트리거할지는 그 주제가 "얼마나 자주 참고돼야 하는가"로 판단한다 — 예: 주석처럼 모든 코드 변경에 해당하는 규칙은 `alwaysApply`, React 컴포넌트·훅 규약은 `globs`, 트러블슈팅은 `description`으로 증상이 맞을 때만, VS Code 설정처럼 온보딩 1회성인 주제는 라우터 없이 `docs/`만 둔다.
 
 ## 🤝 기여하기
 
