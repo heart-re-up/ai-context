@@ -1,6 +1,6 @@
 # 코드 주석 규약
 
-함수·분기 주석의 기준과 예시. Cursor 규칙: [`comments.mdc`](../../rules/comments.mdc).
+함수·타입 프로퍼티·분기 주석의 기준과 예시. Cursor 규칙: [`comments.mdc`](../../rules/comments.mdc).
 
 ## 원칙
 
@@ -13,7 +13,7 @@
 
 ### 달 것
 
-- 공개 API (export된 함수·메서드·타입에 붙는 동작 설명)
+- 공개 API (export된 함수·메서드)
 - 분기·재시도·버퍼링·권한·타임아웃처럼 **부수효과나 불변식**이 있는 함수
 - 이름만으로는 범위가 안 보이는 헬퍼 (`apply`, `handle`, `process` 등)
 
@@ -46,6 +46,59 @@ function toIso(date: Date) {
   return date.toISOString();
 }
 ```
+
+## 타입·프로퍼티 주석
+
+`type` / `interface` / 공개 클래스의 데이터 필드에는 **타입 역할**과 **프로퍼티마다** 짧은 JSDoc을 단다.
+호버·자동완성과 리뷰에서 계약을 바로 읽게 하려는 목적이다.
+
+### 달 것
+
+- export된 타입·인터페이스의 모든 프로퍼티
+- 비공개라도 도메인 계약·저장 형식·nullable 의미가 있는 타입의 프로퍼티
+- 유니온·판별 필드가 가리키는 상태
+
+### 쓰지 말 것
+
+- 식별자만 한글화한 번역 (`/** 이름 */ name`, `/** 여부 */ enabled`)
+- 타입 시그니처를 다시 말한 주석 (`/** 문자열이다 */ id: string`)
+
+```ts
+// ❌ BAD — 타입에만 달고 필드는 비움
+/** sync·콜백이 공유하는 공용 클레임이다. */
+export type OAuthUserClaims = {
+  provider: string;
+  sub: string;
+  trustedEmail?: string;
+};
+
+// ❌ BAD — 식별자 번역
+export type OAuthUserClaims = {
+  /** 제공자 */
+  provider: string;
+  /** 서브 */
+  sub: string;
+};
+
+// ✅ GOOD — 타입 역할 + 프로퍼티마다 도메인 계약
+/** sync·콜백이 공유하는 공용 클레임이다. */
+export type OAuthUserClaims = {
+  /** LoginMethod.provider에 저장하는 IdP id다. */
+  provider: string;
+  /** IdP 사용자 고유 id다. LoginMethod.identifier로 저장한다. */
+  sub: string;
+  /** 표시용 이름이다. 없으면 User.name 기본값을 쓴다. */
+  name?: string;
+  /**
+   * 계정 연결과 email LoginMethod에 쓸 수 있는 이메일만 채운다.
+   * unverified면 필드를 비운다.
+   */
+  trustedEmail?: string;
+};
+```
+
+로컬 변수·파라미터에는 이 규칙을 강제하지 않는다.
+이름은 자명하게 두고, 비자명 불변식만 필요할 때 한 줄을 단다.
 
 ## 조건·분기 주석
 
