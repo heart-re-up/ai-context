@@ -7,6 +7,7 @@
 - **What이 아니라 Why/역할**: 이미 코드가 말하는 내용을 반복하지 않는다.
 - **짧게**: 한두 문장. 긴 배경은 이슈·설계 문서로 보내고, 주석에는 읽기 위치에서 필요한 계약만 남긴다.
 - **언어 관례**: TypeScript/JavaScript는 JSDoc(`/** */`), 그 외는 해당 언어의 문서 주석 형식을 쓴다.
+- **문장**: 주석도 읽히는 말로 쓴다. 텔레그램식 단편·단어 나열·심한 생략은 쓰지 않는다.
 
 ## 함수 주석
 
@@ -30,6 +31,12 @@ function increment(x: number) {
 
 // ✅ GOOD — 역할·계약
 /** 재연결 대기열에 넣고, 연결이 살아 있으면 즉시 flush한다. */
+function enqueueOrFlush(frame: Frame) {
+  // ...
+}
+
+// ❌ BAD — 텔레그램식·단어 나열
+/** 큐 넣기 / 연결시 flush / 재시도 */
 function enqueueOrFlush(frame: Frame) {
   // ...
 }
