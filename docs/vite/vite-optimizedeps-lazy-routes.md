@@ -39,17 +39,38 @@ Vite의 esbuild 기반 의존성 사전 번들링(`optimizeDeps`)은 **1차 스�
 
 ## 해결
 
-`optimizeDeps.entries`로 스캔 시작점을 `index.html` 하나가 아니라 **`src` 전체**로 넓혀서, `lazy()` 뒤의 라우트 파일까지 정적 파싱 대상에 포함시킨다. 이러면 최초 1회 스캔에서 앱 전체가 실제로 쓰는 의존성을 한꺼번에 찾아내 재최적화(=`browserHash` 재발급) 자체가 발생하지 않는다.
+### React Router Framework Mode — `future.unstable_optimizeDeps`
+
+`@react-router/dev` Vite 플러그인은 config 훅에서 `optimizeDeps.entries`를 **항상 덮어쓴다**.  
+`future.unstable_optimizeDeps`가 꺼져 있으면(기본값) 값이 **`[]`** 이라, 앱 `vite.config.ts`의 `entries`도 무력화된다.
 
 ```ts
-// vite.config.ts
-optimizeDeps: {
-  exclude: ['@ffmpeg/ffmpeg', '@ffmpeg/util'], // WASM 등 번들링 시 깨지는 패키지
-  entries: ['src/**/*.{ts,tsx}'],
-},
+// react-router.config.ts
+export default {
+  future: {
+    unstable_optimizeDeps: true,
+  },
+};
 ```
 
-콜드스타트 시 서버가 처음 응답하기까지 스캔 범위가 넓어진 만큼 몇 초 더 걸릴 수 있다(정상).
+켜면 플러그인이 `entry.client` + 전 라우트 파일을 entries로 넣는다. lazy 라우트 뒤 의존성도 1차 스캔에 포함되어 재최적화(=`browserHash` 재발급)가 사라진다.
+
+### RR 뒤 플러그인 — Vite 7 glob + linked nested `include`
+
+Vite 7의 `optimizeDeps.entries`는 tinyglobby 패턴이다.  
+모노레포 linked UI 패키지의 nested dep은 라우트 entries만으로 1차에 안 잡히면, 페이지 로드 때 한꺼번에 발견되어 서로 다른 `?v=`로 504 폭풍이 난다.
+
+`reactRouter()` **뒤에** 플러그인을 두어 `entries: ['src/**/*.{ts,tsx}']`를 다시 넣고, nested dep를 `optimizeDeps.include`에 강제한다.
+
+```ts
+plugins: [tailwindcss(), reactRouter(), forceOptimizeDepsEntriesPlugin()],
+```
+
+콜드스타트 시 서버가 처음 응답하기까지 스캔 범위가 넓어진 만큼 몇 초 더 걸릴 수 있다(정상). 재시작 후 브라우저는 하드 리프레시한다.
+
+### 한계 (2026-08-11)
+
+모노레포에서 linked UI `dist` 워치와 함께 쓰면, 위 완화를 넣어도 로컬에서 504·자동 full-reload가 **남을 수 있다**. 배포 빌드 경로에는 optimizeDeps 런타임이 없어 같은 증상이 없다. 프로젝트 쪽 잔여·재현 기록은 소비 저장소의 Vite optimizeDeps 트러블슈팅을 본다.
 
 ### 검증 방법
 
